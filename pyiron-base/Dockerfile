@@ -30,7 +30,7 @@ RUN apt-get update \
     locales \
     fonts-liberation \
     run-one \
-    glibc \
+ #   glibc \
     git \
     curl \
     build-essential \
