@@ -5,7 +5,7 @@ jobs:
     - stage: build first docker image
       script:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - docker build -t $DOCKER_USERNAME/pyiron-base-image pyiron_base/
+      - docker build -t $DOCKER_USERNAME/pyiron-base-image pyiron-base/
       - docker images
       - docker push $DOCKER_USERNAME/pyiron-base-image
     # - stage: build second docker image
