@@ -1,0 +1,31 @@
+dist: trusty
+
+jobs:
+  include:
+    - stage: build first docker image
+      script:
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      - docker build -t $DOCKER_USERNAME/pyiron-base-image pyiron_base/
+      - docker images
+      - docker push $DOCKER_USERNAME/pyiron-base-image
+    # - stage: build second docker image
+    #   script:
+    #   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    #   - docker build -t $DOCKER_USERNAME/pyiron-atomistic-image singleuser-atomistics/
+    #   - docker images
+    #   - docker push $DOCKER_USERNAME/pyiron-atomistic-image
+    # - stage: build third docker image
+    #   script:
+    #   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    #   - docker build -t $DOCKER_USERNAME/pyiron-experimental-image singleuser-experimental/
+    #   - docker images
+    #   - docker push $DOCKER_USERNAME/pyiron-experimental-image
+    - stage: test1
+      script: docker run --rm $DOCKER_USERNAME/pyiron-base-image echo hello world
+    - script: docker run --rm $DOCKER_USERNAME/pyiron-base-image echo hello world
+    # - stage: test2
+    #   script: docker run --rm $DOCKER_USERNAME/pyiron-experimental-image echo hello world
+    # - script: docker run --rm $DOCKER_USERNAME/pyiron-experimental-image echo hello world
+    # - stage: test3
+    #   script: docker run --rm $DOCKER_USERNAME/pyiron-atomistic-image echo hello world
+    # - script: docker run --rm $DOCKER_USERNAME/pyiron-atomistic-image echo hello world
