@@ -49,7 +49,6 @@ ENV CONDA_DIR=/opt/conda \
     LC_ALL=en_US.UTF-8 \
     LANG=en_US.UTF-8 \
     LANGUAGE=en_US.UTF-8
-
 ENV PATH=$CONDA_DIR/bin:$PATH \
     HOME=/home/$NB_USER
 
@@ -121,14 +120,20 @@ RUN conda install --quiet --yes \
     'notebook=6.1.3' \
     'jupyterhub=1.1.0' \
     'jupyterlab=2.2.5' && \
-    conda install -c conda-forge pyiron_base && \
+    conda install -c conda-forge pyiron && \
+    conda install -c conda-forge lammps && \
+    conda install -c conda-forge nodejs nglview && \
     conda clean --all -f -y && \
     npm cache clean --force && \
     jupyter notebook --generate-config && \
     rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
     rm -rf /home/$NB_USER/.cache/yarn && \
     fix-permissions $CONDA_DIR && \
-    fix-permissions /home/$NB_USER
+    fix-permissions /home/$NB_USER && \
+    jupyter nbextension install nglview --py --sys-prefix && \
+    jupyter nbextension enable nglview --py --sys-prefix 
+
+
 
 EXPOSE 8888
 
@@ -142,11 +147,10 @@ COPY jupyter_notebook_config.py /etc/jupyter/
 
 RUN mkdir /home/$NB_USER/shared &&\
     fix-permissions /home/$NB_USER/shared/
-
 # Fix permissions on /etc/jupyter as root
 USER root
 RUN fix-permissions /etc/jupyter/
-
+RUN sudo apt-get install git-all
 # Switch back to jovyan to avoid accidental container runs as root
 USER $NB_UID
 

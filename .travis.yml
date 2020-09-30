@@ -8,12 +8,12 @@ jobs:
       - docker build -t $DOCKER_USERNAME/pyiron-base-image pyiron-base/
       - docker images
       - docker push $DOCKER_USERNAME/pyiron-base-image
-    # - stage: build second docker image
-    #   script:
-    #   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-    #   - docker build -t $DOCKER_USERNAME/pyiron-atomistic-image singleuser-atomistics/
-    #   - docker images
-    #   - docker push $DOCKER_USERNAME/pyiron-atomistic-image
+    - stage: build second docker image
+      script:
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      - docker build -t $DOCKER_USERNAME/pyiron-lammps-image pyiron-lammps/
+      - docker images
+      - docker push $DOCKER_USERNAME/pyiron-lammps-image
     # - stage: build third docker image
     #   script:
     #   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
