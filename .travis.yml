@@ -2,25 +2,25 @@ dist: trusty
 
 jobs:
   include:
-    - stage: build first docker image
+    - stage: build 1
       script:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t $DOCKER_USERNAME/pyiron-base-image pyiron-base/
       - docker images
       - docker push $DOCKER_USERNAME/pyiron-base-image
-    - stage: build second docker image
+    - stage: build 2
       script:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t $DOCKER_USERNAME/pyiron-lammps-image pyiron-lammps/
       - docker images
       - docker push $DOCKER_USERNAME/pyiron-lammps-image
-    - stage: build third docker image
+    - stage: build 3
       script:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t $DOCKER_USERNAME/pyiron-sphinx-gpaw-image pyiron-sphinx-gpaw/
       - docker images
       - docker push $DOCKER_USERNAME/pyiron-sphinx-gpaw-image
-      - stage: build fourth docker image
+      - stage: build 4
       script:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t $DOCKER_USERNAME/pyiron-lammps-sphinx-gpaw-image pyiron-lammps-sphinx-gpaw/
