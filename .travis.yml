@@ -23,9 +23,9 @@ jobs:
     - stage: test1
       script: docker run --rm $DOCKER_USERNAME/pyiron-base-image echo hello world
     - script: docker run --rm $DOCKER_USERNAME/pyiron-base-image echo hello world
-    # - stage: test2
-    #   script: docker run --rm $DOCKER_USERNAME/pyiron-experimental-image echo hello world
-    # - script: docker run --rm $DOCKER_USERNAME/pyiron-experimental-image echo hello world
+    - stage: test2
+      script: docker run --rm $DOCKER_USERNAME/pyiron-lammps-image echo hello world
+    - script: docker run --rm $DOCKER_USERNAME/pyiron-lammps-image echo hello world
     # - stage: test3
     #   script: docker run --rm $DOCKER_USERNAME/pyiron-atomistic-image echo hello world
     # - script: docker run --rm $DOCKER_USERNAME/pyiron-atomistic-image echo hello world
