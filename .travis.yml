@@ -20,7 +20,7 @@ jobs:
       - docker build -t $DOCKER_USERNAME/pyiron-sphinx-gpaw-image pyiron-sphinx-gpaw/
       - docker images
       - docker push $DOCKER_USERNAME/pyiron-sphinx-gpaw-image
-      - stage: build 4
+    - stage: build 4
       script:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t $DOCKER_USERNAME/pyiron-lammps-sphinx-gpaw-image pyiron-lammps-sphinx-gpaw/
