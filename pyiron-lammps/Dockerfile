@@ -150,7 +150,6 @@ RUN mkdir /home/$NB_USER/shared &&\
 # Fix permissions on /etc/jupyter as root
 USER root
 RUN fix-permissions /etc/jupyter/
-RUN sudo apt-get install git-all
 # Switch back to jovyan to avoid accidental container runs as root
 USER $NB_UID
 
