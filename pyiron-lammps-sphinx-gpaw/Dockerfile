@@ -1,13 +1,20 @@
-# Copyright (c) IBM Corporation 2016 
-# Distributed under the terms of the Modified BSD License.
+ARG ROOT_CONTAINER=ubuntu:focal-20200703@sha256:d5a6519d9f048100123c568eb83f7ef5bfcad69b01424f420f17c932b00dea76
 
-# Ubuntu image 
-FROM ppc64le/ubuntu:18.04
+ARG BASE_CONTAINER=$ROOT_CONTAINER
+FROM $BASE_CONTAINER
 
-LABEL maintainer="Ilsiyar Gaynutdinov <ilsiyar_gaynutdinov@ru.ibm.com>"
-ARG NB_USER="jovyan"
+MAINTAINER Muhammad Hassani <hassani@mpie.de>
+
+# Inspired by :
+# * https://github.com/jupyter/docker-stacks
+
+
+ARG NB_USER="pyiron_user"
 ARG NB_UID="1000"
 ARG NB_GID="100"
+
+# Fix DL4006
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 USER root
 
@@ -23,6 +30,11 @@ RUN apt-get update \
     locales \
     fonts-liberation \
     run-one \
+    git \
+    curl \
+    build-essential \
+    nano-tiny \
+    vim-tiny \
  && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
@@ -47,7 +59,7 @@ RUN chmod a+rx /usr/local/bin/fix-permissions
 # Enable prompt color in the skeleton .bashrc before creating the default NB_USER
 RUN sed -i 's/^#force_color_prompt=yes/force_color_prompt=yes/' /etc/skel/.bashrc
 
-# Create NB_USER wtih name jovyan user with UID=1000 and in the 'users' group
+# Create NB_USER with name jovyan user with UID=1000 and in the 'users' group
 # and make sure these dirs are writable by the `users` group.
 RUN echo "auth requisite pam_deny.so" >> /etc/pam.d/su && \
     sed -i.bak -e 's/^%admin/#%admin/' /etc/sudoers && \
@@ -64,20 +76,18 @@ WORKDIR $HOME
 ARG PYTHON_VERSION=default
 
 # Setup work directory for backward-compatibility
-RUN mkdir /home/$NB_USER/work && \
-    fix-permissions /home/$NB_USER
+RUN fix-permissions /home/$NB_USER
 
 # Install conda as jovyan and check the md5 sum provided on the download site
-ENV MINICONDA_VERSION=4.8.2 \
-    MINICONDA_MD5=e50662a93f3f5e56ef2d3fdfaf2f8e91 \
-    CONDA_VERSION=4.8.2
+ENV MINICONDA_VERSION=4.8.3 \
+    MINICONDA_MD5=d63adf39f2c220950a063e0529d4ff74 \
+    CONDA_VERSION=4.8.3
 
-# Install conda as jovyan
-RUN cd /tmp && \
-    wget --quiet https://repo.continuum.io/miniconda/Miniconda3-py37_${MINICONDA_VERSION}-Linux-ppc64le.sh && \
-    echo "${MINICONDA_MD5} *Miniconda3-py37_${MINICONDA_VERSION}-Linux-ppc64le.sh" | md5sum -c - && \
-    /bin/bash Miniconda3-py37_${MINICONDA_VERSION}-Linux-ppc64le.sh -f -b -p $CONDA_DIR && \
-    rm -rf Miniconda3-py37_${MINICONDA_VERSION}-Linux-ppc64le.sh && \
+WORKDIR /tmp
+RUN wget --quiet https://repo.continuum.io/miniconda/Miniconda3-py38_${MINICONDA_VERSION}-Linux-x86_64.sh && \
+    echo "${MINICONDA_MD5} *Miniconda3-py38_${MINICONDA_VERSION}-Linux-x86_64.sh" | md5sum -c - && \
+    /bin/bash Miniconda3-py38_${MINICONDA_VERSION}-Linux-x86_64.sh -f -b -p $CONDA_DIR && \
+    rm Miniconda3-py38_${MINICONDA_VERSION}-Linux-x86_64.sh && \
     echo "conda ${CONDA_VERSION}" >> $CONDA_DIR/conda-meta/pinned && \
     conda config --system --prepend channels conda-forge && \
     conda config --system --set auto_update_conda false && \
@@ -110,13 +120,22 @@ RUN conda install --quiet --yes \
     'notebook=6.1.3' \
     'jupyterhub=1.1.0' \
     'jupyterlab=2.2.5' && \
+    conda install -c conda-forge pyiron && \
+    conda install -c conda-forge lammps && \
+    conda install -c conda-forge sphinxdft && \
+    conda install -c conda-forge gpaw && \
+    conda install -c conda-forge nodejs nglview && \
     conda clean --all -f -y && \
     npm cache clean --force && \
     jupyter notebook --generate-config && \
     rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
     rm -rf /home/$NB_USER/.cache/yarn && \
     fix-permissions $CONDA_DIR && \
-    fix-permissions /home/$NB_USER
+    fix-permissions /home/$NB_USER && \
+    jupyter nbextension install nglview --py --sys-prefix && \
+    jupyter nbextension enable nglview --py --sys-prefix 
+
+
 
 EXPOSE 8888
 
@@ -128,9 +147,12 @@ CMD ["start-notebook.sh"]
 COPY start.sh start-notebook.sh start-singleuser.sh /usr/local/bin/
 COPY jupyter_notebook_config.py /etc/jupyter/
 
+RUN mkdir /home/$NB_USER/shared &&\
+    fix-permissions /home/$NB_USER/shared/
 # Fix permissions on /etc/jupyter as root
 USER root
 RUN fix-permissions /etc/jupyter/
-
 # Switch back to jovyan to avoid accidental container runs as root
 USER $NB_UID
+
+WORKDIR $HOME

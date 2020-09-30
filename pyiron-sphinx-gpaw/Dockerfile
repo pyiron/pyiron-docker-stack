@@ -121,7 +121,8 @@ RUN conda install --quiet --yes \
     'jupyterhub=1.1.0' \
     'jupyterlab=2.2.5' && \
     conda install -c conda-forge pyiron && \
-    conda install -c conda-forge lammps && \
+    conda install -c conda-forge sphinxdft && \
+    conda install -c conda-forge gpaw && \
     conda install -c conda-forge nodejs nglview && \
     conda clean --all -f -y && \
     npm cache clean --force && \
@@ -150,7 +151,6 @@ RUN mkdir /home/$NB_USER/shared &&\
 # Fix permissions on /etc/jupyter as root
 USER root
 RUN fix-permissions /etc/jupyter/
-RUN sudo apt-get install git-all
 # Switch back to jovyan to avoid accidental container runs as root
 USER $NB_UID
 

@@ -14,18 +14,27 @@ jobs:
       - docker build -t $DOCKER_USERNAME/pyiron-lammps-image pyiron-lammps/
       - docker images
       - docker push $DOCKER_USERNAME/pyiron-lammps-image
-    # - stage: build third docker image
-    #   script:
-    #   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-    #   - docker build -t $DOCKER_USERNAME/pyiron-experimental-image singleuser-experimental/
-    #   - docker images
-    #   - docker push $DOCKER_USERNAME/pyiron-experimental-image
+    - stage: build third docker image
+      script:
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      - docker build -t $DOCKER_USERNAME/pyiron-sphinx-gpaw-image pyiron-sphinx-gpaw/
+      - docker images
+      - docker push $DOCKER_USERNAME/pyiron-sphinx-gpaw-image
+      - stage: build fourth docker image
+      script:
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      - docker build -t $DOCKER_USERNAME/pyiron-lammps-sphinx-gpaw-image pyiron-lammps-sphinx-gpaw/
+      - docker images
+      - docker push $DOCKER_USERNAME/pyiron-lammps-sphinx-gpaw-image
     - stage: test1
       script: docker run --rm $DOCKER_USERNAME/pyiron-base-image echo hello world
     - script: docker run --rm $DOCKER_USERNAME/pyiron-base-image echo hello world
     - stage: test2
       script: docker run --rm $DOCKER_USERNAME/pyiron-lammps-image echo hello world
     - script: docker run --rm $DOCKER_USERNAME/pyiron-lammps-image echo hello world
-    # - stage: test3
-    #   script: docker run --rm $DOCKER_USERNAME/pyiron-atomistic-image echo hello world
-    # - script: docker run --rm $DOCKER_USERNAME/pyiron-atomistic-image echo hello world
+    - stage: test3
+      script: docker run --rm $DOCKER_USERNAME/pyiron-lammps-sphinx-gpaw-image echo hello world
+    - script: docker run --rm $DOCKER_USERNAME/pyiron-lammps-sphinx-gpaw-image echo hello world
+    - stage: test4
+      script: docker run --rm $DOCKER_USERNAME/pyiron-sphinx-gpaw-image echo hello world
+    - script: docker run --rm $DOCKER_USERNAME/pyiron-sphinx-gpaw-image echo hello world
