@@ -8,7 +8,7 @@ jobs:
       - docker build -t $DOCKER_USERNAME/pyiron-base-image-beta:latest pyiron-base/
       - docker images
       - docker push $DOCKER_USERNAME/pyiron-base-image-beta:latest
-      - today= date +%F
+      - export today="date +%F"
       - docker tag $DOCKER_USERNAME/pyiron-base-image-beta:latest $DOCKER_USERNAME/pyiron-base-image-beta:$today
       - docker push $DOCKER_USERNAME/pyiron-base-image-beta:$today
     # - stage: build 2
