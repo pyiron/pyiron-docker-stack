@@ -1,4 +1,4 @@
-ARG ROOT_CONTAINER=jupyter/base-notebook:latest
+ARG ROOT_CONTAINER=jupyter/base-notebook:36d857bb0121
 ARG BASE_CONTAINER=$ROOT_CONTAINER
 FROM $BASE_CONTAINER
 
@@ -46,18 +46,13 @@ RUN conda install -c conda-forge pyiron_base
 RUN fix-permissions /home/$PYIRON_USER &&\
     fix-permissions $CONDA_DIR
 
-
-RUN mkdir /home/$PYIRON_USER/shared &&\
-    fix-permissions /home/$PYIRON_USER/shared/
-
 # Fix permissions on /etc/jupyter as root
 USER root
 RUN fix-permissions /etc/jupyter/
+#confirming that /home/jovyan is removed
 RUN rm -r /home/$NB_USER
-
-Run if [ -d /home/$NB_USER] ; then echo "the jovyan is still there" ; fi
-
 # Switch back to jovyan to avoid accidental container runs as root
+
 USER $PYIRON_UID
 
 WORKDIR $HOME
