@@ -8,7 +8,7 @@ USER root
 
 #removing the default user and the corresponding home directory.
 RUN rm -r /home/$NB_USER
-RUN userdel -r $NB_USER 
+RUN userdel $NB_USER 
     
 
 ARG PYIRON_USER="pyiron"
