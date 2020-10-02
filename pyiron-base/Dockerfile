@@ -12,6 +12,8 @@ ARG PYIRON_USER="pyiron_user"
 ARG PYIRON_UID="1000"
 ARG NB_GID="100"
 
+COPY fix-permissions /usr/local/bin/fix-permissions
+RUN chmod a+rx /usr/local/bin/fix-permissions
 
 # Configure environment
 ENV CONDA_DIR=/opt/conda \
