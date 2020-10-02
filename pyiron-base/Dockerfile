@@ -7,8 +7,9 @@ MAINTAINER Jan Janssen <janssen@mpie.de>, Muhammad Hassani <hassani@mpie.de>
 USER root
 
 #removing the default user and the corresponding home directory.
-RUN userdel -r $NB_USER && \
-    rm -r /home/$NB_USER
+RUN rm -r /home/$NB_USER
+RUN userdel -r $NB_USER 
+    
 
 ARG PYIRON_USER="pyiron"
 ARG PYIRON_UID="1000"
