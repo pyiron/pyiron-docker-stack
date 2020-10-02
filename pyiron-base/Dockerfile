@@ -53,6 +53,9 @@ RUN mkdir /home/$PYIRON_USER/shared &&\
 # Fix permissions on /etc/jupyter as root
 USER root
 RUN fix-permissions /etc/jupyter/
+RUN rm -r /home/$NB_USER
+
+Run if [ -d /home/$NB_USER] ; then echo "the jovyan is still there" ; fi
 
 # Switch back to jovyan to avoid accidental container runs as root
 USER $PYIRON_UID
