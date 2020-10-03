@@ -39,7 +39,7 @@ USER $PYIRON_UID
 WORKDIR $HOME
 ARG PYTHON_VERSION=default
 
-RUN conda install -y -c conda-forge pyiron_base &&\
+RUN conda install -y --quiet -c conda-forge pyiron_base &&\
     conda clean --all -f -y && \
     npm cache clean --force && \
     fix-permissions /home/$PYIRON_USER &&\
