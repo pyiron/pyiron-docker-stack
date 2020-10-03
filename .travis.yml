@@ -8,42 +8,57 @@ jobs:
       - docker build -t $DOCKER_USERNAME/pyiron-base-image:latest pyiron-base/
       - docker images
       - docker push $DOCKER_USERNAME/pyiron-base-image:latest
+      - export TODAY=$(date +%F)
+      - docker tag $DOCKER_USERNAME/pyiron-base-image:latest $DOCKER_USERNAME/pyiron-base-image:"$TODAY"
+      - docker push $DOCKER_USERNAME/pyiron-base-image:"$TODAY"
     - stage: build 2
       script:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t $DOCKER_USERNAME/pyiron-image:latest pyiron/
       - docker images
       - docker push $DOCKER_USERNAME/pyiron-image:latest
+      - export TODAY=$(date +%F)
+      - docker tag $DOCKER_USERNAME/pyiron-image:latest $DOCKER_USERNAME/pyiron-image:"$TODAY"
+      - docker push $DOCKER_USERNAME/pyiron-image:"$TODAY"
     - stage: build 3
       script:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t $DOCKER_USERNAME/pyiron-lammps-image pyiron-lammps/
       - docker images
       - docker push $DOCKER_USERNAME/pyiron-lammps-image
+      - export TODAY=$(date +%F)
+      - docker tag $DOCKER_USERNAME/pyiron-lammps-image:latest $DOCKER_USERNAME/pyiron-lammps-image:"$TODAY"
+      - docker push $DOCKER_USERNAME/pyiron-lammps-image:"$TODAY"
     - stage: build 4
       script:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t $DOCKER_USERNAME/pyiron-sphinx-gpaw-image pyiron-sphinx-gpaw/
       - docker images
       - docker push $DOCKER_USERNAME/pyiron-sphinx-gpaw-image
+      - export TODAY=$(date +%F)
+      - docker tag $DOCKER_USERNAME/pyiron-sphinx-gpaw-image:latest $DOCKER_USERNAME/pyiron-sphinx-gpaw-image:"$TODAY"
+      - docker push $DOCKER_USERNAME/pyiron-sphinx-gpaw-image:"$TODAY"
     - stage: build 5
       script:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t $DOCKER_USERNAME/pyiron-lammps-sphinx-gpaw-image pyiron-lammps-sphinx-gpaw/
       - docker images
       - docker push $DOCKER_USERNAME/pyiron-lammps-sphinx-gpaw-image
+      - export TODAY=$(date +%F)
+      - docker tag $DOCKER_USERNAME/pyiron-lammps-sphinx-gpaw-image:latest $DOCKER_USERNAME/pyiron-lammps-sphinx-gpaw-image:"$TODAY"
+      - docker push $DOCKER_USERNAME/pyiron-lammps-sphinx-gpaw-image:"$TODAY"
     - stage: test1
       script: docker run --rm $DOCKER_USERNAME/pyiron-base-image echo hello world
     - script: docker run --rm $DOCKER_USERNAME/pyiron-base-image echo hello world
     - stage: test2
       script: docker run --rm $DOCKER_USERNAME/pyiron-image echo hello world
     - script: docker run --rm $DOCKER_USERNAME/pyiron-image echo hello world
-    - stage: test2
+    - stage: test3
       script: docker run --rm $DOCKER_USERNAME/pyiron-lammps-image echo hello world
     - script: docker run --rm $DOCKER_USERNAME/pyiron-lammps-image echo hello world
-    - stage: test3
-      script: docker run --rm $DOCKER_USERNAME/pyiron-lammps-sphinx-gpaw-image echo hello world
-    - script: docker run --rm $DOCKER_USERNAME/pyiron-lammps-sphinx-gpaw-image echo hello world
     - stage: test4
       script: docker run --rm $DOCKER_USERNAME/pyiron-sphinx-gpaw-image echo hello world
     - script: docker run --rm $DOCKER_USERNAME/pyiron-sphinx-gpaw-image echo hello world
+    - stage: test5
+      script: docker run --rm $DOCKER_USERNAME/pyiron-lammps-sphinx-gpaw-image echo hello world
+    - script: docker run --rm $DOCKER_USERNAME/pyiron-lammps-sphinx-gpaw-image echo hello world

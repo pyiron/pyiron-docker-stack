@@ -17,10 +17,8 @@ RUN conda install --quiet -y -c conda-forge lammps &&\
 # Fix permissions on /etc/jupyter as root
 USER root
 RUN fix-permissions /etc/jupyter/
-#confirming that /home/jovyan is removed
-RUN rm -r /home/$NB_USER
-# Switch back to pyiron to avoid accidental container runs as root
 
+# Switch back to pyiron to avoid accidental container runs as root
 USER $PYIRON_UID
 
 WORKDIR $HOME
