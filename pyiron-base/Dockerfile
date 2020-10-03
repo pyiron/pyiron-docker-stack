@@ -41,9 +41,9 @@ WORKDIR $HOME
 ARG PYTHON_VERSION=default
 
 RUN conda install -c conda-forge pyiron_base
-
-# Setup work directory for backward-compatibility
-RUN fix-permissions /home/$PYIRON_USER &&\
+    conda clean --all -f -y && \
+    npm cache clean --force && \
+    fix-permissions /home/$PYIRON_USER &&\
     fix-permissions $CONDA_DIR
 
 # Fix permissions on /etc/jupyter as root

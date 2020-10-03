@@ -8,9 +8,9 @@ jobs:
       - docker build -t $DOCKER_USERNAME/pyiron-base-image-beta:latest pyiron-base/
       - docker images
       - docker push $DOCKER_USERNAME/pyiron-base-image-beta:latest
-      - export today="date +%F"
-      - docker tag $DOCKER_USERNAME/pyiron-base-image-beta:latest $DOCKER_USERNAME/pyiron-base-image-beta:$today
-      - docker push $DOCKER_USERNAME/pyiron-base-image-beta:$today
+    #  - export today="date +%F"
+    #- docker tag $DOCKER_USERNAME/pyiron-base-image-beta:latest $DOCKER_USERNAME/pyiron-base-image-beta:$today
+    #- docker push $DOCKER_USERNAME/pyiron-base-image-beta:$today
     # - stage: build 2
     #   script:
     #   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
