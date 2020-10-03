@@ -5,12 +5,15 @@ jobs:
     - stage: build 1
       script:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - docker build -t $DOCKER_USERNAME/pyiron-base-image-beta:latest pyiron-base/
+      - docker build -t $DOCKER_USERNAME/pyiron-base-image:latest pyiron-base/
       - docker images
-      - docker push $DOCKER_USERNAME/pyiron-base-image-beta:latest
-    #  - export today="date +%F"
-    #- docker tag $DOCKER_USERNAME/pyiron-base-image-beta:latest $DOCKER_USERNAME/pyiron-base-image-beta:$today
-    #- docker push $DOCKER_USERNAME/pyiron-base-image-beta:$today
+      - docker push $DOCKER_USERNAME/pyiron-base-image:latest
+      - stage: build 2
+      script:
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      - docker build -t $DOCKER_USERNAME/pyiron-image:latest pyiron/
+      - docker images
+      - docker push $DOCKER_USERNAME/pyiron-image:latest
     # - stage: build 2
     #   script:
     #   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
@@ -30,8 +33,11 @@ jobs:
     #   - docker images
     #   - docker push $DOCKER_USERNAME/pyiron-lammps-sphinx-gpaw-image
     - stage: test1
-      script: docker run --rm $DOCKER_USERNAME/pyiron-base-image-beta echo hello world
-    - script: docker run --rm $DOCKER_USERNAME/pyiron-base-image-beta echo hello world
+      script: docker run --rm $DOCKER_USERNAME/pyiron-base-image echo hello world
+    - script: docker run --rm $DOCKER_USERNAME/pyiron-base-image echo hello world
+    - stage: test2
+      script: docker run --rm $DOCKER_USERNAME/pyiron-image echo hello world
+    - script: docker run --rm $DOCKER_USERNAME/pyiron-image echo hello world
     # - stage: test2
     #   script: docker run --rm $DOCKER_USERNAME/pyiron-lammps-image echo hello world
     # - script: docker run --rm $DOCKER_USERNAME/pyiron-lammps-image echo hello world

@@ -39,7 +39,10 @@ USER $PYIRON_UID
 WORKDIR $HOME
 ARG PYTHON_VERSION=default
 
-RUN conda install -y -c conda-forge pyiron_base &&\
+RUN conda install -y -c conda-forge pyiron &&\
+    conda install -y -c conda-forge nglview &&\
+    jupyter nbextension install nglview --py --sys-prefix &&\
+    jupyter nbextension enable nglview --py --sys-prefix &&\
     conda clean --all -f -y && \
     npm cache clean --force && \
     fix-permissions /home/$PYIRON_USER &&\
