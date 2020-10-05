@@ -39,7 +39,9 @@ USER $PYIRON_UID
 WORKDIR $HOME
 ARG PYTHON_VERSION=default
 
-RUN conda install -y --quiet -c conda-forge pyiron_base=0.1.21 &&\
+COPY environment.yml ${HOME}/
+#RUN conda install --quiet -y -c conda-forge lammps &&\
+RUN conda env update -n base -f ${HOME}/environment.yml && \
     conda clean --all -f -y && \
     npm cache clean --force && \
     fix-permissions /home/$PYIRON_USER &&\
