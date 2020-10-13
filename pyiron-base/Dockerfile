@@ -27,19 +27,27 @@ ENV CONDA_DIR=/opt/conda \
 
 ENV HOME=/home/$PYIRON_USER
 
+COPY apt.txt /tmp/
 # creating account for pyiron_user.
 RUN useradd -m -s /bin/bash -N -u $PYIRON_UID $PYIRON_USER && \
     chown $PYIRON_USER:$NB_GID $CONDA_DIR && \
     chmod g+w /etc/passwd && \
     fix-permissions $HOME && \
-    fix-permissions $CONDA_DIR
+    fix-permissions $CONDA_DIR && \
+    apt-get update -y && \
+    xargs -a /tmp/apt.txt apt-get install -y && \
+    apt-get clean && \
+    rm /tmp/apt.txt
 
 
 USER $PYIRON_UID
 WORKDIR $HOME
 ARG PYTHON_VERSION=default
 
-RUN conda install -y --quiet -c conda-forge pyiron_base=0.1.21 &&\
+COPY environment.yml ${HOME}/
+RUN conda env update -n base -f ${HOME}/environment.yml --prune && \
+   jupyter nbextension install nglview --py --sys-prefix && \
+   jupyter nbextension enable nglview --py --sys-prefix && \
     conda clean --all -f -y && \
     npm cache clean --force && \
     fix-permissions /home/$PYIRON_USER &&\

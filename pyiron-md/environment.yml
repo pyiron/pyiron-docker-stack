@@ -1,0 +1,11 @@
+channels:
+- conda-forge
+dependencies:
+- lammps
+# - python
+# - jupyter
+# - jupyterhub
+# - jupyterlab
+# - notebook
+#- pyiron
+#- nglview
