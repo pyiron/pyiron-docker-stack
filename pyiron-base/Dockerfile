@@ -27,12 +27,16 @@ ENV CONDA_DIR=/opt/conda \
 
 ENV HOME=/home/$PYIRON_USER
 
+COPY apt.txt /tmp/
 # creating account for pyiron_user.
 RUN useradd -m -s /bin/bash -N -u $PYIRON_UID $PYIRON_USER && \
     chown $PYIRON_USER:$NB_GID $CONDA_DIR && \
     chmod g+w /etc/passwd && \
     fix-permissions $HOME && \
-    fix-permissions $CONDA_DIR
+    fix-permissions $CONDA_DIR && \
+    xargs -a /tmp/apt.txt apt-get install && \
+    apt-get clean && \
+    rm /tmp/apt.txt
 
 
 USER $PYIRON_UID

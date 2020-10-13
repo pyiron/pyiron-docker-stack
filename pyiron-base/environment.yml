@@ -1,10 +1,10 @@
 channels:
 - conda-forge
 dependencies:
-- python
-- jupyter
-- jupyterhub
-- jupyterlab
-- notebook
+# - python
+# - jupyter
+# - jupyterhub
+# - jupyterlab
+# - notebook
 - pyiron
 - nglview
