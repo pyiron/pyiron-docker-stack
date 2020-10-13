@@ -1,11 +1,11 @@
 channels:
 - conda-forge
 dependencies:
+- sphinxdft
 # - python
 # - jupyter
 # - jupyterhub
 # - jupyterlab
 # - notebook
 #- pyiron
-- sphinxdft
 #- nglview
