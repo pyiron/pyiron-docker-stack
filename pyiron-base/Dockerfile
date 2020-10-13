@@ -34,7 +34,8 @@ RUN useradd -m -s /bin/bash -N -u $PYIRON_UID $PYIRON_USER && \
     chmod g+w /etc/passwd && \
     fix-permissions $HOME && \
     fix-permissions $CONDA_DIR && \
-    xargs -a /tmp/apt.txt apt-get install && \
+    apt-get update -y && \
+    xargs -a /tmp/apt.txt apt-get install -y && \
     apt-get clean && \
     rm /tmp/apt.txt
 
@@ -46,6 +47,10 @@ ARG PYTHON_VERSION=default
 COPY environment.yml ${HOME}/
 #RUN conda install --quiet -y -c conda-forge lammps &&\
 RUN conda env update -n base -f ${HOME}/environment.yml --prune && \
+    jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
+    jupyter labextension install nglview-js-widgets && \
+    jupyter nbextension install nglview --py --sys-prefix && \
+    jupyter nbextension enable nglview --py --sys-prefix && \
     conda clean --all -f -y && \
     npm cache clean --force && \
     fix-permissions /home/$PYIRON_USER &&\

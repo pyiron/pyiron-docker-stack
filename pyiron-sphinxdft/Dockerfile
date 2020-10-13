@@ -11,10 +11,12 @@ ARG PYTHON_VERSION=default
 COPY environment.yml ${HOME}/
 #RUN conda install --quiet -y -c conda-forge lammps &&\
 RUN conda env update -n base -f ${HOME}/environment.yml --prune && \
+
     conda clean --all -f -y && \
     npm cache clean --force && \
     fix-permissions /home/$PYIRON_USER &&\
     fix-permissions $CONDA_DIR
+
 
 # Fix permissions on /etc/jupyter as root
 USER root
