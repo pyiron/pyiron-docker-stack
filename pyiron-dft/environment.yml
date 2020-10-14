@@ -2,6 +2,7 @@ channels:
 - conda-forge
 dependencies:
 - sphinxdft
+- gpaw
 # - python
 # - jupyter
 # - jupyterhub
