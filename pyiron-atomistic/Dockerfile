@@ -53,16 +53,17 @@ RUN conda env update -n base -f ${HOME}/environment.yml --prune && \
     conda clean --all -f -y && \
     npm cache clean --force && \
     jlpm cache clean && \ 
-    jupyter lab clean && \
-    fix-permissions /home/$PYIRON_USER &&\
-    fix-permissions $CONDA_DIR
+    jupyter lab clean
 
-RUN chmod +x ${HOME}/include_notebooks.sh && \
+USER root
+RUN fix-permissions /home/$PYIRON_USER &&\
+    fix-permissions $CONDA_DIR && \
+    chmod +x ${HOME}/include_notebooks.sh && \
     /bin/bash include_notebooks.sh &&\
-    rm *
+    rm ${HOME}/* && \
+    fix-permissions /home/$PYIRON_USER
 
 # Fix permissions on /etc/jupyter as root
-USER root
 RUN fix-permissions /etc/jupyter/
 #confirming that /home/jovyan is removed
 RUN rm -r /home/$NB_USER

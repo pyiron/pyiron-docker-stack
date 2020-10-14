@@ -50,6 +50,7 @@ RUN conda env update -n base -f ${HOME}/environment.yml --prune && \
     npm cache clean --force && \
     jlpm cache clean && \ 
     jupyter lab clean && \
+    rm ${HOME}/environment.yml &&\
     fix-permissions /home/$PYIRON_USER &&\
     fix-permissions $CONDA_DIR
 

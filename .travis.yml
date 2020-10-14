@@ -71,6 +71,6 @@ jobs:
     - stage: test5
       script: docker run --rm $DOCKER_USERNAME/pyiron-dft-image echo hello world
     - script: docker run --rm $DOCKER_USERNAME/pyiron-dft-image echo hello world
-    - stage: test1
+    - stage: test6
       script: docker run --rm $DOCKER_USERNAME/pyiron-atomistic-image echo hello world
     - script: docker run --rm $DOCKER_USERNAME/pyiron-atomistic-image echo hello world
