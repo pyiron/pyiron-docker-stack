@@ -1,4 +1,4 @@
-ARG ROOT_CONTAINER=muhhassani/pyiron-base-image:latest
+ARG ROOT_CONTAINER=muhhassani/pyiron-atomistic-image:latest
 ARG BASE_CONTAINER=$ROOT_CONTAINER
 FROM $BASE_CONTAINER
 
@@ -8,16 +8,23 @@ USER $PYIRON_UID
 WORKDIR $HOME
 ARG PYTHON_VERSION=default
 
-COPY environment.yml ${HOME}/
+COPY . ${HOME}/
 #RUN conda install --quiet -y -c conda-forge lammps &&\
 RUN conda env update -n base -f ${HOME}/environment.yml --prune && \
     conda clean --all -f -y && \
-    npm cache clean --force && \
-    fix-permissions /home/$PYIRON_USER &&\
-    fix-permissions $CONDA_DIR
+    npm cache clean --force
 
-# Fix permissions on /etc/jupyter as root
 USER root
+RUN fix-permissions /home/$PYIRON_USER &&\
+    fix-permissions $CONDA_DIR && \
+    chmod +x ${HOME}/include_notebooks.sh && \
+    /bin/bash include_notebooks.sh &&\
+    rm ${HOME}/*.yml && \
+    rm ${HOME}/Dockerfile && \
+    rm ${HOME}/exclude && \
+    rm ${HOME}/*.sh && \
+    fix-permissions /home/$PYIRON_USER
+
 RUN fix-permissions /etc/jupyter/
 # Switch back to pyiron to avoid accidental container runs as root
 USER $PYIRON_UID
