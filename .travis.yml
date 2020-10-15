@@ -7,7 +7,7 @@ jobs:
       - docker build -t pyiron/base:latest pyiron-base/
       - docker images
       after_success:
-      if: branch = master
+        - if: branch = master
         - docker push pyiron/base:latest
         - export TODAY=$(date +%F)
         - docker tag pyiron/base:latest pyiron/base:"$TODAY"
@@ -18,7 +18,7 @@ jobs:
       - docker build -t pyiron/atomistic:latest pyiron-atomistic/
       - docker images
       after_success:
-      if: branch = master
+        - if: branch = master
         - docker push pyiron/atomistic:latest
         - export TODAY=$(date +%F)
         - docker tag pyiron/atomistic:latest pyiron/atomistic:"$TODAY"
@@ -29,7 +29,7 @@ jobs:
       - docker build -t pyiron/pyiron:latest pyiron/
       - docker images
       after_success:
-      if: branch = master
+        - if: branch = master
         - docker push pyiron/pyiron:latest
         - export TODAY=$(date +%F)
         - docker tag pyiron/pyiron:latest pyiron/pyiron:"$TODAY"
@@ -40,7 +40,7 @@ jobs:
       - docker build -t pyiron/md:latest pyiron-md/
       - docker images
       after_success:
-      if: branch = master
+        - if: branch = master
         - docker push pyiron/md:latest
         - export TODAY=$(date +%F)
         - docker tag pyiron/md:latest pyiron/pyiron-md-image:"$TODAY"
@@ -51,7 +51,7 @@ jobs:
       - docker build -t pyiron/sphinx:latest pyiron-sphinxdft/
       - docker images
       after_success: 
-      if: branch = master
+        - if: branch = master
         - docker push pyiron/sphinx:latest
         - export TODAY=$(date +%F)
         - docker tag pyiron/sphinx:latest pyiron/sphinx:"$TODAY"
@@ -62,37 +62,37 @@ jobs:
       - docker build -t pyiron/dft:latest pyiron-dft/
       - docker images
       after_success:
-      if: branch = master
+        - if: branch = master
         - docker push pyiron/dft:latest
         - export TODAY=$(date +%F)
         - docker tag pyiron/dft:latest pyiron/dft:"$TODAY"
         - docker push pyiron/dft:"$TODAY"
     - stage: test1 - pyiron-base-image
       script: 
-      if: branch = master
+        - if: branch = master
         - docker run --rm pyiron/base echo hello world
         - docker run --rm pyiron/base echo hello world
     - stage: test2 - pyiron-image
       script:
-      if: branch = master
+        - if: branch = master
         - docker run --rm pyiron/pyiron echo hello world
         - docker run --rm pyiron/pyiron echo hello world
     - stage: test3 - pyiron-md-image
       script: 
-      if: branch = master
+        - if: branch = master
         - docker run --rm pyiron/md echo hello world
         - docker run --rm pyiron/md echo hello world
     - stage: test4 - pyiron-sphinx-image
       script: 
-      if: branch = master
+        - if: branch = master
         - docker run --rm pyiron/sphinx echo hello world
         - docker run --rm pyiron/sphinx echo hello world
     - stage: test5 - pyiron-dft-image
-      if: branch = master
+        - if: branch = master
         - docker run --rm pyiron/dft echo hello world
         - docker run --rm pyiron/dft echo hello world
     - stage: test6 - pyiron-atomistic-image
       script: 
-      if: branch = master
+        - if: branch = master
         - docker run --rm pyiron/atomistic echo hello world
         - docker run --rm pyiron/atomistic echo hello world
