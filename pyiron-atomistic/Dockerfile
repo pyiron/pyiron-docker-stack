@@ -44,19 +44,30 @@ USER $PYIRON_UID
 WORKDIR $HOME
 ARG PYTHON_VERSION=default
 
-COPY environment.yml ${HOME}/
+COPY . ${HOME}/
 RUN conda env update -n base -f ${HOME}/environment.yml --prune && \
+    jupyter nbextension install nglview --py --sys-prefix && \
+    jupyter nbextension enable nglview --py --sys-prefix && \
+    jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
+    jupyter labextension install nglview-js-widgets && \
     conda clean --all -f -y && \
     npm cache clean --force && \
     jlpm cache clean && \ 
-    jupyter lab clean && \
-    rm ${HOME}/environment.yml &&\
+    jupyter lab clean
+
+USER root
+RUN fix-permissions /home/$PYIRON_USER &&\
+    fix-permissions $CONDA_DIR && \
+    chmod +x ${HOME}/include_notebooks.sh && \
+    /bin/bash include_notebooks.sh &&\
+    rm ${HOME}/*.yml && \
+    rm ${HOME}/Dockerfile && \
+    rm ${HOME}/exclude && \
+    rm ${HOME}/*.sh && \
     rm ${HOME}/apt.txt && \
-    fix-permissions /home/$PYIRON_USER &&\
-    fix-permissions $CONDA_DIR
+    fix-permissions /home/$PYIRON_USER
 
 # Fix permissions on /etc/jupyter as root
-USER root
 RUN fix-permissions /etc/jupyter/
 #confirming that /home/jovyan is removed
 RUN rm -r /home/$NB_USER

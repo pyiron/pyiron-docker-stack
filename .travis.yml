@@ -5,12 +5,12 @@ jobs:
     - stage: build 1
       script:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - docker build -t $DOCKER_USERNAME/pyiron-base-image:latest pyiron-base/
+      - docker build -t $DOCKER_USERNAME/pyiron-atomistic-image:latest pyiron-atomistic/
       - docker images
-      - docker push $DOCKER_USERNAME/pyiron-base-image:latest
+      - docker push $DOCKER_USERNAME/pyiron-atomistic-image:latest
       - export TODAY=$(date +%F)
-      - docker tag $DOCKER_USERNAME/pyiron-base-image:latest $DOCKER_USERNAME/pyiron-base-image:"$TODAY"
-      - docker push $DOCKER_USERNAME/pyiron-base-image:"$TODAY"
+      - docker tag $DOCKER_USERNAME/pyiron-atomistic-image:latest $DOCKER_USERNAME/pyiron-atomistic-image:"$TODAY"
+      - docker push $DOCKER_USERNAME/pyiron-atomistic-image:"$TODAY"
     - stage: build 2
       script:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
@@ -47,6 +47,15 @@ jobs:
       - export TODAY=$(date +%F)
       - docker tag $DOCKER_USERNAME/pyiron-dft-image:latest $DOCKER_USERNAME/pyiron-dft-image:"$TODAY"
       - docker push $DOCKER_USERNAME/pyiron-dft-image:"$TODAY"
+    - stage: build 6
+      script:
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      - docker build -t $DOCKER_USERNAME/pyiron-base-image:latest pyiron-base/
+      - docker images
+      - docker push $DOCKER_USERNAME/pyiron-base-image:latest
+      - export TODAY=$(date +%F)
+      - docker tag $DOCKER_USERNAME/pyiron-base-image:latest $DOCKER_USERNAME/pyiron-base-image:"$TODAY"
+      - docker push $DOCKER_USERNAME/pyiron-base-image:"$TODAY"
     - stage: test1
       script: docker run --rm $DOCKER_USERNAME/pyiron-base-image echo hello world
     - script: docker run --rm $DOCKER_USERNAME/pyiron-base-image echo hello world
@@ -62,3 +71,6 @@ jobs:
     - stage: test5
       script: docker run --rm $DOCKER_USERNAME/pyiron-dft-image echo hello world
     - script: docker run --rm $DOCKER_USERNAME/pyiron-dft-image echo hello world
+    - stage: test6
+      script: docker run --rm $DOCKER_USERNAME/pyiron-atomistic-image echo hello world
+    - script: docker run --rm $DOCKER_USERNAME/pyiron-atomistic-image echo hello world
