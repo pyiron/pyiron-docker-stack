@@ -6,6 +6,7 @@ jobs:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t pyiron/base:latest pyiron-base/
       - docker images
+      after_success:
       if: branch = master
         - docker push pyiron/base:latest
         - export TODAY=$(date +%F)
@@ -16,6 +17,7 @@ jobs:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t pyiron/atomistic:latest pyiron-atomistic/
       - docker images
+      after_success:
       if: branch = master
         - docker push pyiron/atomistic:latest
         - export TODAY=$(date +%F)
@@ -26,6 +28,7 @@ jobs:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t pyiron/pyiron:latest pyiron/
       - docker images
+      after_success:
       if: branch = master
         - docker push pyiron/pyiron:latest
         - export TODAY=$(date +%F)
@@ -36,6 +39,7 @@ jobs:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t pyiron/md:latest pyiron-md/
       - docker images
+      after_success:
       if: branch = master
         - docker push pyiron/md:latest
         - export TODAY=$(date +%F)
@@ -46,6 +50,7 @@ jobs:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t pyiron/sphinx:latest pyiron-sphinxdft/
       - docker images
+      after_success: 
       if: branch = master
         - docker push pyiron/sphinx:latest
         - export TODAY=$(date +%F)
@@ -56,6 +61,7 @@ jobs:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t pyiron/dft:latest pyiron-dft/
       - docker images
+      after_success:
       if: branch = master
         - docker push pyiron/dft:latest
         - export TODAY=$(date +%F)
