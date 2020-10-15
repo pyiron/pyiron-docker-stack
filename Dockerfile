@@ -1,1 +1,1 @@
-FROM pyiron/pyiron-image:latest
+FROM pyiron/pyiron:2020-10-15

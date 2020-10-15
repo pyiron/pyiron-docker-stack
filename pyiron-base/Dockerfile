@@ -50,13 +50,14 @@ RUN conda env update -n base -f ${HOME}/environment.yml --prune && \
     npm cache clean --force && \
     jlpm cache clean && \ 
     jupyter lab clean && \
-    rm ${HOME}/environment.yml &&\
-    fix-permissions /home/$PYIRON_USER &&\
-    fix-permissions $CONDA_DIR
+    rm ${HOME}/environment.yml 
 
 # Fix permissions on /etc/jupyter as root
 USER root
-RUN fix-permissions /etc/jupyter/
+
+RUN fix-permissions /etc/jupyter/ &&\
+    fix-permissions /home/$PYIRON_USER &&\
+    fix-permissions $CONDA_DIR
 #confirming that /home/jovyan is removed
 RUN rm -r /home/$NB_USER
 # Switch back to pyiron to avoid accidental container runs as root
