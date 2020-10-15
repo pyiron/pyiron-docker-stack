@@ -1,87 +1,39 @@
 dist: trusty
 jobs:
   include:
-    - stage: build 1 - pyiron-base-image
-      script:
-      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    - stage: Build Docker Images
+      install:
+      - export TODAY=$(date +%F)
       - docker build -t pyiron/base:latest pyiron-base/
-      - docker images
-      after_success:
-      - docker push pyiron/base:latest
-      - export TODAY=$(date +%F)
       - docker tag pyiron/base:latest pyiron/base:"$TODAY"
-      - docker push pyiron/base:"$TODAY"
-    - stage: build 2 - pyiron-atomistic
-      script:
-      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t pyiron/atomistic:latest pyiron-atomistic/
-      - docker images
-      after_success:
-      - docker push pyiron/atomistic:latest
-      - export TODAY=$(date +%F)
       - docker tag pyiron/atomistic:latest pyiron/atomistic:"$TODAY"
-      - docker push pyiron/atomistic:"$TODAY"
-    - stage: build 3 - pyiron-image
-      script:
-      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - docker build -t pyiron/pyiron:latest pyiron/
-      - docker images
-      after_success:
-      - docker push pyiron/pyiron:latest
-      - export TODAY=$(date +%F)
-      - docker tag pyiron/pyiron:latest pyiron/pyiron:"$TODAY"
-      - docker push pyiron/pyiron:"$TODAY"
-    - stage: build 4 - pyiron-md
-      script:
-      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t pyiron/md:latest pyiron-md/
-      - docker images
-      after_success:
-      - docker push pyiron/md:latest
-      - export TODAY=$(date +%F)
       - docker tag pyiron/md:latest pyiron/pyiron-md-image:"$TODAY"
-      - docker push pyiron/md:"$TODAY"
-    - stage: build 5 - pyiron-sphinx-image
-      script:
-      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t pyiron/sphinx:latest pyiron-sphinxdft/
-      - docker images
-      after_success: 
-      - docker push pyiron/sphinx:latest
-      - export TODAY=$(date +%F)
       - docker tag pyiron/sphinx:latest pyiron/sphinx:"$TODAY"
-      - docker push pyiron/sphinx:"$TODAY"
-    - stage: build 6 - pyiron-dft-image
-      script:
-      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t pyiron/dft:latest pyiron-dft/
-      - docker images
-      after_success:
-      - docker push pyiron/dft:latest
-      - export TODAY=$(date +%F)
       - docker tag pyiron/dft:latest pyiron/dft:"$TODAY"
-      - docker push pyiron/dft:"$TODAY"
-    - stage: test1 - pyiron-base-image
+      - docker build -t pyiron/pyiron:latest pyiron/
+      - docker tag pyiron/pyiron:latest pyiron/pyiron:"$TODAY"
+      - docker images
       script: 
-        - docker run --rm pyiron/base echo hello world
-        - docker run --rm pyiron/base echo hello world
-    - stage: test2 - pyiron-image
-      script:
-        - docker run --rm pyiron/pyiron echo hello world
-        - docker run --rm pyiron/pyiron echo hello world
-    - stage: test3 - pyiron-md-image
-      script: 
-        - docker run --rm pyiron/md echo hello world
-        - docker run --rm pyiron/md echo hello world
-    - stage: test4 - pyiron-sphinx-image
-      script: 
-        - docker run --rm pyiron/sphinx echo hello world
-        - docker run --rm pyiron/sphinx echo hello world
-    - stage: test5 - pyiron-dft-image
-      script:
-        - docker run --rm pyiron/dft echo hello world
-        - docker run --rm pyiron/dft echo hello world
-    - stage: test6 - pyiron-atomistic-image
-      script: 
-        - docker run --rm pyiron/atomistic echo hello world
-        - docker run --rm pyiron/atomistic echo hello world
+      - docker run --rm pyiron/base echo hello world
+      - docker run --rm pyiron/base echo hello world
+      - docker run --rm pyiron/atomistic echo hello world
+      - docker run --rm pyiron/atomistic echo hello world
+      - docker run --rm pyiron/md echo hello world
+      - docker run --rm pyiron/md echo hello world
+      - docker run --rm pyiron/sphinx echo hello world
+      - docker run --rm pyiron/sphinx echo hello world
+      - docker run --rm pyiron/dft echo hello world
+      - docker run --rm pyiron/dft echo hello world  
+      - docker run --rm pyiron/pyiron echo hello world
+      - docker run --rm pyiron/pyiron echo hello world
+      after_success:
+      - provider: script
+          skip_cleanup: true
+          script: ./.ci_support/deploy.sh
+          on:
+             all_branches: true
+             repo: pyiron/pyiron
