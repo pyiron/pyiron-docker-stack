@@ -1,4 +1,4 @@
-ARG ROOT_CONTAINER=muhhassani/pyiron-atomistic-image:latest
+ARG ROOT_CONTAINER=pyiron/pyiron-atomistic-image:latest
 ARG BASE_CONTAINER=$ROOT_CONTAINER
 FROM $BASE_CONTAINER
 
