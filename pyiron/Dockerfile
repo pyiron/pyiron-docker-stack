@@ -1,4 +1,4 @@
-ARG ROOT_CONTAINER=muhhassani/pyiron-atomistic-image:latest
+ARG ROOT_CONTAINER=pyiron/atomistic:latest
 ARG BASE_CONTAINER=$ROOT_CONTAINER
 FROM $BASE_CONTAINER
 
@@ -21,7 +21,6 @@ RUN fix-permissions /home/$PYIRON_USER &&\
     fix-permissions /home/$PYIRON_USER && \
     chown -R ${PYIRON_USER}:${NB_GID} ${HOME}/notebooks
 
-RUN fix-permissions /etc/jupyter/
 # Switch back to pyiron to avoid accidental container runs as root
 USER $PYIRON_UID
 
