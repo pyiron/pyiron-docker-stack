@@ -1,37 +1,41 @@
-dist: trusty
 jobs:
   include:
     - stage: Build Docker Images
+      name: docker
+      sudo: required
+      services:
+        - docker
+      language: generic
       install:
-      - export TODAY=$(date +%F)
-      - docker build -t pyiron/base:latest pyiron-base/
-      - docker tag pyiron/base:latest pyiron/base:"$TODAY"
-      - docker build -t pyiron/atomistic:latest pyiron-atomistic/
-      - docker tag pyiron/atomistic:latest pyiron/atomistic:"$TODAY"
-      - docker build -t pyiron/md:latest pyiron-md/
-      - docker tag pyiron/md:latest pyiron/pyiron-md-image:"$TODAY"
-      - docker build -t pyiron/sphinx:latest pyiron-sphinxdft/
-      - docker tag pyiron/sphinx:latest pyiron/sphinx:"$TODAY"
-      - docker build -t pyiron/dft:latest pyiron-dft/
-      - docker tag pyiron/dft:latest pyiron/dft:"$TODAY"
-      - docker build -t pyiron/pyiron:latest pyiron/
-      - docker tag pyiron/pyiron:latest pyiron/pyiron:"$TODAY"
-      - docker images
+        - export TODAY=$(date +%F)
+        - docker build -t pyiron/base:latest pyiron-base/
+        - docker tag pyiron/base:latest pyiron/base:"$TODAY"
+        - docker build -t pyiron/atomistic:latest pyiron-atomistic/
+        - docker tag pyiron/atomistic:latest pyiron/atomistic:"$TODAY"
+        - docker build -t pyiron/md:latest pyiron-md/
+        - docker tag pyiron/md:latest pyiron/pyiron-md-image:"$TODAY"
+        - docker build -t pyiron/sphinx:latest pyiron-sphinxdft/
+        - docker tag pyiron/sphinx:latest pyiron/sphinx:"$TODAY"
+        - docker build -t pyiron/dft:latest pyiron-dft/
+        - docker tag pyiron/dft:latest pyiron/dft:"$TODAY"
+        - docker build -t pyiron/pyiron:latest pyiron/
+        - docker tag pyiron/pyiron:latest pyiron/pyiron:"$TODAY"
+        - docker images
       script: 
-      - docker run --rm pyiron/base echo hello world
-      - docker run --rm pyiron/base echo hello world
-      - docker run --rm pyiron/atomistic echo hello world
-      - docker run --rm pyiron/atomistic echo hello world
-      - docker run --rm pyiron/md echo hello world
-      - docker run --rm pyiron/md echo hello world
-      - docker run --rm pyiron/sphinx echo hello world
-      - docker run --rm pyiron/sphinx echo hello world
-      - docker run --rm pyiron/dft echo hello world
-      - docker run --rm pyiron/dft echo hello world  
-      - docker run --rm pyiron/pyiron echo hello world
-      - docker run --rm pyiron/pyiron echo hello world
-      after_success:
-      - provider: script
+        - docker run --rm pyiron/base echo hello world
+        - docker run --rm pyiron/base echo hello world
+        - docker run --rm pyiron/atomistic echo hello world
+        - docker run --rm pyiron/atomistic echo hello world
+        - docker run --rm pyiron/md echo hello world
+        - docker run --rm pyiron/md echo hello world
+        - docker run --rm pyiron/sphinx echo hello world
+        - docker run --rm pyiron/sphinx echo hello world
+        - docker run --rm pyiron/dft echo hello world
+        - docker run --rm pyiron/dft echo hello world  
+        - docker run --rm pyiron/pyiron echo hello world
+        - docker run --rm pyiron/pyiron echo hello world
+      deploy:
+        - provider: script
           skip_cleanup: true
           script: ./.ci_support/deploy.sh
           on:
