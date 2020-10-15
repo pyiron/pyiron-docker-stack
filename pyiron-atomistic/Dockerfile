@@ -64,6 +64,7 @@ RUN fix-permissions /home/$PYIRON_USER &&\
     rm ${HOME}/Dockerfile && \
     rm ${HOME}/exclude && \
     rm ${HOME}/*.sh && \
+    rm ${HOME}/apt.txt && \
     fix-permissions /home/$PYIRON_USER
 
 # Fix permissions on /etc/jupyter as root
