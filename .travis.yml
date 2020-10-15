@@ -78,6 +78,7 @@ jobs:
         - docker run --rm pyiron/sphinx echo hello world
         - docker run --rm pyiron/sphinx echo hello world
     - stage: test5 - pyiron-dft-image
+      script:
         - docker run --rm pyiron/dft echo hello world
         - docker run --rm pyiron/dft echo hello world
     - stage: test6 - pyiron-atomistic-image
