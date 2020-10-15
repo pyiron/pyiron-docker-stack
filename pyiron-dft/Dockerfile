@@ -18,11 +18,8 @@ RUN fix-permissions /home/$PYIRON_USER &&\
     fix-permissions $CONDA_DIR && \
     chmod +x ${HOME}/include_notebooks.sh && \
     /bin/bash include_notebooks.sh &&\
-    rm ${HOME}/*.yml && \
-    rm ${HOME}/Dockerfile && \
-    rm ${HOME}/exclude && \
-    rm ${HOME}/*.sh && \
-    fix-permissions /home/$PYIRON_USER
+    fix-permissions /home/$PYIRON_USER && \
+    chown -R ${PYIRON_USER}:${NB_GID} ${HOME}/notebooks
 
 # Fix permissions on /etc/jupyter as root
 RUN fix-permissions /etc/jupyter/
