@@ -1,88 +1,43 @@
-dist: trusty
-if: branch = master
 jobs:
   include:
-    - stage: build 1 - pyiron-base-image
-      script:
-      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - docker build -t pyiron/base:latest pyiron-base/
-      - docker images
-      if: branch = master
-        - docker push pyiron/base:latest
+    - stage: Build Docker Images
+      name: docker
+      sudo: required
+      services:
+        - docker
+      language: generic
+      install:
         - export TODAY=$(date +%F)
+        - docker build -t pyiron/base:latest pyiron-base/
         - docker tag pyiron/base:latest pyiron/base:"$TODAY"
-        - docker push pyiron/base:"$TODAY"
-    - stage: build 2 - pyiron-atomistic
-      script:
-      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - docker build -t pyiron/atomistic:latest pyiron-atomistic/
-      - docker images
-      if: branch = master
-        - docker push pyiron/atomistic:latest
-        - export TODAY=$(date +%F)
+        - docker build -t pyiron/atomistic:latest pyiron-atomistic/
         - docker tag pyiron/atomistic:latest pyiron/atomistic:"$TODAY"
-        - docker push pyiron/atomistic:"$TODAY"
-    - stage: build 3 - pyiron-image
-      script:
-      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - docker build -t pyiron/pyiron:latest pyiron/
-      - docker images
-      if: branch = master
-        - docker push pyiron/pyiron:latest
-        - export TODAY=$(date +%F)
-        - docker tag pyiron/pyiron:latest pyiron/pyiron:"$TODAY"
-        - docker push pyiron/pyiron:"$TODAY"
-    - stage: build 4 - pyiron-md
-      script:
-      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - docker build -t pyiron/md:latest pyiron-md/
-      - docker images
-      if: branch = master
-        - docker push pyiron/md:latest
-        - export TODAY=$(date +%F)
+        - docker build -t pyiron/md:latest pyiron-md/
         - docker tag pyiron/md:latest pyiron/pyiron-md-image:"$TODAY"
-        - docker push pyiron/md:"$TODAY"
-    - stage: build 5 - pyiron-sphinx-image
-      script:
-      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - docker build -t pyiron/sphinx:latest pyiron-sphinxdft/
-      - docker images
-      if: branch = master
-        - docker push pyiron/sphinx:latest
-        - export TODAY=$(date +%F)
+        - docker build -t pyiron/sphinx:latest pyiron-sphinxdft/
         - docker tag pyiron/sphinx:latest pyiron/sphinx:"$TODAY"
-        - docker push pyiron/sphinx:"$TODAY"
-    - stage: build 6 - pyiron-dft-image
-      script:
-      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - docker build -t pyiron/dft:latest pyiron-dft/
-      - docker images
-      if: branch = master
-        - docker push pyiron/dft:latest
-        - export TODAY=$(date +%F)
+        - docker build -t pyiron/dft:latest pyiron-dft/
         - docker tag pyiron/dft:latest pyiron/dft:"$TODAY"
-        - docker push pyiron/dft:"$TODAY"
-      - stage: test1 - pyiron-base-image
-      if: branch = master
-        script: docker run --rm pyiron/base echo hello world
-      - script: docker run --rm pyiron/base echo hello world
-      - stage: test2 - pyiron-image
-      if: branch = master
-        script: docker run --rm pyiron/pyiron echo hello world
-      - script: docker run --rm pyiron/pyiron echo hello world
-      - stage: test3 - pyiron-md-image
-      if: branch = master
-        script: docker run --rm pyiron/md echo hello world
-      - script: docker run --rm pyiron/md echo hello world
-      - stage: test4 - pyiron-sphinx-image
-      if: branch = master
-        script: docker run --rm pyiron/sphinx echo hello world
-      - script: docker run --rm pyiron/sphinx echo hello world
-      - stage: test5 - pyiron-dft-image
-      if: branch = master
-        script: docker run --rm pyiron/dft echo hello world
-      - script: docker run --rm pyiron/dft echo hello world
-      - stage: test6 - pyiron-atomistic-image
-      if: branch = master
-        script: docker run --rm pyiron/atomistic echo hello world
-      - script: docker run --rm pyiron/atomistic echo hello world
+        - docker build -t pyiron/pyiron:latest pyiron/
+        - docker tag pyiron/pyiron:latest pyiron/pyiron:"$TODAY"
+        - docker images
+      script: 
+        - docker run --rm pyiron/base echo hello world
+        - docker run --rm pyiron/base echo hello world
+        - docker run --rm pyiron/atomistic echo hello world
+        - docker run --rm pyiron/atomistic echo hello world
+        - docker run --rm pyiron/md echo hello world
+        - docker run --rm pyiron/md echo hello world
+        - docker run --rm pyiron/sphinx echo hello world
+        - docker run --rm pyiron/sphinx echo hello world
+        - docker run --rm pyiron/dft echo hello world
+        - docker run --rm pyiron/dft echo hello world  
+        - docker run --rm pyiron/pyiron echo hello world
+        - docker run --rm pyiron/pyiron echo hello world
+      deploy:
+        - provider: script
+          skip_cleanup: true
+          script: ./.ci_support/deploy.sh
+          on:
+             all_branches: true
+             repo: pyiron/pyiron
