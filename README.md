@@ -1,6 +1,6 @@
 # pyiron-docker-stack
-[![Build Status](https://travis-ci.com/pyiron/pyiron-docker-stack.svg?branch=master)](https://travis-ci.com/pyiron/pyiron-docker-stack)
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/muh-hassani/pyiron-docker-stack/master) 
+[![Build Status](https://travis-ci.com/pyiron/docker-stacks.svg?branch=master)](https://travis-ci.com/pyiron/docker-stacks)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/pyiron/docker-stacks/master) 
 
 Here, one can find different flavours of Dockerfile for building pyiron docker images.   
 The resulting images are:
