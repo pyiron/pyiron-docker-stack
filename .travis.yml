@@ -13,7 +13,7 @@ jobs:
         - docker build -t pyiron/atomistic:latest pyiron-atomistic/
         - docker tag pyiron/atomistic:latest pyiron/atomistic:"$TODAY"
         - docker build -t pyiron/md:latest pyiron-md/
-        - docker tag pyiron/md:latest pyiron/pyiron-md-image:"$TODAY"
+        - docker tag pyiron/md:latest pyiron/md:"$TODAY"
         - docker build -t pyiron/sphinx:latest pyiron-sphinxdft/
         - docker tag pyiron/sphinx:latest pyiron/sphinx:"$TODAY"
         - docker build -t pyiron/dft:latest pyiron-dft/
