@@ -13,6 +13,10 @@ RUN conda env update -n base -f ${HOME}/environment.yml --prune && \
     conda clean --all -f -y && \
     npm cache clean --force 
     
+ENV OMPI_MCA_plm=isolated
+ENV OMPI_MCA_rmaps_base_oversubscribe=yes
+ENV OMPI_MCA_btl_vader_single_copy_mechanism=none
+    
 USER root
 RUN fix-permissions /home/$DOCKER_USER &&\
     fix-permissions $CONDA_DIR && \
