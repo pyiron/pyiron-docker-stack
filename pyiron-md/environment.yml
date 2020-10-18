@@ -1,4 +1,4 @@
 channels:
 - conda-forge
 dependencies:
-- lammps =2020.03.03
+- lammps =2020.03.03=*openmpi*
