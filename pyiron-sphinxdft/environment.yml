@@ -1,11 +1,4 @@
 channels:
 - conda-forge
 dependencies:
-- sphinxdft
-# - python
-# - jupyter
-# - jupyterhub
-# - jupyterlab
-# - notebook
-#- pyiron
-#- nglview
+- sphinxdft =2.7.0
