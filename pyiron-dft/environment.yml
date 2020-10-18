@@ -1,4 +1,4 @@
 channels:
 - conda-forge
 dependencies:
-- gpaw =20.1.0
+- gpaw =20.1.0=*openmpi*
