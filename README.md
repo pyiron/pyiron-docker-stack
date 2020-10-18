@@ -1,4 +1,4 @@
-# pyiron-docker-stack
+# docker-stacks
 [![Build Status](https://travis-ci.com/pyiron/docker-stacks.svg?branch=master)](https://travis-ci.com/pyiron/docker-stacks)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/pyiron/docker-stacks/master) 
 
