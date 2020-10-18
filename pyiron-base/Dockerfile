@@ -11,26 +11,26 @@ RUN rm -r /home/$NB_USER
 RUN userdel $NB_USER 
     
 
-ARG PYIRON_USER="pyiron"
-ARG PYIRON_UID="1000"
-ARG NB_GID="100"
+ARG DOCKER_USER="pyiron"
+ARG DOCKER_UID="1000"
+ARG DOCKER_GID="100"
 
 # Configure environment
 ENV CONDA_DIR=/opt/conda \
     SHELL=/bin/bash \
-    PYIRON_USER=$PYIRON_USER \
-    PYIRON_UID=$PYIRON_UID \
-    NB_GID=$NB_GID \
+    DOCKER_USER=$DOCKER_USER \
+    DOCKER_UID=$DOCKER_UID \
+    DOCKER_GID=$DOCKER_GID \
     LC_ALL=en_US.UTF-8 \
     LANG=en_US.UTF-8 \
     LANGUAGE=en_US.UTF-8
 
-ENV HOME=/home/$PYIRON_USER
+ENV HOME=/home/$DOCKER_USER
 
 COPY apt.txt /tmp/
 # creating account for pyiron_user.
-RUN useradd -m -s /bin/bash -N -u $PYIRON_UID $PYIRON_USER && \
-    chown $PYIRON_USER:$NB_GID $CONDA_DIR && \
+RUN useradd -m -s /bin/bash -N -u $DOCKER_UID $DOCKER_USER && \
+    chown $DOCKER_USER:$NB_GID $CONDA_DIR && \
     chmod g+w /etc/passwd && \
     fix-permissions $HOME && \
     fix-permissions $CONDA_DIR && \
@@ -40,7 +40,7 @@ RUN useradd -m -s /bin/bash -N -u $PYIRON_UID $PYIRON_USER && \
     rm /tmp/apt.txt
 
 
-USER $PYIRON_UID
+USER $DOCKER_UID
 WORKDIR $HOME
 ARG PYTHON_VERSION=default
 
@@ -56,12 +56,12 @@ RUN conda env update -n base -f ${HOME}/environment.yml --prune && \
 USER root
 
 RUN fix-permissions /etc/jupyter/ &&\
-    fix-permissions /home/$PYIRON_USER &&\
+    fix-permissions /home/$DOCKER_USER &&\
     fix-permissions $CONDA_DIR
 #confirming that /home/jovyan is removed
 RUN rm -r /home/$NB_USER
 # Switch back to pyiron to avoid accidental container runs as root
 
-USER $PYIRON_UID
+USER $DOCKER_UID
 
 WORKDIR $HOME
