@@ -1,11 +1,8 @@
+dist: trusty
+
 jobs:
   include:
     - stage: Build Docker Images
-      name: docker
-      sudo: required
-      services:
-        - docker
-      language: generic
       script:
         - export TODAY=$(date +%F)
         - docker build -t pyiron/base:latest pyiron-base/
