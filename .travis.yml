@@ -17,7 +17,7 @@ jobs:
         - docker tag pyiron/pyiron:latest pyiron/pyiron:"$TODAY"
         - docker images
       script: 
-        - docker run --rm pyiron/pyiron /bin/bash -c 'for f in $(ls ~/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --to notebook --execute $f; done;'
+        - docker run --rm pyiron/pyiron /bin/bash -c 'source /srv/conda/envs/notebook/bin/activate; for f in $(ls ~/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --to notebook --execute $f; done;'
       deploy:
         - provider: script
           skip_cleanup: true
