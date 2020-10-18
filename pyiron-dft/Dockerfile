@@ -6,6 +6,7 @@ MAINTAINER Jan Janssen <janssen@mpie.de>, Muhammad Hassani <hassani@mpie.de>
 
 USER $DOCKER_UID
 WORKDIR $HOME
+ARG PYTHON_VERSION=default
 
 COPY . ${HOME}/
 RUN conda env update -n base -f ${HOME}/environment.yml --prune && \
