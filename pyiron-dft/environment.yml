@@ -1,12 +1,4 @@
 channels:
 - conda-forge
 dependencies:
-- sphinxdft
-- gpaw
-# - python
-# - jupyter
-# - jupyterhub
-# - jupyterlab
-# - notebook
-#- pyiron
-#- nglview
+- gpaw =20.1.0
