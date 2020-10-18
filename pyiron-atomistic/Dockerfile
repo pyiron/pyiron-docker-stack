@@ -6,7 +6,7 @@ MAINTAINER Jan Janssen <janssen@mpie.de>, Muhammad Hassani <hassani@mpie.de>
 
 USER root
 
-USER $PYIRON_UID
+USER $DOCKER_UID
 WORKDIR $HOME
 ARG PYTHON_VERSION=default
 
@@ -22,15 +22,15 @@ RUN conda env update -n base -f ${HOME}/environment.yml --prune && \
     jupyter lab clean
 
 USER root
-RUN fix-permissions /home/$PYIRON_USER &&\
+RUN fix-permissions /home/$DOCKER_USER &&\
     fix-permissions $CONDA_DIR && \
     chmod +x ${HOME}/include_notebooks.sh && \
     /bin/bash include_notebooks.sh &&\
-    fix-permissions /home/$PYIRON_USER && \
-    chown -R ${PYIRON_USER}:${NB_GID} ${HOME}/notebooks
+    fix-permissions /home/$DOCKER_USER && \
+    chown -R ${DOCKER_USER}:${DOCKER_GID} ${HOME}/notebooks
 
 # Switch back to pyiron to avoid accidental container runs as root
 
-USER $PYIRON_UID
+USER $DOCKER_UID
 
 WORKDIR $HOME

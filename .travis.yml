@@ -13,7 +13,7 @@ jobs:
         - docker build -t pyiron/atomistic:latest pyiron-atomistic/
         - docker tag pyiron/atomistic:latest pyiron/atomistic:"$TODAY"
         - docker build -t pyiron/md:latest pyiron-md/
-        - docker tag pyiron/md:latest pyiron/pyiron-md-image:"$TODAY"
+        - docker tag pyiron/md:latest pyiron/md:"$TODAY"
         - docker build -t pyiron/sphinx:latest pyiron-sphinxdft/
         - docker tag pyiron/sphinx:latest pyiron/sphinx:"$TODAY"
         - docker build -t pyiron/dft:latest pyiron-dft/
@@ -22,18 +22,12 @@ jobs:
         - docker tag pyiron/pyiron:latest pyiron/pyiron:"$TODAY"
         - docker images
       script: 
-        - docker run --rm pyiron/base echo hello world
-        - docker run --rm pyiron/base echo hello world
-        - docker run --rm pyiron/atomistic echo hello world
-        - docker run --rm pyiron/atomistic echo hello world
-        - docker run --rm pyiron/md echo hello world
-        - docker run --rm pyiron/md echo hello world
-        - docker run --rm pyiron/sphinx echo hello world
-        - docker run --rm pyiron/sphinx echo hello world
-        - docker run --rm pyiron/dft echo hello world
-        - docker run --rm pyiron/dft echo hello world  
-        - docker run --rm pyiron/pyiron echo hello world
-        - docker run --rm pyiron/pyiron echo hello world
+        - docker run --rm pyiron/base /bin/bash -c 'for f in $(ls ~/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --to notebook --execute $f; done;'
+        - docker run --rm pyiron/atomistic /bin/bash -c 'for f in $(ls ~/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --to notebook --execute $f; done;'
+        - docker run --rm pyiron/md /bin/bash -c 'for f in $(ls ~/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --to notebook --execute $f; done;'
+        - docker run --rm pyiron/sphinx /bin/bash -c 'for f in $(ls ~/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --to notebook --execute $f; done;'
+        - docker run --rm pyiron/dft /bin/bash -c 'for f in $(ls ~/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --to notebook --execute $f; done;'
+        - docker run --rm pyiron/pyiron /bin/bash -c 'for f in $(ls ~/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --to notebook --execute $f; done;'
       deploy:
         - provider: script
           skip_cleanup: true
