@@ -1,10 +1,4 @@
 channels:
 - conda-forge
 dependencies:
-- pyiron_base
-#- nglview
-# - python
-# - jupyter
-# - jupyterhub
-# - jupyterlab
-# - notebook
+- pyiron_base =0.1.22
