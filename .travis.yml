@@ -34,4 +34,4 @@ jobs:
           script: ./.ci_support/deploy.sh
           on:
              all_branches: true
-             repo: pyiron/pyiron
+             repo: pyiron/docker-stacks
