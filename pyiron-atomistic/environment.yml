@@ -3,8 +3,4 @@ channels:
 dependencies:
 - pyiron
 - nglview
-# - python
-# - jupyter
-# - jupyterhub
-# - jupyterlab
-# - notebook
+- seaborn
