@@ -22,8 +22,6 @@ jobs:
         - docker tag pyiron/pyiron:latest pyiron/pyiron:"$TODAY"
         - docker images
       script: 
-        - docker run --rm pyiron/base /bin/bash -c 'for f in $(ls ~/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --to notebook --execute $f; done;'
-        - docker run --rm pyiron/atomistic /bin/bash -c 'for f in $(ls ~/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --to notebook --execute $f; done;'
         - docker run --rm pyiron/md /bin/bash -c 'for f in $(ls ~/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --to notebook --execute $f; done;'
         - docker run --rm pyiron/sphinx /bin/bash -c 'for f in $(ls ~/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --to notebook --execute $f; done;'
         - docker run --rm pyiron/dft /bin/bash -c 'for f in $(ls ~/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --to notebook --execute $f; done;'
