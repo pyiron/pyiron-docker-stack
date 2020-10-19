@@ -14,4 +14,6 @@ if [ "$TRAVIS_BRANCH" = "master" ]; then docker push pyiron/dft:latest; fi
 if [ "$TRAVIS_BRANCH" = "master" ]; then docker push pyiron/dft:"$TODAY"; fi
 if [ "$TRAVIS_BRANCH" = "master" ]; then docker push pyiron/pyiron:latest; fi
 if [ "$TRAVIS_BRANCH" = "master" ]; then docker push pyiron/pyiron:"$TODAY"; fi
+if [ "$TRAVIS_BRANCH" = "master" ]; then docker push pyiron/experimental:latest; fi
+if [ "$TRAVIS_BRANCH" = "master" ]; then docker push pyiron/experimental:"$TODAY"; fi
 docker logout
