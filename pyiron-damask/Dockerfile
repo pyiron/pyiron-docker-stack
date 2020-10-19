@@ -18,7 +18,7 @@ RUN fix-permissions /home/$DOCKER_USER &&\
     fix-permissions $CONDA_DIR && \
     /bin/bash $HOME/postbuild &&\
     rm -r $HOME/DAMASK/ && \
-    rm $HOME/postbuild && \
+    rm $HOME/postBuild && \
     rm $HOME/python.patch &&\
     fix-permissions /home/$DOCKER_USER
 
