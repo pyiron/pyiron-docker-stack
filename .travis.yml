@@ -15,6 +15,8 @@ jobs:
         - docker tag pyiron/dft:latest pyiron/dft:"$TODAY"
         - docker build -t pyiron/pyiron:latest pyiron/
         - docker tag pyiron/pyiron:latest pyiron/pyiron:"$TODAY"
+        - docker build -t pyiron/damask:latest pyiron-damask/
+        - docker tag pyiron/damask:latest pyiron/damask:"$TODAY"
         - docker images
       script: 
         - docker run --rm pyiron/pyiron /bin/bash -c 'source /opt/conda/bin/activate; i=0; for f in $(ls ~/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --to notebook --execute $f || i=$((i+1)); done; if [ $i -gt 0 ]; then exit 1; fi;'
