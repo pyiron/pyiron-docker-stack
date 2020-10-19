@@ -1,11 +1,3 @@
-Thermodynamics_QHA.ipynb
-data_mining.ipynb
-first_steps.ipynb
-gamma_surface_parallel_master.ipynb
 hcp_workfunction.ipynb
-lammps-fe-c-example.ipynb
-phonopy_example.ipynb
-pipeline.ipynb
 sqs.ipynb
-test_pyiron_installation.ipynb
-water_MD.ipynb
+phonopy_example.ipynb
