@@ -16,7 +16,7 @@ RUN conda env update -n base -f ${HOME}/environment.yml --prune && \
 USER root
 RUN fix-permissions /home/$DOCKER_USER &&\
     fix-permissions $CONDA_DIR && \
-    /bin/bash $HOME/postbuild &&\
+    /bin/bash $HOME/postBuild &&\
     rm -r $HOME/DAMASK/ && \
     rm $HOME/postBuild && \
     rm $HOME/python.patch &&\
