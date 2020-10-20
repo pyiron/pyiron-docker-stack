@@ -14,13 +14,12 @@ RUN conda env update -n base -f ${HOME}/environment.yml --prune && \
     npm cache clean --force
 
 USER root
-RUN fix-permissions /home/$DOCKER_USER &&\
-    fix-permissions $CONDA_DIR && \
-    /bin/bash $HOME/postBuild &&\
+RUN /bin/bash $HOME/postBuild &&\
     rm -r $HOME/DAMASK/ && \
     rm $HOME/postBuild && \
     rm $HOME/python.patch &&\
-    fix-permissions /home/$DOCKER_USER
+    fix-permissions /home/$DOCKER_USER && \
+    fix-permissions $CONDA_DIR
 
 
 # Switch back to pyiron to avoid accidental container runs as root
