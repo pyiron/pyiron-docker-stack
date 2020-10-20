@@ -1,8 +1,7 @@
 #!/bin/bash
-git clone https://github.com/pyiron/pyiron_experimental
-cp "$HOME"/pyiron_experimental/*.ipynb "$HOME"/
-mv "$HOME"/pyiron_experimental/ "$HOME"/pyiron_experimental_tmp/
-cp "$HOME"/pyiron_experimental_tmp/pyiron_experimental "$HOME"/
-rm -r "$HOME"/pyiron_experimental_tmp
+git clone https://github.com/pyiron/pyiron_experimental pyiron_experimental_repo
+cp "$HOME"/pyiron_experimental_repo/*.ipynb "$HOME"/
+cp -r "$HOME"/pyiron_experimental_repo/pyiron_experimental "$HOME"/
+rm -r "$HOME"/pyiron_experimental_repo
 rm "$HOME"/Dockerfile
 rm "$HOME"/*.sh
