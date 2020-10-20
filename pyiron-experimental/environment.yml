@@ -6,3 +6,4 @@ dependencies:
 - match-series =1.0.0 
 - pyxem =0.12.2
 - pystem =0.0.22
+- scanf =1.5.2
