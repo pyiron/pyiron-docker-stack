@@ -44,7 +44,7 @@ USER $DOCKER_UID
 WORKDIR $HOME
 ARG PYTHON_VERSION=default
 
-COPY environment.yml ${HOME}/
+COPY . ${HOME}/
 RUN conda env update -n base -f ${HOME}/environment.yml --prune && \
     conda clean --all -f -y && \
     npm cache clean --force && \
@@ -54,10 +54,14 @@ RUN conda env update -n base -f ${HOME}/environment.yml --prune && \
 
 # Fix permissions on /etc/jupyter as root
 USER root
-
 RUN fix-permissions /etc/jupyter/ &&\
     fix-permissions /home/$DOCKER_USER &&\
-    fix-permissions $CONDA_DIR
+    fix-permissions $CONDA_DIR &&\
+    chmod +x ${HOME}/include_notebooks.sh && \
+    /bin/bash include_notebooks.sh &&\
+    fix-permissions /home/$DOCKER_USER && \
+    chown -R ${DOCKER_USER}:${DOCKER_GID} ${HOME}/*.ipynb
+
 #confirming that /home/jovyan is removed
 RUN rm -r /home/$NB_USER
 # Switch back to pyiron to avoid accidental container runs as root
