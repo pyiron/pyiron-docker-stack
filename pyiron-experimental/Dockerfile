@@ -19,7 +19,9 @@ RUN fix-permissions /home/$DOCKER_USER &&\
     chmod +x ${HOME}/include_notebooks.sh && \
     /bin/bash ${HOME}/include_notebooks.sh && \
     fix-permissions /home/$DOCKER_USER && \
-    chown -R ${DOCKER_USER}:${DOCKER_GID} ${HOME}/*.ipynb
+    chown -R ${DOCKER_USER}:${DOCKER_GID} ${HOME}/*.ipynb && \
+    chown -R ${DOCKER_USER}:${DOCKER_GID} ${HOME}/*.tif && \
+    chown -R ${DOCKER_USER}:${DOCKER_GID} ${HOME}/*.emd
     
 # Switch back to pyiron to avoid accidental container runs as root
 USER $DOCKER_UID

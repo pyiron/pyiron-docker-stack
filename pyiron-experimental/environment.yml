@@ -5,3 +5,4 @@ dependencies:
 - pyprismatic =1.2.1 
 - match-series =1.0.0 
 - pyxem =0.12.2
+- pystem =0.0.22
