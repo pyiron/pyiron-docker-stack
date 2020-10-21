@@ -1,7 +1,8 @@
 #!/bin/bash
-git clone https://github.com/vitesh13/DAMASK_workflows
-cp -r "$HOME"/DAMASK_workflows/DAMASK_workflows.ipynb "$HOME"/
-rm -r "$HOME"/DAMASK_workflows
+git clone https://github.com/matbinder/DAMASK-example
+cp "$HOME"/DAMASK-example/DAMASK_workflows.ipynb "$HOME"/
+cp "$HOME"/DAMASK-example/*.py "$HOME"/
+rm -r "$HOME"/DAMASK-example
 rm "$HOME"/*.yml
 rm "$HOME"/Dockerfile
 rm "$HOME"/*.sh

@@ -14,7 +14,8 @@ RUN conda env update -n base -f ${HOME}/environment.yml --prune && \
     npm cache clean --force
 
 USER root
-RUN /bin/bash $HOME/postBuild &&\
+RUN rm ${HOME}/*.ipynb &&\
+    /bin/bash $HOME/postBuild &&\
     rm -r $HOME/DAMASK/ && \
     rm $HOME/postBuild && \
     rm $HOME/python.patch &&\
