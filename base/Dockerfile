@@ -10,7 +10,6 @@ USER root
 RUN rm -r /home/$NB_USER
 RUN userdel $NB_USER 
     
-
 ARG DOCKER_USER="pyiron"
 ARG DOCKER_UID="1000"
 ARG DOCKER_GID="100"
@@ -39,11 +38,9 @@ RUN useradd -m -s /bin/bash -N -u $DOCKER_UID $DOCKER_USER && \
     apt-get clean && \
     rm /tmp/apt.txt
 
-
 USER $DOCKER_UID
 WORKDIR $HOME
 ARG PYTHON_VERSION=default
-
 
 COPY . ${HOME}/
 RUN conda env update -n base -f ${HOME}/environment.yml --prune && \
@@ -62,7 +59,7 @@ RUN fix-permissions /etc/jupyter/ &&\
     /bin/bash include_notebooks.sh &&\
     fix-permissions /home/$DOCKER_USER && \
     chown -R ${DOCKER_USER}:${DOCKER_GID} ${HOME}/*.ipynb
-    
+
 #confirming that /home/jovyan is removed
 RUN rm -r /home/$NB_USER
 # Switch back to pyiron to avoid accidental container runs as root
