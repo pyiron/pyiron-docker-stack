@@ -1,0 +1,11 @@
+channels:
+- conda-forge
+dependencies:
+- damask =3.0.0
+- vtk
+- itkwidgets
+- pyvista
+- seaborn
+- pymatgen =2020.10.9.1
+- sqsgenerator =0.0.4
+

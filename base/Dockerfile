@@ -10,7 +10,6 @@ USER root
 RUN rm -r /home/$NB_USER
 RUN userdel $NB_USER 
     
-
 ARG DOCKER_USER="pyiron"
 ARG DOCKER_UID="1000"
 ARG DOCKER_GID="100"
@@ -38,7 +37,6 @@ RUN useradd -m -s /bin/bash -N -u $DOCKER_UID $DOCKER_USER && \
     xargs -a /tmp/apt.txt apt-get install -y && \
     apt-get clean && \
     rm /tmp/apt.txt
-
 
 USER $DOCKER_UID
 WORKDIR $HOME
