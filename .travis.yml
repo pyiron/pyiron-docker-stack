@@ -21,9 +21,9 @@ jobs:
         - docker tag pyiron/damask:latest pyiron/damask:"$TODAY"
         - docker images
       script: 
-        - docker run --rm pyiron/base /bin/bash -c 'source /opt/conda/bin/activate; i=0; for f in $(ls ~/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --to notebook --execute $f || i=$((i+1)); done; if [ $i -gt 0 ]; then exit 1; fi;'        
-        - docker run --rm pyiron/pyiron /bin/bash -c 'source /opt/conda/bin/activate; i=0; for f in $(ls ~/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --to notebook --execute $f || i=$((i+1)); done; if [ $i -gt 0 ]; then exit 1; fi;'
-        - docker run --rm pyiron/experimental /bin/bash -c 'source /opt/conda/bin/activate; i=0; for f in $(ls ~/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --to notebook --execute $f || i=$((i+1)); done; if [ $i -gt 0 ]; then exit 1; fi;'
+        # - docker run --rm pyiron/base /bin/bash -c 'source /opt/conda/bin/activate; i=0; for f in $(ls ~/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --to notebook --execute $f || i=$((i+1)); done; if [ $i -gt 0 ]; then exit 1; fi;'        
+        # - docker run --rm pyiron/pyiron /bin/bash -c 'source /opt/conda/bin/activate; i=0; for f in $(ls ~/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --to notebook --execute $f || i=$((i+1)); done; if [ $i -gt 0 ]; then exit 1; fi;'
+        # - docker run --rm pyiron/experimental /bin/bash -c 'source /opt/conda/bin/activate; i=0; for f in $(ls ~/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --to notebook --execute $f || i=$((i+1)); done; if [ $i -gt 0 ]; then exit 1; fi;'
         - docker run --rm pyiron/damask /bin/bash -c 'source /opt/conda/bin/activate; i=0; for f in $(ls ~/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --to notebook --execute $f || i=$((i+1)); done; if [ $i -gt 0 ]; then exit 1; fi;'
       deploy:
         - provider: script
