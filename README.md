@@ -13,6 +13,8 @@ The resulting images are:
 | pyiron/sphinx | pyiron/md | <a href="https://anaconda.org/conda-forge/sphinxdft">SPHInX</a> | `docker pull pyiron/sphinx` |
 | pyiron/dft | pyiron/sphinx | <a href="https://anaconda.org/conda-forge/gpaw">GPAW</a> | `docker pull pyiron/dft` |
 | pyiron/pyiron | pyiron/dft |   |  `docker pull pyiron/pyiron` |
+| pyiron/experimental | pyiron/base | <a href="https://anaconda.org/conda-forge/temmeta">TEMMETA</a>, <a href="https://anaconda.org/conda-forge/pyprismatic">pyprismatic</a>, <a href="https://anaconda.org/conda-forge/match-series">match-series</a>, <a href="https://anaconda.org/conda-forge/pyxem">pyxem</a>, <a href="https://anaconda.org/conda-forge/pystem">pystem</a> |  `docker pull pyiron/experimental` |
+| pyiron/damask | pyiron/md | <a href="https://anaconda.org/conda-forge/damask">damask</a>, <a href="https://anaconda.org/conda-forge/sqsgenerator">sqsgenerator</a> |  `docker pull pyiron/damask` |
 
 The images also include some examplary notebooks.  
 
