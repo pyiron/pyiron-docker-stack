@@ -4,8 +4,6 @@ FROM $BASE_CONTAINER
 
 MAINTAINER Jan Janssen <janssen@mpie.de>, Muhammad Hassani <hassani@mpie.de>
 
-USER root
-
 USER $DOCKER_UID
 WORKDIR $HOME
 ARG PYTHON_VERSION=default
