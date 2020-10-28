@@ -1,4 +1,0 @@
-channels:
-- conda-forge
-dependencies:
-- sphinxdft =2.7.0
