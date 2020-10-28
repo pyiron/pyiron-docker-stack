@@ -10,8 +10,7 @@ ARG PYTHON_VERSION=default
 
 COPY . ${HOME}/
 RUN conda env update -n base -f ${HOME}/environment.yml --prune && \
-    conda clean --all -f -y && \
-    npm cache clean --force
+    conda clean --all -f -y
 
 USER root
 RUN rm ${HOME}/*.ipynb &&\
@@ -23,8 +22,6 @@ RUN rm ${HOME}/*.ipynb &&\
     /bin/bash ${HOME}/include_notebooks.sh && \
     fix-permissions /home/$DOCKER_USER && \
     fix-permissions $CONDA_DIRs
-
-
 
 # Switch back to pyiron to avoid accidental container runs as root
 USER $DOCKER_UID
