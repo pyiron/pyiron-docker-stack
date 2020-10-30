@@ -5,6 +5,8 @@ jobs:
         - export TODAY=$(date +%F)
         - docker build -t pyiron/base:latest base/
         - docker tag pyiron/base:latest pyiron/base:"$TODAY"
+        - docker build -t pyiron/testing:latest testing/
+        - docker tag pyiron/testing:latest pyiron/testing:"$TODAY"
         - docker build -t pyiron/md:latest md/
         - docker tag pyiron/md:latest pyiron/md:"$TODAY"
         - docker build -t pyiron/pyiron:latest pyiron/
