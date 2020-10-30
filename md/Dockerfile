@@ -8,6 +8,10 @@ USER $DOCKER_UID
 WORKDIR $HOME
 ARG PYTHON_VERSION=default
 
+ENV OMPI_MCA_plm=isolated
+ENV OMPI_MCA_rmaps_base_oversubscribe=yes
+ENV OMPI_MCA_btl_vader_single_copy_mechanism=none
+
 COPY . ${HOME}/
 RUN conda env update -n base -f ${HOME}/environment.yml && \
     jupyter nbextension install nglview --py --sys-prefix && \
