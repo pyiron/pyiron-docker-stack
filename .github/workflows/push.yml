@@ -1,0 +1,34 @@
+name: Docker Push
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Login to DockerHub Registry
+        run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+      - run: docker build -t pyiron/base:latest base/
+      - run: docker tag pyiron/base:latest pyiron/base:"$(date +%F)"
+      - run: docker build -t pyiron/md:latest md/
+      - run: docker tag pyiron/md:latest pyiron/md:"$(date +%F)"
+      - run: docker build -t pyiron/pyiron:latest pyiron/
+      - run: docker tag pyiron/pyiron:latest pyiron/pyiron:"$(date +%F)"
+      - run: docker build -t pyiron/experimental:latest experimental/
+      - run: docker tag pyiron/experimental:latest pyiron/experimental:"$(date +%F)"
+      - run: docker build -t pyiron/damask:latest damask/
+      - run: docker tag pyiron/damask:latest pyiron/damask:"$(date +%F)"
+      - run: docker images
+      - run: docker push pyiron/base:latest
+      - run: docker push pyiron/base:"$(date +%F)"
+      - run: docker push pyiron/md:latest
+      - run: docker push pyiron/md:"$(date +%F)"
+      - run: docker push pyiron/pyiron:latest
+      - run: docker push pyiron/pyiron:"$(date +%F)"
+      - run: docker push pyiron/experimental:latest
+      - run: docker push pyiron/experimental:"$(date +%F)"
+      - run: docker push pyiron/damask:latest
+      - run: docker push pyiron/damask:"$(date +%F)"
