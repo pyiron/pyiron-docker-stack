@@ -1,5 +1,5 @@
 # docker-stacks
-[![Docker Testing](https://github.com/pyiron/pyfileindex/workflows/Docker%20Testing/badge.svg)](https://github.com/pyiron/docker-stacks/actions)
+[![Docker Testing](https://github.com/pyiron/docker-stacks/workflows/Docker%20Testing/badge.svg)](https://github.com/pyiron/docker-stacks/actions)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/pyiron/docker-stacks/master) 
 
 Here, one can find different flavours of Dockerfile for building pyiron docker images.   
