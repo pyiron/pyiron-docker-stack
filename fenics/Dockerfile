@@ -27,8 +27,8 @@ RUN conda env update -n base -f ${HOME}/environment.yml && \
 USER root
 RUN fix-permissions /home/$DOCKER_USER &&\
     fix-permissions $CONDA_DIR && \
-#    chmod +x ${HOME}/include_notebooks.sh && \
-#    /bin/bash include_notebooks.sh &&\
+    chmod +x ${HOME}/include_notebooks.sh && \
+    /bin/bash include_notebooks.sh &&\
     fix-permissions /home/$DOCKER_USER && \
     chown -R ${DOCKER_USER}:${DOCKER_GID} ${HOME}/*.ipynb
 
