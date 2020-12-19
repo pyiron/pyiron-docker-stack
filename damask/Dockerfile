@@ -11,7 +11,6 @@ ARG PYTHON_VERSION=default
 COPY . ${HOME}/
 RUN conda env update -n base -f ${HOME}/environment.yml --prune && \
     conda clean --all -f -y \
-    rm ${HOME}/environment.yml \
     conda list
 
 USER root
