@@ -21,6 +21,8 @@ jobs:
       - run: docker tag pyiron/experimental:latest pyiron/experimental:"$(date +%F)"
       - run: docker build -t pyiron/damask:latest damask/
       - run: docker tag pyiron/damask:latest pyiron/damask:"$(date +%F)"
+      - run: docker build -t pyiron/fenics:latest fenics/
+      - run: docker tag pyiron/fenics:latest pyiron/fenics:"$(date +%F)"
       - run: docker images
       - run: docker push pyiron/base:latest
       - run: docker push pyiron/base:"$(date +%F)"
@@ -32,3 +34,5 @@ jobs:
       - run: docker push pyiron/experimental:"$(date +%F)"
       - run: docker push pyiron/damask:latest
       - run: docker push pyiron/damask:"$(date +%F)"
+      - run: docker push pyiron/fenics:latest
+      - run: docker push pyiron/fenics:"$(date +%F)"
