@@ -3,7 +3,7 @@ channels:
 dependencies:
 - temmeta =0.0.6
 - pyprismatic =1.2.1 
-- match-series =1.0.0 
-- pyxem =0.12.2
+- match-series =1.0.4
+- pyxem =0.12.3
 - pystem =0.0.22
 - scanf =1.5.2
