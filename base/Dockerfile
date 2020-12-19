@@ -48,7 +48,8 @@ RUN conda env update -n base -f ${HOME}/environment.yml --prune && \
     npm cache clean --force && \
     jlpm cache clean && \ 
     jupyter lab clean && \
-    rm ${HOME}/environment.yml 
+    rm ${HOME}/environment.yml \
+    conda list
 
 # Fix permissions on /etc/jupyter as root
 USER root
