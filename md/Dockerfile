@@ -22,7 +22,6 @@ RUN conda env update -n base -f ${HOME}/environment.yml && \
     npm cache clean --force && \
     jlpm cache clean && \ 
     jupyter lab clean && \
-    rm ${HOME}/environment.yml \
     conda list
 
 USER root
