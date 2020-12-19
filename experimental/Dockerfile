@@ -10,7 +10,8 @@ ARG PYTHON_VERSION=default
 
 COPY . ${HOME}/
 RUN conda env update -n base -f ${HOME}/environment.yml --prune && \
-    conda clean --all -f -y
+    conda clean --all -f -y && \
+    conda list
 
 USER root
 RUN fix-permissions /home/$DOCKER_USER &&\

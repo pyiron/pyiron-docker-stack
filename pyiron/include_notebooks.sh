@@ -6,3 +6,4 @@ for f in $(cat "$HOME"/exclude); do rm "$HOME"/$f; done;
 rm "$HOME"/Dockerfile
 rm "$HOME"/exclude
 rm "$HOME"/*.sh
+rm "$HOME"/*.yml
