@@ -14,14 +14,8 @@ ENV OMPI_MCA_btl_vader_single_copy_mechanism=none
 
 COPY . ${HOME}/
 RUN conda env update -n base -f ${HOME}/environment.yml && \
-    jupyter nbextension install nglview --py --sys-prefix && \
-    jupyter nbextension enable nglview --py --sys-prefix && \
-    jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
-    jupyter labextension install nglview-js-widgets && \
     conda clean --all -f -y && \
     npm cache clean --force && \
-    jlpm cache clean && \ 
-    jupyter lab clean && \
     rm ${HOME}/environment.yml 
 
 USER root
