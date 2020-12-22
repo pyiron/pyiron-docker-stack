@@ -1,4 +1,4 @@
-ARG ROOT_CONTAINER=jupyter/base-notebook:42f4c82a07ff
+ARG ROOT_CONTAINER=jupyter/base-notebook:399cbb986c6b
 ARG BASE_CONTAINER=$ROOT_CONTAINER
 FROM $BASE_CONTAINER
 
@@ -45,10 +45,7 @@ ARG PYTHON_VERSION=default
 COPY . ${HOME}/
 RUN conda env update -n base -f ${HOME}/environment.yml --prune && \
     conda clean --all -f -y && \
-    npm cache clean --force && \
-    jlpm cache clean && \ 
-    jupyter lab clean && \
-    rm ${HOME}/environment.yml 
+    conda list
 
 # Fix permissions on /etc/jupyter as root
 USER root

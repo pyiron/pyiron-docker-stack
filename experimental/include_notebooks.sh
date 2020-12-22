@@ -7,3 +7,4 @@ cp -r "$HOME"/pyiron_experimental_repo/pyiron_experimental "$HOME"/
 rm -r "$HOME"/pyiron_experimental_repo
 rm "$HOME"/Dockerfile
 rm "$HOME"/*.sh
+rm "$HOME"/*.yml
