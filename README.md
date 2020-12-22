@@ -12,7 +12,7 @@ The resulting images are:
 | pyiron/pyiron | pyiron/md | <a href="https://anaconda.org/conda-forge/sphinxdft">SPHInX</a>, <a href="https://anaconda.org/conda-forge/gpaw">GPAW</a> |  `docker pull pyiron/pyiron` | 3.8GB |
 | pyiron/experimental | pyiron/base | <a href="https://anaconda.org/conda-forge/temmeta">TEMMETA</a>, <a href="https://anaconda.org/conda-forge/pyprismatic">pyprismatic</a>, <a href="https://anaconda.org/conda-forge/match-series">match-series</a>, <a href="https://anaconda.org/conda-forge/pyxem">pyxem</a>, <a href="https://anaconda.org/conda-forge/pystem">pystem</a> |  `docker pull pyiron/experimental` | 2.81GB |
 | pyiron/damask | pyiron/md | <a href="https://anaconda.org/conda-forge/damask">damask</a>, <a href="https://anaconda.org/conda-forge/sqsgenerator">sqsgenerator</a> |  `docker pull pyiron/damask` | 4.17GB |
-
+| pyiron/fenics | pyiron/base | <a href="https://anaconda.org/conda-forge/pyiron">pyiron</a>, <a href="https://anaconda.org/conda-forge/fenics">fenics</a>, ,<a href="https://anaconda.org/conda-forge/mshr">mshr</a>   | `docker pull pyiron/fenics` | 3.94GB |
 The images also include some examplary notebooks.  
 
 Start the container using: 
