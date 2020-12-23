@@ -31,8 +31,6 @@ COPY apt.txt /tmp/
 RUN useradd -m -s /bin/bash -N -u $DOCKER_UID $DOCKER_USER && \
     chown $DOCKER_USER:$NB_GID $CONDA_DIR && \
     chmod g+w /etc/passwd && \
-    fix-permissions $HOME && \
-    fix-permissions $CONDA_DIR && \
     apt-get update -y && \
     xargs -a /tmp/apt.txt apt-get install -y && \
     apt-get clean && \
@@ -49,13 +47,11 @@ RUN conda env update -n base -f ${HOME}/environment.yml --prune && \
 
 # Fix permissions on /etc/jupyter as root
 USER root
-RUN fix-permissions /etc/jupyter/ &&\
-    fix-permissions /home/$DOCKER_USER &&\
-    fix-permissions $CONDA_DIR &&\
-    chmod +x ${HOME}/include_notebooks.sh && \
+RUN chmod +x ${HOME}/include_notebooks.sh && \
     /bin/bash include_notebooks.sh &&\
+    fix-permissions /etc/jupyter/ &&\
     fix-permissions /home/$DOCKER_USER && \
-    chown -R ${DOCKER_USER}:${DOCKER_GID} ${HOME}/*.ipynb
+    fix-permissions $CONDA_DIR
 
 #confirming that /home/jovyan is removed
 RUN rm -r /home/$NB_USER
