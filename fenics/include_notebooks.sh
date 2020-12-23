@@ -1,10 +1,10 @@
 #!/bin/bash
-git clone https://github.com/pyiron/pyiron_contrib "$HOME"/from_contrib
-cd "$HOME"/from_contrib/
+git clone https://github.com/pyiron/pyiron_contrib "$HOME"/pyiron_contrib/
+cd "$HOME"/pyiron_contrib/
 git checkout FEniCS_job
-cp "$HOME"/from_contrib/notebooks/fenics_tutorial.ipynb "$HOME"/
-cp -r "$HOME"/from_contrib/pyiron_contrib "$HOME"/
-rm -r "$HOME"/from_contrib
+pip install .
+cp "$HOME"/pyiron_contrib/notebooks/fenics_tutorial.ipynb "$HOME"/
+rm -r "$HOME"/pyiron_contrib
 rm "$HOME"/*.yml
 rm "$HOME"/Dockerfile
 rm "$HOME"/*.sh
