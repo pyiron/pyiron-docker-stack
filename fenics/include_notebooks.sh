@@ -4,6 +4,7 @@ cd "$HOME"/pyiron_contrib/
 git checkout FEniCS_job
 pip install .
 cp "$HOME"/pyiron_contrib/notebooks/fenics_tutorial.ipynb "$HOME"/
+cd ..
 rm -r "$HOME"/pyiron_contrib
 rm "$HOME"/*.yml
 rm "$HOME"/Dockerfile
