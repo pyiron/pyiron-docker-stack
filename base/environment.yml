@@ -2,3 +2,4 @@ channels:
 - conda-forge
 dependencies:
 - pyiron_base =0.1.41
+- seaborn
