@@ -4,5 +4,5 @@ dependencies:
   - fenics =2019.1.0
   - mshr =2019.1.0
   - pyiron =0.3.21
-  - matplotlib =3.3.3
-  - seaborn =0.11.0
+  - matplotlib
+  - seaborn
