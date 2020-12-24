@@ -5,10 +5,6 @@ FROM $BASE_CONTAINER
 MAINTAINER Jan Janssen <janssen@mpie.de>, Muhammad Hassani <hassani@mpie.de>
 
 USER root
-
-#removing the default user and the corresponding home directory.
-RUN rm -r /home/$NB_USER
-RUN userdel $NB_USER 
     
 ARG DOCKER_USER="pyiron"
 ARG DOCKER_UID="1000"
@@ -22,15 +18,15 @@ ENV CONDA_DIR=/opt/conda \
     DOCKER_GID=$DOCKER_GID \
     LC_ALL=en_US.UTF-8 \
     LANG=en_US.UTF-8 \
-    LANGUAGE=en_US.UTF-8
-
-ENV HOME=/home/$DOCKER_USER
+    LANGUAGE=en_US.UTF-8 \
+    HOME=/home/$DOCKER_USER
 
 COPY apt.txt /tmp/
 # creating account for pyiron_user.
-RUN useradd -m -s /bin/bash -N -u $DOCKER_UID $DOCKER_USER && \
-    chown $DOCKER_USER:$NB_GID $CONDA_DIR && \
-    chmod g+w /etc/passwd && \
+RUN mv /home/$NB_USER /home/$DOCKER_USER && \
+    userdel $NB_USER && \
+    useradd -m -s /bin/bash -N -u $DOCKER_UID $DOCKER_USER && \
+    chown -R $DOCKER_USER:$NB_GID $CONDA_DIR /home/$DOCKER_USER && \
     apt-get update -y && \
     xargs -a /tmp/apt.txt apt-get install -y && \
     apt-get clean && \
