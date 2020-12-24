@@ -4,14 +4,6 @@ FROM $BASE_CONTAINER
 
 MAINTAINER Jan Janssen <janssen@mpie.de>, Muhammad Hassani <hassani@mpie.de>
 
-USER root
-COPY apt.txt /tmp/
-# installing build-essential
-RUN apt-get update -y && \
-    xargs -a /tmp/apt.txt apt-get install -y && \
-    apt-get clean && \
-    rm /tmp/apt.txt
-
 USER $DOCKER_UID
 WORKDIR $HOME
 ARG PYTHON_VERSION=default
