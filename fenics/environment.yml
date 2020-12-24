@@ -1,5 +1,5 @@
 channels:
 - conda-forge
 dependencies:
-  - fenics =2019.1.0
+  - fenics =2019.1.0=*_18
   - mshr =2019.1.0
