@@ -1,7 +1,7 @@
 channels:
 - conda-forge
 dependencies:
-- pyiron =0.3.21
+- pyiron =0.4.0
+- pyiron_atomistics =0.2.2
 - nglview =2.7.7
-- seaborn =0.11.0
-- lammps =2020.03.03=*openmpi*
+- lammps =2020.12.24=*openmpi*
