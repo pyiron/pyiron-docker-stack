@@ -5,6 +5,6 @@ dependencies:
 - vtk
 - itkwidgets
 - pyvista
-- pymatgen =2020.10.9.1
-- sqsgenerator =0.0.4
+- pymatgen =2020.12.31
+- sqsgenerator =0.0.5
 
