@@ -4,4 +4,4 @@ dependencies:
 - pyiron =0.4.0
 - pyiron_atomistics =0.2.3
 - nglview =2.7.7
-- lammps =2020.12.24=*openmpi*
+- lammps =2021.02.10=*openmpi*
