@@ -5,6 +5,7 @@ dependencies:
 - vtk
 - itkwidgets
 - pyvista
-- pymatgen =2020.12.31
+- pyiron_gpl
+- pymatgen =2021.2.16
 - sqsgenerator =0.0.5
 
