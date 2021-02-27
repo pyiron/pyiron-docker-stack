@@ -6,6 +6,7 @@ dependencies:
 - itkwidgets
 - pyvista
 - pyiron_gpl
+- pyiron_continuum
 - pymatgen =2021.2.16
 - sqsgenerator =0.0.5
 
