@@ -4,6 +4,7 @@ dependencies:
 - sphinxdft =2.7.0
 - atomicrex =1.0.1
 - runner =1.2
+- structdbrest =0.0.1
 - pip
 - pip:
     - pyace-lite

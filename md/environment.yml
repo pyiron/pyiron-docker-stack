@@ -3,5 +3,6 @@ channels:
 dependencies:
 - pyiron =0.4.0
 - pyiron_atomistics =0.2.4
+- pyiron-data =0.0.10
 - nglview =2.7.7
 - lammps =2021.02.10=*openmpi*_4
