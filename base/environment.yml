@@ -3,3 +3,4 @@ channels:
 dependencies:
 - pyiron_base =0.1.48
 - seaborn =0.11.1
+- jupyterlab =2.2.9
