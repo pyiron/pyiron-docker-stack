@@ -7,6 +7,7 @@ dependencies:
 - structdbrest =0.0.1
 - pyiron_contrib =0.0.3
 - pyiron_gpl =0.0.2
+- nbgitpuller =0.9.0
 - pip
 - pip:
     - pyace-lite
