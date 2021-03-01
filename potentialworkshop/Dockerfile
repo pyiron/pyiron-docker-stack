@@ -15,8 +15,6 @@ RUN conda env update -n base -f ${HOME}/environment.yml --prune && \
 
 USER root
 RUN chmod +x ${HOME}/include_notebooks.sh && \
-    chmod +x ${HOME}/include_packages.sh && \
-    /bin/bash include_packages.sh &&\
     /bin/bash include_notebooks.sh &&\
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$DOCKER_USER
