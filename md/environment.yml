@@ -6,3 +6,4 @@ dependencies:
 - pyiron-data =0.0.10
 - nglview =2.7.7
 - lammps =2021.02.10=*openmpi*_4
+- openkim-models =2021.01.28
