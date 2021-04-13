@@ -3,7 +3,7 @@ channels:
 dependencies:
 - pyiron =0.4.3
 - pyiron_atomistics =0.2.9
-- pyiron-data =0.0.13
-- nglview =2.7.7
+- pyiron-data =0.0.14
+- nglview =3.0.1
 - lammps =2021.02.10=*openmpi*_4
 - openkim-models =2021.01.28
