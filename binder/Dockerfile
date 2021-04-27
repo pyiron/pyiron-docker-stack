@@ -1,4 +1,4 @@
-FROM pyiron/pyiron:2020-10-28
+FROM pyiron/pyiron:2021-04-13
 COPY . ${HOME}/
 
 USER root
