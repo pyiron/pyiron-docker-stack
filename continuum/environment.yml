@@ -5,10 +5,9 @@ dependencies:
 - vtk
 - itkwidgets
 - pyvista
-- pymatgen =2022.0.6
+- pymatgen =2022.0.8
 - sqsgenerator =0.0.5
 - fenics =2019.1.0
 - mshr =2019.1.0
 - pyiron_continuum =0.0.1
 - pyiron_gpl =0.0.3
-
