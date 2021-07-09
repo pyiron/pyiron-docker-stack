@@ -1,4 +1,4 @@
-ARG ROOT_CONTAINER=jupyter/base-notebook:016833b15ceb
+ARG ROOT_CONTAINER=jupyter/base-notebook:ubuntu-20.04@sha256:9dac2e7ef0b423eb58990e3d8063d84ad7d83c23150cb78923ec59e202c2ed96
 ARG BASE_CONTAINER=$ROOT_CONTAINER
 FROM $BASE_CONTAINER
 
@@ -41,7 +41,7 @@ WORKDIR $HOME
 ARG PYTHON_VERSION=default
 
 COPY . ${HOME}/
-RUN conda env update -n base -f ${HOME}/environment.yml --prune && \
+RUN mamba env update -n base -f ${HOME}/environment.yml --prune && \
     conda clean --all -f -y && \
     conda list
 
