@@ -1,6 +1,8 @@
 channels:
 - conda-forge
 dependencies:
+- python =3.8*
+- lammps =2021.05.27=*mpich*
 - damask =3.0.0
 - vtk
 - itkwidgets
