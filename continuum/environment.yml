@@ -1,13 +1,11 @@
 channels:
 - conda-forge
 dependencies:
-- python =3.8*
-- lammps =2021.05.27=*mpich*
 - damask =3.0.0
 - vtk
 - itkwidgets
 - pyvista
-- pymatgen =2022.0.10
+- pymatgen =2022.0.11
 - sqsgenerator =0.0.5
 - fenics =2019.1.0
 - mshr =2019.1.0
