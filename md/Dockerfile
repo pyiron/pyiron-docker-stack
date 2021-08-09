@@ -13,7 +13,7 @@ ENV OMPI_MCA_rmaps_base_oversubscribe=yes
 ENV OMPI_MCA_btl_vader_single_copy_mechanism=none
 
 COPY . ${HOME}/
-RUN conda env update -n base -f ${HOME}/environment.yml && \
+RUN mamba env update -n base -f ${HOME}/environment.yml && \
     conda clean --all -f -y && \
     conda list
 

@@ -11,14 +11,16 @@ COPY apt.txt /tmp/
 RUN apt-get update -y && \
     xargs -a /tmp/apt.txt apt-get install -y && \
     apt-get clean && \
-    rm /tmp/apt.txt
+    rm /tmp/apt.txt && \
+    sed -i '$d' /opt/conda/conda-meta/pinned
 
 USER $DOCKER_UID
 WORKDIR $HOME
 ARG PYTHON_VERSION=default
 
 COPY . ${HOME}/
-RUN conda env update -n base -f ${HOME}/environment.yml --prune && \
+RUN mamba remove openmpi && \
+    mamba env update -n base -f ${HOME}/environment.yml --prune && \
     conda clean --all -f -y && \
     conda list
 
