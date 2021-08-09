@@ -22,7 +22,8 @@ jobs:
       - run: docker build -t pyiron/continuum:latest continuum/
       - run: docker tag pyiron/continuum:latest pyiron/continuum:"$(date +%F)"
       - run: docker images
+      - run: docker run --rm pyiron/continuum /bin/bash -c 'source /opt/conda/bin/activate; i=0; for f in $(ls ~/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --to notebook --execute $f || i=$((i+1)); done; if [ $i -gt 0 ]; then exit 1; fi;'
       - run: docker run --rm pyiron/base /bin/bash -c 'source /opt/conda/bin/activate; i=0; for f in $(ls ~/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --to notebook --execute $f || i=$((i+1)); done; if [ $i -gt 0 ]; then exit 1; fi;'  
       - run: docker run --rm pyiron/pyiron /bin/bash -c 'source /opt/conda/bin/activate; i=0; for f in $(ls ~/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --to notebook --execute $f || i=$((i+1)); done; if [ $i -gt 0 ]; then exit 1; fi;'
       - run: docker run --rm pyiron/experimental /bin/bash -c 'source /opt/conda/bin/activate; i=0; for f in $(ls ~/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --to notebook --execute $f || i=$((i+1)); done; if [ $i -gt 0 ]; then exit 1; fi;'
-      - run: docker run --rm pyiron/continuum /bin/bash -c 'source /opt/conda/bin/activate; i=0; for f in $(ls ~/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --to notebook --execute $f || i=$((i+1)); done; if [ $i -gt 0 ]; then exit 1; fi;'
+      
