@@ -3,4 +3,4 @@ channels:
 dependencies:
 - sphinxdft =3.0.3
 - mkl =2021.3.0
-- gpaw =21.6.0=*openmpi*
+# - gpaw =21.6.0=*openmpi*
