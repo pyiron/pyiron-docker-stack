@@ -1,7 +1,7 @@
 channels:
 - conda-forge
 dependencies:
-- pyiron_experimental =0.0.1
+- pyiron_experimental =0.0.2
 - temmeta =0.0.6
 - pyprismatic =1.2.1
 - match-series =1.0.4
