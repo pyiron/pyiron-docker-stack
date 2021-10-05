@@ -9,7 +9,8 @@ WORKDIR $HOME
 ARG PYTHON_VERSION=default
 
 COPY . ${HOME}/
-RUN mamba env update -n base -f ${HOME}/environment.yml --prune && \
+RUN conda install -n base -c defaults mkl=2021.3.0 && \
+    mamba env update -n base -f ${HOME}/environment.yml --prune && \
     conda clean --all -f -y && \
     conda list
 
