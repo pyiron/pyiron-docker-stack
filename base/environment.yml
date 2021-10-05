@@ -3,4 +3,3 @@ channels:
 dependencies:
 - pyiron_base =0.3.5
 - seaborn =0.11.2
-- h5py =2.10.0 
