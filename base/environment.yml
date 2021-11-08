@@ -1,5 +1,5 @@
 channels:
 - conda-forge
 dependencies:
-- pyiron_base =0.3.5
+- pyiron_base =0.3.10
 - seaborn =0.11.2
