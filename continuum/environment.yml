@@ -4,12 +4,13 @@ dependencies:
 - python =3.8*
 - lammps =2021.07.30=*mpich*
 - damask =3.0.0a4
-- vtk
-- itkwidgets
-- pyvista
-- pymatgen =2022.0.16
-- sqsgenerator =0.0.5
 - fenics =2019.1.0
+- itkwidgets
 - mshr =2019.1.0
 - pyiron_continuum =0.0.3
 - pyiron_gpl =0.0.3
+- pymatgen =2022.0.16
+- pyvista
+- sqsgenerator =0.0.5
+- superlu_dist=6.2.0=*_4
+- vtk
