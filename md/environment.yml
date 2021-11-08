@@ -5,5 +5,5 @@ dependencies:
 - pyiron_atomistics =0.2.29
 - pyiron-data =0.0.17
 - nglview =3.0.3
-- lammps =2021.08.31=*openmpi*
+- lammps =2021.07.30=*openmpi*
 - openkim-models =2021.01.28
