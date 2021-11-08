@@ -7,5 +7,3 @@ dependencies:
 - nglview =3.0.3
 - lammps =2021.07.30=*openmpi*
 - openkim-models =2021.01.28
-- h5io=0.1.2
-- numpy=1.21.3
