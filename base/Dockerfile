@@ -41,7 +41,7 @@ WORKDIR $HOME
 ARG PYTHON_VERSION=default
 
 COPY . ${HOME}/
-RUN mamba env update -n base -f ${HOME}/environment.yml --prune && \
+RUN mamba env update -n base -f ${HOME}/environment.yml && \
     conda clean --all -f -y && \
     conda list
 
