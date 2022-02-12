@@ -1,7 +1,7 @@
 channels:
 - conda-forge
 dependencies:
-- lammps =2021.09.29=*mpich*
+- lammps =2021.07.30=*mpich*
 - damask =3.0.0a5
 - fenics =2019.1.0
 - mshr =2019.1.0
