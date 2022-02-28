@@ -10,7 +10,7 @@ ARG PYTHON_VERSION=default
 
 COPY . ${HOME}/
 RUN conda install -n base -c defaults mkl=2022.0.1 && \
-    mamba env update -n base -f ${HOME}/environment.yml --prune && \
+    mamba env update -n base -f ${HOME}/environment.yml && \
     conda clean --all -f -y && \
     conda list
 
