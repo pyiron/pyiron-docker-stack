@@ -28,7 +28,7 @@ USER root
 RUN rm ${HOME}/*.ipynb &&\
     chmod +x ${HOME}/include_notebooks.sh && \
     /bin/bash ${HOME}/include_notebooks.sh && \
-    fix-permissions /home/$DOCKER_USER && \
+    fix-permissions ${HOME} && \
     fix-permissions $CONDA_DIRs
 
 # Switch back to pyiron to avoid accidental container runs as root
