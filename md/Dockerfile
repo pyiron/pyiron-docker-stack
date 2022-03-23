@@ -20,7 +20,7 @@ RUN mamba env update -n base -f ${HOME}/environment.yml && \
 USER root
 RUN chmod +x ${HOME}/include_notebooks.sh && \
     /bin/bash include_notebooks.sh &&\
-    fix-permissions /home/$DOCKER_USER && \
+    fix-permissions ${HOME} && \
     fix-permissions $CONDA_DIR
 
 # Switch back to pyiron to avoid accidental container runs as root
