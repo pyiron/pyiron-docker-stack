@@ -3,7 +3,7 @@ channels:
 dependencies:
 - lammps =2021.07.30=*mpich*
 - damask =3.0.0a5
-- fenics =2019.1.0
+- fenics =2019.1.0=*_26
 - mshr =2019.1.0
 - panel =0.12.6
 - pyiron_continuum =0.0.4
