@@ -1,6 +1,7 @@
 channels:
 - conda-forge
 dependencies:
+- python =3.9
 - ipywidgets
 - pyiron_base =0.5.32
 - sqlalchemy <2.0.0
