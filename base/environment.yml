@@ -3,6 +3,7 @@ channels:
 dependencies:
 - ipywidgets
 - pyiron_base =0.5.32
+- sqlalchemy <2.0.0
 - seaborn =0.12.2
 - damask
 - openssh
