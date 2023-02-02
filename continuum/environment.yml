@@ -2,7 +2,7 @@ channels:
 - conda-forge
 dependencies:
 - lammps =2022.06.23=*mpich*
-- damask =3.0.0a7
+- damask =3.0.0a5
 - fenics =2019.1.0
 - mshr =2019.1.0
 - panel =0.14.3
