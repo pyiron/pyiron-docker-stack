@@ -4,7 +4,7 @@ dependencies:
 - lammps =2021.09.29=*mpich*  # latest lammps version build with hdf5 1.12.1
 - damask =3.0.0a6  # requires hdf5 1.12.1
 - hdf5 =1.12.1=*mpich*
-- fenics =2019.1.0
+- fenics =2019.1.0=*_24
 - mshr =2019.1.0
 - panel =0.14.3
 - pyiron_continuum =0.0.5
