@@ -1,8 +1,9 @@
-ARG ROOT_CONTAINER=jupyter/base-notebook:ubuntu-20.04@sha256:2d09745c7212907cf003e369921a935a055a92986acd47da90f22b8befd815fc
+ARG ROOT_CONTAINER=jupyter/base-notebook:ubuntu-20.04@sha256:f73595b4d5b2461d04195f55d6c49d5c18e88b5f7ebe7106b5897e2429b1eddb
+
 ARG BASE_CONTAINER=$ROOT_CONTAINER
 FROM $BASE_CONTAINER
 
-MAINTAINER Jan Janssen <janssen@mpie.de>, Muhammad Hassani <hassani@mpie.de>
+MAINTAINER Jan Janssen <janssen@mpie.de>, Marian Bruns <bruns@mpie.de>
 
 USER root
 
@@ -26,7 +27,6 @@ ENV CONDA_DIR=/opt/conda \
 
 #ENV HOME=/home/$DOCKER_USER
 ENV HOME=/home/$NB_USER
-
 
 COPY apt.txt /tmp/
 # creating account for pyiron_user.
