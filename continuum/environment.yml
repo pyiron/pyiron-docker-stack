@@ -1,8 +1,8 @@
 channels:
 - conda-forge
 dependencies:
-- lammps =2022.06.23=*mpich*
-- damask =3.0.0a6
+- lammps =2021.09.29=*mpich*  # latest lammps version build with hdf5 1.12.1
+- damask =3.0.0a6  # requires hdf5 1.12.1
 - fenics =2019.1.0=*_34
 - mshr =2019.1.0=*_6
 - panel =0.14.3
