@@ -3,12 +3,12 @@ channels:
 dependencies:
 - lammps =2021.07.30=*mpich*
 - damask =3.0.0a5
-- fenics =2019.1.0
+- fenics =2019.1.0=*_24
 - mshr =2019.1.0
-- panel =0.12.6
-- pyiron_continuum =0.0.4
+- panel =0.14.3
+- pyiron_continuum =0.0.5
 - pyiron_gpl =0.0.3
-- pymatgen =2022.2.10
+- pymatgen =2022.11.7
 - pyvista
-- sqsgenerator =0.0.5
+- sqsgenerator =0.2
 - vtk
