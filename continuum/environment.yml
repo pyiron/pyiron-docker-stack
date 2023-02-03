@@ -1,10 +1,10 @@
 channels:
 - conda-forge
 dependencies:
-- lammps =2021.07.30=*mpich*
-- damask =3.0.0a5
-- fenics =2019.1.0=*_24
-- mshr =2019.1.0
+- lammps =2022.06.23=*mpich*
+- damask =3.0.0a6
+- fenics =2019.1.0=*_34
+- mshr =2019.1.0=*_6
 - panel =0.14.3
 - pyiron_continuum =0.0.5
 - pyiron_gpl =0.0.3
