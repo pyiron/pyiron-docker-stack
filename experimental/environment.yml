@@ -9,3 +9,4 @@ dependencies:
 - pystem =0.0.26
 - scanf =1.5.2
 - hyperspy =1.7.3
+- libmamba =1.1.0
