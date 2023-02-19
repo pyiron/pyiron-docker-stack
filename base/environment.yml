@@ -5,4 +5,4 @@ dependencies:
 - pyiron_base =0.5.32
 - seaborn =0.12.2
 - sqlalchemy =1.4.46
-- libmamba =0.20.0
+- libmamba =1.1.0
