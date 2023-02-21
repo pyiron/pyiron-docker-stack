@@ -31,10 +31,10 @@ These commands do a number of things:
 In case the image isn't already on your system, it will be downloaded. Also, if not further specified, the `latest` tag will be assumed and outdated local versions may be updated.
 - `-i -t`: the container is spanwed in "interactive mode" by allocating a pseudo-tty (`-t`).
 - `-p 8888:8888`: port `8888` of the container instance is forwarded to port `8888` of the host.
-- <image name> is the images name.
+- `<image name>`: the image's name.
 - `/bin/bash`: inside the container, a `bash` shell is started.
 - `-c "source /opt/conda/bin/activate; jupyter notebook --notebook-dir=/home/jovyan/ --ip='*' --port=8888"`: 
- Mentioned shell executes the command inside the quotation marks:
+ the shell executes the command inside the quotation marks:
   - `source /opt/conda/bin/activate`: activate the conda environment
   - `jupyter notebook` or `jupyter lab`: start a Jupyter server running a notebbok/lab. Do this in the user's (`jovyan`) home-directory (`--notebook-dir=/home/jovyan/`) and allow connections from any IP address (`--ip='*'`) on port 8888 (`--port=8888`) which is connected to the outside.   
 
