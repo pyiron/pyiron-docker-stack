@@ -1,2 +1,5 @@
 libgl1-mesa-glx
 patch
+zip
+unzip
+openssh-client
