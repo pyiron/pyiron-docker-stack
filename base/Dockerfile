@@ -1,8 +1,8 @@
-ARG ROOT_CONTAINER=jupyter/base-notebook:ubuntu-20.04@sha256:2d09745c7212907cf003e369921a935a055a92986acd47da90f22b8befd815fc
+ARG ROOT_CONTAINER=jupyter/base-notebook:ubuntu-22.04@sha256:c585a0c70b3c438d2371e50c41f4d3e594987c7ea8caf0a4a99bc09b7adcd813
 ARG BASE_CONTAINER=$ROOT_CONTAINER
 FROM $BASE_CONTAINER
 
-MAINTAINER Jan Janssen <janssen@mpie.de>, Muhammad Hassani <hassani@mpie.de>
+MAINTAINER Jan Janssen <janssen@mpie.de>, Marian Bruns <m.bruns@mpie.de>
 
 USER root
 
