@@ -2,8 +2,7 @@ ARG ROOT_CONTAINER=pyiron/md:latest
 ARG BASE_CONTAINER=$ROOT_CONTAINER
 FROM $BASE_CONTAINER
 
-MAINTAINER Jan Janssen <janssen@mpie.de>, Muhammad Hassani <hassani@mpie.de>
-
+MAINTAINER Jan Janssen <janssen@mpie.de>, Marian Bruns <m.bruns@mpie.de>
 
 USER root
 COPY apt.txt /tmp/
@@ -25,12 +24,12 @@ RUN mamba env update -n base -f ${HOME}/environment.yml && \
 
 USER root
 RUN rm ${HOME}/*.ipynb &&\
-    chmod +x ${HOME}/include_notebooks.sh && \
-    /bin/bash ${HOME}/include_notebooks.sh && \
+    chmod +x ${HOME}/aggregate_and_clean.sh && \
+    /bin/bash ${HOME}/aggregate_and_clean.sh && \
     fix-permissions ${HOME} && \
     fix-permissions $CONDA_DIRs
 
-# Switch back to pyiron to avoid accidental container runs as root
+# Switch back to jovyan to avoid accidental container runs as root
 USER $DOCKER_UID
 
 WORKDIR $HOME

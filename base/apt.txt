@@ -3,3 +3,4 @@ patch
 zip
 unzip
 openssh-client
+git

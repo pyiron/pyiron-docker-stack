@@ -4,11 +4,11 @@ dependencies:
 - damask =3.0.0a7
 - fenics =2019.1.0=*_34
 - mshr =2019.1.0=*_7
-- panel =0.14.3
-- pyiron_continuum =0.0.5
-- pyiron_gpl =0.0.3
-- pymatgen =2022.11.7
+- panel
+- pyiron_continuum 
+- pyiron_gpl 
+- pymatgen 
 - pyvista
-- sqsgenerator =0.2
+- sqsgenerator 
 - vtk
-- libmamba =1.1.0
+- libmamba 
