@@ -3,10 +3,10 @@ channels:
 dependencies:
 - pyiron_experimental =0.0.2
 - temmeta =0.0.6
-- pyprismatic =2.0.0
+- pyprismatic =2.0
 - match-series =1.0.4
-- pyxem =0.14.2
+- pyxem =0.15.1
 - pystem =0.0.26
 - scanf =1.5.2
-- hyperspy =1.7.3
-- libmamba =1.1.0
+- hyperspy =1.7.5
+- libmamba =1.5.1
