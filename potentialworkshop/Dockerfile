@@ -2,7 +2,7 @@ ARG ROOT_CONTAINER=pyiron/pyiron:latest
 ARG BASE_CONTAINER=$ROOT_CONTAINER
 FROM $BASE_CONTAINER
 
-MAINTAINER Jan Janssen <janssen@mpie.de>, Muhammad Hassani <hassani@mpie.de>
+MAINTAINER Jan Janssen <janssen@mpie.de>, Marian Bruns <m.bruns@mpie.de>
 
 USER $DOCKER_UID
 WORKDIR $HOME
@@ -14,8 +14,8 @@ RUN mamba env update -n base -f ${HOME}/environment.yml && \
     conda list
 
 USER root
-RUN chmod +x ${HOME}/include_notebooks.sh && \
-    /bin/bash include_notebooks.sh &&\
+RUN chmod +x ${HOME}/aggregate_and_clean.sh && \
+    /bin/bash aggregate_and_clean.sh &&\
     fix-permissions $CONDA_DIR && \
     fix-permissions ${HOME}
 
