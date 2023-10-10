@@ -19,8 +19,8 @@ RUN mamba env update -n base -f ${HOME}/environment.yml && \
     conda list
 
 USER root
-RUN chmod +x ${HOME}/include_notebooks.sh && \
-    /bin/bash include_notebooks.sh &&\
+RUN chmod +x ${HOME}/aggregate_and_clean.sh && \
+    /bin/bash aggregate_and_clean.sh &&\
     fix-permissions $CONDA_DIR && \
     fix-permissions ${HOME}
 
