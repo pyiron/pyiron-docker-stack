@@ -2,15 +2,19 @@ ARG ROOT_CONTAINER=pyiron/md:latest
 ARG BASE_CONTAINER=$ROOT_CONTAINER
 FROM $BASE_CONTAINER
 
-MAINTAINER Jan Janssen <janssen@mpie.de>, Muhammad Hassani <hassani@mpie.de>
+MAINTAINER Jan Janssen <janssen@mpie.de>, Marian Bruns <m.bruns@mpie.de>
 
 USER $DOCKER_UID
 WORKDIR $HOME
 ARG PYTHON_VERSION=default
 
 COPY . ${HOME}/
-RUN conda install -n base -c defaults mkl=2022.0.1 && \
-    mamba env update -n base -f ${HOME}/environment.yml && \
+#RUN conda install -n base -c defaults mkl=2022.0.1 && \
+#    mamba env update -n base -f ${HOME}/environment.yml && \
+#    conda clean --all -f -y && \
+#    conda list
+
+RUN mamba env update -n base -f ${HOME}/environment.yml && \
     conda clean --all -f -y && \
     conda list
 
@@ -20,7 +24,7 @@ RUN chmod +x ${HOME}/include_notebooks.sh && \
     fix-permissions $CONDA_DIR && \
     fix-permissions ${HOME}
 
-# Switch back to pyiron to avoid accidental container runs as root
+# Switch back to user jovyan to avoid accidental container-runs as root
 USER $DOCKER_UID
 
 WORKDIR $HOME

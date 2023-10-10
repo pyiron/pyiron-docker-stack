@@ -1,6 +1,8 @@
 channels:
 - conda-forge
+- defaults
 dependencies:
-- sphinxdft =3.0.7
-- gpaw =22.8.0=*openmpi*
-- libmamba =1.1.0
+- mkl
+- sphinxdft 
+- gpaw =23.9.1=*openmpi*
+- libmamba 
