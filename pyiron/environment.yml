@@ -2,7 +2,7 @@ channels:
 - conda-forge
 - defaults
 dependencies:
-- mkl
-- sphinxdft 
+- mkl =2023.2.0
+- sphinxdft =3.0.7
 - gpaw =23.9.1=*openmpi*
-- libmamba 
+- libmamba =1.5.1
