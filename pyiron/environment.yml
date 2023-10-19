@@ -3,4 +3,3 @@ channels:
 dependencies:
 - sphinxdft =3.0.7
 - gpaw =22.8.0=*openmpi*
-- libmamba =1.5.2
