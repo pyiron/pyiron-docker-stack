@@ -11,3 +11,4 @@ dependencies:
 - pyvista
 - sqsgenerator =0.2
 - vtk
+- mpich
