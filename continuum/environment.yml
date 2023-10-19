@@ -11,4 +11,3 @@ dependencies:
 - pyvista
 - sqsgenerator =0.2
 - vtk
-- libmamba =1.5.2
