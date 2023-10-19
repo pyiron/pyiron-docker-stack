@@ -7,7 +7,7 @@ dependencies:
 - pyiron_contrib =0.1.6
 - pyiron_gpl =0.0.3
 - nbgitpuller =1.1.1
-- libmamba =1.1.0
+- libmamba =1.5.2
 - pip
 - pip:
     - pyace-lite
