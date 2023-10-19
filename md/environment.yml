@@ -7,4 +7,3 @@ dependencies:
 - nglview =3.0.3
 - lammps =2022.06.23=*openmpi*
 - openkim-models =2021.01.28
-- libmamba =1.5.2
