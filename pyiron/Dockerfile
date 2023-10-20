@@ -9,10 +9,10 @@ WORKDIR $HOME
 ARG PYTHON_VERSION=default
 
 COPY . ${HOME}/
-RUN conda install -n base -c defaults mkl=2022.0.1 && \
+RUN conda install -n base -c defaults mkl=2023.2.0 && \
     mamba env update -n base -f ${HOME}/environment.yml && \
-    conda clean --all -f -y && \
-    conda list
+    mamba clean --all -f -y && \
+    mamba list
 
 USER root
 RUN chmod +x ${HOME}/include_notebooks.sh && \

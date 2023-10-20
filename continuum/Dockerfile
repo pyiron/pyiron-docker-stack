@@ -20,8 +20,8 @@ ARG PYTHON_VERSION=default
 
 COPY . ${HOME}/
 RUN mamba env update -n base -f ${HOME}/environment.yml && \
-    conda clean --all -f -y && \
-    conda list
+    mamba clean --all -f -y && \
+    mamba list
 
 USER root
 RUN rm ${HOME}/*.ipynb &&\

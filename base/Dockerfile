@@ -1,4 +1,4 @@
-ARG ROOT_CONTAINER=jupyter/base-notebook:ubuntu-20.04@sha256:2d09745c7212907cf003e369921a935a055a92986acd47da90f22b8befd815fc
+ARG ROOT_CONTAINER=jupyter/base-notebook:ubuntu-22.04@sha256:b0e7daf4bda7ae837df23e22f655becdc9534f4de61678d2246ecef1b73a22ea
 ARG BASE_CONTAINER=$ROOT_CONTAINER
 FROM $BASE_CONTAINER
 
@@ -45,8 +45,8 @@ ARG PYTHON_VERSION=default
 
 COPY . ${HOME}/
 RUN mamba env update -n base -f ${HOME}/environment.yml && \
-    conda clean --all -f -y && \
-    conda list
+    mamba clean --all -f -y && \
+    mamba list
 
 # Fix permissions on /etc/jupyter as root
 USER root
