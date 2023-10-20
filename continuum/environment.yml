@@ -10,4 +10,4 @@ dependencies:
 - pyvista
 - sqsgenerator
 - vtk
-- hdf5 =1.14.2
+- hdf5 =1.12.2
