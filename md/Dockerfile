@@ -14,8 +14,8 @@ ENV OMPI_MCA_btl_vader_single_copy_mechanism=none
 
 COPY . ${HOME}/
 RUN mamba env update -n base -f ${HOME}/environment.yml && \
-    conda clean --all -f -y && \
-    conda list
+    mamba clean --all -f -y && \
+    mamba list
 
 USER root
 RUN chmod +x ${HOME}/include_notebooks.sh && \
