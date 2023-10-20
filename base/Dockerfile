@@ -45,8 +45,8 @@ ARG PYTHON_VERSION=default
 
 COPY . ${HOME}/
 RUN mamba env update -n base -f ${HOME}/environment.yml && \
-    conda clean --all -f -y && \
-    conda list
+    mamba clean --all -f -y && \
+    mamba list
 
 # Fix permissions on /etc/jupyter as root
 USER root
