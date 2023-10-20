@@ -1,8 +1,7 @@
 channels:
 - conda-forge
 dependencies:
-- ipywidgets =7.7.1
-- pyiron_base =0.5.32
-- seaborn =0.12.2
-- sqlalchemy =1.4.46
-- libmamba =1.1.0
+- ipywidgets =8.1.1
+- pyiron_base =0.6.8
+- seaborn =0.13.0
+- sqlalchemy =2.0.22
