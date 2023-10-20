@@ -1,12 +1,12 @@
 channels:
 - conda-forge
 dependencies:
-- damask =3.0.0a7
-- fenics =2019.1.0
-- mshr =2019.1.0
+- damask
+- fenics
+- mshr
 - pyiron_continuum =0.0.6
-- pyiron_gpl =0.0.3
-- pymatgen =2023.10.11
-- pyvista =0.42.3
-- sqsgenerator =0.3
-- vtk =9.2.6
+- pyiron_gpl
+- pymatgen
+- pyvista
+- sqsgenerator
+- vtk
