@@ -26,4 +26,12 @@ jobs:
       - run: docker run --rm pyiron/base /bin/bash -c 'source /opt/conda/bin/activate; i=0; for f in $(ls ~/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --to notebook --execute $f || i=$((i+1)); done; if [ $i -gt 0 ]; then exit 1; fi;'  
       - run: docker run --rm pyiron/pyiron /bin/bash -c 'source /opt/conda/bin/activate; i=0; for f in $(ls ~/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --to notebook --execute $f || i=$((i+1)); done; if [ $i -gt 0 ]; then exit 1; fi;'
       - run: docker run --rm pyiron/experimental /bin/bash -c 'source /opt/conda/bin/activate; i=0; for f in $(ls ~/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --to notebook --execute $f || i=$((i+1)); done; if [ $i -gt 0 ]; then exit 1; fi;'
+      - run: mkdir -p environment; chmod 777 environment
+      - run: docker run -v $(pwd)/environment:/home/jovyan/ --rm pyiron/base /bin/bash -c 'source /opt/conda/bin/activate; conda env export > /home/jovyan/pyiron_base_$(date +%F).yml;' 
+      - run: docker run -v $(pwd)/environment:/home/jovyan/ --rm pyiron/md /bin/bash -c 'source /opt/conda/bin/activate; conda env export > /home/jovyan/pyiron_md_$(date +%F).yml;' 
+      - run: docker run -v $(pwd)/environment:/home/jovyan/ --rm pyiron/continuum /bin/bash -c 'source /opt/conda/bin/activate; conda env export > /home/jovyan/pyiron_continuum_$(date +%F).yml;' 
+      - run: docker run -v $(pwd)/environment:/home/jovyan/ --rm pyiron/pyiron /bin/bash -c 'source /opt/conda/bin/activate; conda env export > /home/jovyan/pyiron_pyiron_$(date +%F).yml;' 
+      - run: docker run -v $(pwd)/environment:/home/jovyan/ --rm pyiron/potentialworkshop /bin/bash -c 'source /opt/conda/bin/activate; conda env export > /home/jovyan/pyiron_potentialworkshop_$(date +%F).yml;' 
+      - run: docker run -v $(pwd)/environment:/home/jovyan/ --rm pyiron/experimental /bin/bash -c 'source /opt/conda/bin/activate; conda env export > /home/jovyan/pyiron_experimental_$(date +%F).yml;'
+      - run: ls -al environment
       
