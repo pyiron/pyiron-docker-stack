@@ -8,3 +8,4 @@ dependencies:
 - pyiron_gpl =0.0.3
 - nbgitpuller =1.2.0
 - python-ace =0.2.8
+- calphy =1.2.12
