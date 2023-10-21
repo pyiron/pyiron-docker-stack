@@ -40,7 +40,7 @@ jobs:
       - run: docker push pyiron/experimental:"$(date +%F)"
       - run: docker push pyiron/continuum:latest
       - run: docker push pyiron/continuum:"$(date +%F)"
-      - run: mkdir -p environment
+      - run: mkdir -p environment; chmod 777 environment
       - run: docker run -v $(pwd)/environment:/home/jovyan/ --rm pyiron/base /bin/bash -c 'source /opt/conda/bin/activate; conda env export > /home/jovyan/pyiron_base_$(date +%F).yml;' 
       - run: docker run -v $(pwd)/environment:/home/jovyan/ --rm pyiron/md /bin/bash -c 'source /opt/conda/bin/activate; conda env export > /home/jovyan/pyiron_md_$(date +%F).yml;' 
       - run: docker run -v $(pwd)/environment:/home/jovyan/ --rm pyiron/continuum /bin/bash -c 'source /opt/conda/bin/activate; conda env export > /home/jovyan/pyiron_continuum_$(date +%F).yml;' 
