@@ -52,10 +52,4 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: |
-            environment/pyiron_base_$(date +%F).yml
-            environment/pyiron_md_$(date +%F).yml
-            environment/pyiron_continuum_$(date +%F).yml
-            environment/pyiron_pyiron_$(date +%F).yml
-            environment/pyiron_potentialworkshop_$(date +%F).yml
-            environment/pyiron_experimental_$(date +%F).yml
+          files: environment/pyiron_*.yml
