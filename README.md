@@ -13,6 +13,7 @@ We provide following flavors based on the main pyiron-modules:
 | pyiron/pyiron | pyiron/md | <a href="https://anaconda.org/conda-forge/sphinxdft">SPHInX</a> and <a href="https://anaconda.org/conda-forge/gpaw">GPAW</a> |  `docker pull pyiron/pyiron` |
 | pyiron/experimental | pyiron/base | <a href="https://anaconda.org/conda-forge/temmeta">TEMMETA</a>, <a href="https://anaconda.org/conda-forge/pyprismatic">pyprismatic</a>, <a href="https://anaconda.org/conda-forge/match-series">match-series</a>, <a href="https://anaconda.org/conda-forge/pyxem">pyxem</a>, <a href="https://anaconda.org/conda-forge/pystem">pystem</a> |  `docker pull pyiron/experimental` |
 | pyiron/continuum | pyiron/md | <a href="https://anaconda.org/conda-forge/damask">damask</a>, <a href="https://anaconda.org/conda-forge/sqsgenerator">sqsgenerator</a>, <a href="https://anaconda.org/conda-forge/fenics">fenics</a> |  `docker pull pyiron/continuum` |
+| pyiron/potentialworkshop | pyiron/pyiron | <a href="https://anaconda.org/conda-forge/atomicrex">atomicrex</a>, <a href="https://anaconda.org/conda-forge/calphy">calphy</a>, <a href="https://anaconda.org/conda-forge/pyiron_contrib">pyiron_contrib</a>, <a href="https://anaconda.org/conda-forge/pyiron_gpl">pyiron_gpl</a>, <a href="https://anaconda.org/conda-forge/python-ace">python-ace</a>, <a href="https://anaconda.org/conda-forge/runner">runner</a> | `docker pull pyiron/potentialworkshop` |
 
 The images also include some example notebooks to get you started.
 
