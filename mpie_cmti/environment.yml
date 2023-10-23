@@ -2,4 +2,3 @@ channels:
 - conda-forge
 dependencies:
 - pytorch =2.0.0
-- tensorflow =2.12.1
