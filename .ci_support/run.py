@@ -1,8 +1,10 @@
+from datetime import date
 import getopt
 import requests
 import sys
 
-import pandas 
+import pandas
+from tqdm import tqdm
 
 
 def check_environments(df):
