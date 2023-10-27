@@ -35,7 +35,8 @@ jobs:
         cd public
         python ../.ci_support/run.py -t ${{ secrets.GITHUB_TOKEN }}
         ls release.csv
-        cat release.csv 
+        cat release.csv
+        rm *.yml
         pwd
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@4.0.0
