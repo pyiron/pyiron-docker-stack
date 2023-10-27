@@ -91,8 +91,8 @@ if __name__ == "__main__":
     token = command_line(sys.argv)
     df_new = get_dataframe(token)
     df_old = pandas.read_csv("https://pyiron.org/docker-stacks/" + output_file_name, index_col=0)
-    df_old["status"] = df_old["status"].astype("bool")
     df_combo = combined_df(df_old=df_old, df_new=df_new)
+    df_combo["status"] = df_combo["status"].astype("bool")
     status_dict = check_environments(df=df_combo[df_combo.status.values])
     df_combo["status"] = [
         status_dict[env] if env in status_dict.keys() else df_combo[df_combo.environment==env].status.values[0] 
