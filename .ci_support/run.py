@@ -12,7 +12,7 @@ def check_environments(df):
         write_env(content=requests.get(url).content, name=file) 
         for url, file in tqdm(zip(df.environment_url.values, df.environment.values), total=len(df))
     ]
-    return {env: test_environment(file_name=env) for env in tqdm(df.environment.values)})
+    return {env: test_environment(file_name=env) for env in tqdm(df.environment.values)}
 
 
 def combined_df(df_old, df_new):
