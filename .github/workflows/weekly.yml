@@ -27,7 +27,7 @@ jobs:
     - name: Setup
       shell: bash -l {0}
       run: |
-        conda install requests pandas
+        conda install -y requests pandas tqdm
     - name: Build
       shell: bash -l {0}
       run: |
