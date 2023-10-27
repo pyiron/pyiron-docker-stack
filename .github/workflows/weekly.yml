@@ -32,11 +32,14 @@ jobs:
     - name: Build
       shell: bash -l {0}
       run: |
-        python .ci_support/run.py -t ${{ secrets.GITHUB_TOKEN }}
+        mkdir public
+        cd public
+        python ../.ci_support/run.py -t ${{ secrets.GITHUB_TOKEN }}
         ls release.csv
         cat release.csv 
+        pwd
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@4.0.0
       with:
         branch: main
-        folder: release.csv
+        folder: public
