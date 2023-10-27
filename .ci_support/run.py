@@ -1,6 +1,7 @@
 from datetime import date
 import getopt
 import requests
+import subprocess
 import sys
 
 import pandas
