@@ -57,7 +57,11 @@ def command_line(argv):
 def get_dataframe(token):
     response = requests.get(
         f"https://api.github.com/repos/pyiron/docker-stacks/releases",
-        headers={"Authorization": "Bearer " + token, "Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28"},
+        headers={
+            "Authorization": "Bearer " + token, 
+            "Accept": "application/vnd.github+json", 
+            "X-GitHub-Api-Version": "2022-11-28",
+        },
     )
 
     tag_lst, environment_url_lst = [], []
@@ -68,7 +72,10 @@ def get_dataframe(token):
 
     df = pandas.DataFrame({"tag": tag_lst, "environment_url": environment_url_lst})
     df["environment"] = [url.split("/")[-1] for url in df["environment_url"].values]
-    df["docker_tag"] = ["/".join(file_name[:-4].split("_")[:-1]) + ":" + tag for file_name, tag in zip(df["environment"].values, df["tag"].values)]
+    df["docker_tag"] = [
+        "/".join(file_name[:-4].split("_")[:-1]) + ":" + tag 
+        for file_name, tag in zip(df["environment"].values, df["tag"].values)
+    ]
     return df
 
 
