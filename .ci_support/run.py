@@ -75,7 +75,7 @@ def get_dataframe(token):
 def test_environment(file_name):
     env_name = file_name.split(".yml")[0]
     try:
-        subprocess.check_output(["conda", "env", "create", "--name", env_name, "--file", file_name])
+        subprocess.check_output(["conda", "env", "create", "--name", env_name, "--file", file_name, "--dry-run"])
     except subprocess.CalledProcessError:
         return False
     else:
