@@ -1,0 +1,40 @@
+name: Weekly
+
+on:
+  repository_dispatch:
+    types: [build]
+  schedule:
+    - cron: "0 0 * * 1"
+  push:
+  pull_request:
+
+jobs:
+  build:
+    env:
+      CONDA_PREFIX: /usr/share/miniconda/
+
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest]
+        python-version: ["3.11"]
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: conda-incubator/setup-miniconda@v2
+      with:
+        auto-update-conda: true
+        python-version: ${{ matrix.python-version }}
+    - name: Setup
+      shell: bash -l {0}
+      run: |
+        conda install requests pandas
+    - name: Build
+      shell: bash -l {0}
+      run: |
+        python .ci_support/run.py --token ${{ secrets.GH_TOKEN }} 
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@4.0.0
+      with:
+        branch: main
+        folder: release.csv
