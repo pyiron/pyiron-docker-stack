@@ -5,7 +5,7 @@ on:
     types: [build]
   schedule:
     - cron: "0 0 * * 1"
-  pull:
+  pull_request:
 
 jobs:
   create-tag:
