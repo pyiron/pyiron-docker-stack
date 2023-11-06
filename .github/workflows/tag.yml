@@ -4,7 +4,7 @@ on:
   repository_dispatch:
     types: [build]
   schedule:
-    - cron: "0 0 * * 1"
+    - cron: "0 * * * *"
 
 jobs:
   create-tag:
@@ -20,3 +20,4 @@ jobs:
           tag: ${{ steps.date.outputs.date }}
           tag_exists_error: false
           message: ""
+          github_token: ${{ secrets.DEPENDABOT_WORKFLOW_TOKEN }}
