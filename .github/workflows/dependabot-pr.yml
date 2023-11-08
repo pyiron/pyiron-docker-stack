@@ -21,13 +21,11 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }} # Check out the head of the actual branch, not the PR
           fetch-depth: 0 # otherwise, you will fail to push refs to dest repo
           token: ${{ secrets.DEPENDABOT_WORKFLOW_TOKEN }}
-      - name: Find and set all environment yaml files
-        shell: bash -l {0}
-        run: |
-          echo "ENV_YML_FILES=$(find . -name environment.yml)" >> $GITHUB_ENV
       - uses: pyiron/actions/update-env-files@main
         with:
-          conda-yml: ${{ env.ENV_YML_FILES }}
+          conda-yml: ${{ env.YML_FILE_PATHS }}
+          env: 
+            YML_FILE_PATHS:"$(find . -name environment.yml)"
       - name: UpdateDependabotPR commit
         run: |
           git config --local user.email "pyiron@mpie.de"
