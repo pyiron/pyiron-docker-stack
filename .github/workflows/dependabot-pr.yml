@@ -13,7 +13,7 @@ on:
 
 jobs:
   dependabot:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest    
     if: (github.actor == 'dependabot[bot]')
     steps:
       - uses: actions/checkout@v3
@@ -24,8 +24,8 @@ jobs:
       - uses: pyiron/actions/update-env-files@main
         with:
           conda-yml: ${{ env.YML_FILE_PATHS }}
-          env: 
-            YML_FILE_PATHS:"$(find . -name environment.yml)"
+        env:
+          YML_FILE_PATHS: "$(find . -name environment.yml)"
       - name: UpdateDependabotPR commit
         run: |
           git config --local user.email "pyiron@mpie.de"
