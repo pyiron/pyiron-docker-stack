@@ -1,0 +1,40 @@
+# This workflow is used to apply the automated changes (by dependabot) to the dependencies in .ci_support/environment.yml ```
+# Usage:
+#   on:
+#     pull_request_target:
+#       branches: [ main ]
+
+name: Update Dependabot PR
+
+on:
+  workflow_call:
+  pull_request_target:
+    branches: [ main ]
+
+jobs:
+  dependabot:
+    runs-on: ubuntu-latest
+    if: (github.actor == 'dependabot[bot]')
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.ref }} # Check out the head of the actual branch, not the PR
+          fetch-depth: 0 # otherwise, you will fail to push refs to dest repo
+          token: ${{ secrets.DEPENDABOT_WORKFLOW_TOKEN }}
+      - name: Find and set all environment yaml files
+        shell: bash -l {0}
+        run: |
+          echo "ENV_YML_FILES=$(find . -name environment.yml)" >> $GITHUB_ENV
+      - uses: pyiron/actions/update-env-files@main
+        with:
+          conda-yml: ${{ env.ENV_YML_FILES }}
+      - name: UpdateDependabotPR commit
+        run: |
+          git config --local user.email "pyiron@mpie.de"
+          git config --local user.name "pyiron-runner"
+          git commit -m "[dependabot skip] Update environment" -a
+      - name: UpdateDependabotPR push
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.DEPENDABOT_WORKFLOW_TOKEN }}
+          branch: ${{ github.event.pull_request.head.ref }}
