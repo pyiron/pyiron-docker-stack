@@ -1,5 +1,5 @@
 calphy==1.2.12
-damask==3.0.0a7
+damask==3.0.0a7.post0
 fenics==2019.1.0
 gpaw==23.9.1
 hyperspy==1.7.5
