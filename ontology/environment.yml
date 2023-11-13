@@ -1,0 +1,4 @@
+channels:
+- conda-forge
+dependencies:
+- pyiron_ontology =0.1.3
