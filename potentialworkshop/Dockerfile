@@ -14,6 +14,7 @@ RUN mamba env update -n base -f ${HOME}/environment.yml && \
     mamba list
 
 USER root
+ENV NOTEBOOK_DIR=${HOME}/notebooks_potentialworkshop
 RUN chmod +x ${HOME}/include_notebooks.sh && \
     /bin/bash include_notebooks.sh &&\
     fix-permissions $CONDA_DIR && \
