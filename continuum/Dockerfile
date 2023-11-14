@@ -24,11 +24,11 @@ RUN mamba env update -n base -f ${HOME}/environment.yml && \
     mamba list
 
 USER root
-RUN rm ${HOME}/*.ipynb &&\
-    chmod +x ${HOME}/include_notebooks.sh && \
+ENV NOTEBOOK_DIR=${HOME}/notebooks_continuum
+RUN chmod +x ${HOME}/include_notebooks.sh && \
     /bin/bash ${HOME}/include_notebooks.sh && \
     fix-permissions ${HOME} && \
-    fix-permissions $CONDA_DIRs
+    fix-permissions $CONDA_DIR
 
 # Switch back to pyiron to avoid accidental container runs as root
 USER $DOCKER_UID
