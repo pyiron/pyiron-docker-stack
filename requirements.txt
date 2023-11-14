@@ -1,4 +1,5 @@
 calphy==1.2.12
+custodian==2023.10.9
 damask==3.0.0a7
 fenics==2019.1.0
 gpaw==23.9.1
