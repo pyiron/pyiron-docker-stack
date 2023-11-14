@@ -110,4 +110,4 @@ if __name__ == "__main__":
         date.today() if env in status_dict.keys() else df_combo[df_combo.environment==env].last_checked.values[0] 
         for env in df_combo.environment.values
     ]
-    df_combo.sort_values(by="tag").to_csv(output_file_name)
+    df_combo.sort_values(by="tag", ignore_index=True).to_csv(output_file_name)
