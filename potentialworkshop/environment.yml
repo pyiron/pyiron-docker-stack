@@ -5,7 +5,7 @@ dependencies:
 - runner =1.2
 - structdbrest =0.0.1
 - pyiron_contrib =0.1.13
-- pyiron_gpl =0.0.3
+- pyiron_gpl =0.0.4
 - nbgitpuller =1.2.0
 - python-ace =0.2.8
 - calphy =1.2.12
