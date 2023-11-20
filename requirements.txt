@@ -13,7 +13,7 @@ pyiron-contrib==0.1.13
 pyiron-gpl==0.0.3
 pyiron==0.5.0
 pyiron_base==0.6.9
-pyiron_experimental==0.0.2
+pyiron_experimental==0.0.3
 pymatgen==2023.11.12
 pystem==0.0.26
 python-ace==0.2.8
