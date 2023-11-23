@@ -6,7 +6,6 @@ dependencies:
 - mshr =2019.1.0=*_9
 - pyiron_continuum =0.0.7
 - pyiron_gpl =0.0.4
-- pymatgen =2023.11.12
 - pyvista =0.42.3
 - sqsgenerator =0.3
 - vtk =9.2.6
