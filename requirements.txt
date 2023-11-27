@@ -18,7 +18,7 @@ pymatgen==2023.11.12
 pystem==0.0.26
 python-ace==0.2.8
 pyvista==0.42.3
-pyxem==0.15.1
+pyxem==0.16.0
 pyxtal==0.6.1
 scanf==1.5.2
 seaborn==0.13.0
