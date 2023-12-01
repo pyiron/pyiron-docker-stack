@@ -4,7 +4,7 @@ dependencies:
 - damask =3.0.0a8
 - fenics =2019.1.0=*_42
 - mshr =2019.1.0=*_9
-- pyiron_continuum =0.0.6
+- pyiron_continuum =0.0.8
 - pyiron_atomistics =0.3.4
 - pyiron_gpl =0.0.4
 - pymatgen =2023.11.12
