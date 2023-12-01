@@ -5,7 +5,7 @@ dependencies:
 - temmeta =0.0.6
 - pyprismatic =2.0.0
 - match-series =1.0.4
-- pyxem =0.15.1
+- pyxem =0.16.0
 - pystem =0.0.26
 - scanf =1.5.2
-- hyperspy =1.7.5
+- hyperspy =1.7.6

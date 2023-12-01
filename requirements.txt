@@ -2,13 +2,13 @@ calphy==1.2.12
 damask==3.0.0a8
 fenics==2019.1.0
 gpaw==23.9.1
-hyperspy==1.7.5
+hyperspy==1.7.6
 ipywidgets==8.1.1
-maggma==0.57.10
+maggma==0.58.0
 nbgitpuller==1.2.0
 nglview==3.0.8
-pyiron-atomistics==0.3.6
-pyiron-continuum==0.0.6
+pyiron-atomistics==0.3.7
+pyiron-continuum==0.0.7
 pyiron-contrib==0.1.13
 pyiron-gpl==0.0.4
 pyiron==0.5.1
@@ -18,7 +18,7 @@ pymatgen==2023.11.12
 pystem==0.0.26
 python-ace==0.2.8
 pyvista==0.42.3
-pyxem==0.15.1
+pyxem==0.16.0
 pyxtal==0.6.1
 scanf==1.5.2
 seaborn==0.13.0
