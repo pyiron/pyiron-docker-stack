@@ -2,10 +2,10 @@ channels:
 - conda-forge
 dependencies:
 - pyiron =0.5.1
-- pyiron_atomistics =0.3.7
+- pyiron_atomistics =0.3.8
 - pyscal =2.10.18
 - maggma =0.58.0
-- pyiron-data =0.0.25
+- pyiron-data =0.0.26
 - nglview =3.0.8
 - lammps =2023.08.02=*openmpi*
 - openkim-models =2021.01.28
