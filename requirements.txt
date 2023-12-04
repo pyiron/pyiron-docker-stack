@@ -25,4 +25,4 @@ seaborn==0.13.0
 sqlalchemy==2.0.23
 structdbrest==0.0.1
 temmeta==0.0.6
-vtk==9.2.6
+vtk==9.3.0
