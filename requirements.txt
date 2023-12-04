@@ -7,7 +7,7 @@ ipywidgets==8.1.1
 maggma==0.58.0
 nbgitpuller==1.2.0
 nglview==3.0.8
-pyiron-atomistics==0.3.8
+pyiron-atomistics==0.3.10
 pyiron-continuum==0.0.8
 pyiron-contrib==0.1.13
 pyiron-gpl==0.0.4
