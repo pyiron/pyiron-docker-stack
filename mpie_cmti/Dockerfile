@@ -1,4 +1,4 @@
-ARG ROOT_CONTAINER=pyiron/potentialworkshop:latest
+ARG ROOT_CONTAINER=pyiron/pyiron:latest
 ARG BASE_CONTAINER=$ROOT_CONTAINER
 FROM $BASE_CONTAINER
 
