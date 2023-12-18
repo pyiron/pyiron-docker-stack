@@ -1,6 +1,8 @@
 channels:
 - conda-forge
 dependencies:
+- atomicrex =1.0.3
+- runner =1.2
 - pytorch =2.0.0
 - fitsnap3 =3.1.0.1
 - tensorflow =2.15.0
