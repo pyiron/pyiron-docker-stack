@@ -4,6 +4,7 @@ dependencies:
 - atomicrex =1.0.3
 - calphy =1.2.12
 - fitsnap3 =3.1.0.1
+- nbgitpuller =1.2.0
 - pyiron_contrib =0.1.13
 - pyiron_gpl =0.0.4
 - python-ace =0.2.8
