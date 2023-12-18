@@ -7,3 +7,4 @@ dependencies:
 - python-ace =0.2.8
 - calphy =1.2.12
 - pyxtal =0.6.1
+- pyiron_gpl =0.0.4
