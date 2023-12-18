@@ -4,3 +4,6 @@ dependencies:
 - pytorch =2.0.0
 - fitsnap3 =3.1.0.1
 - tensorflow =2.15.0
+- python-ace =0.2.8
+- calphy =1.2.12
+- pyxtal =0.6.1
