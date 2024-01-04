@@ -1,9 +1,8 @@
 name: Docker Push
 
 on:
-  push:
-    tags:
-      - "*-*-*"
+  schedule:
+    - cron: "0 0 * * 1"
 
 jobs:
   build:
@@ -12,7 +11,13 @@ jobs:
       - uses: actions/checkout@v2
       - name: Get current date
         id: date
-        run: echo "::set-output name=date::$(date +%F)"
+        run: echo "date=$(date +%F)" >> $GITHUB_OUTPUT
+      - uses: rickstaa/action-create-tag@v1
+        id: "tag_create"
+        with:
+          tag: ${{ steps.date.outputs.date }}
+          tag_exists_error: false
+          message: ""
       - name: Login to DockerHub Registry
         run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
       - run: docker build -t pyiron/base:latest base/
@@ -55,6 +60,6 @@ jobs:
       - run: ls -al environment
       - name: Release
         uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
         with:
           files: environment/pyiron_*.yml
+          tag_name: ${{ steps.date.outputs.date }}
