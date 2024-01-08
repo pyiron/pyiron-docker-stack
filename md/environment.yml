@@ -3,6 +3,7 @@ channels:
 dependencies:
 - pyiron =0.5.1
 - pyiron_atomistics =0.4.4
+- pymatgen =2023.12.18
 - pyscal =2.10.18
 - maggma =0.60.0
 - pyiron-data =0.0.26
