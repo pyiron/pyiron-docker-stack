@@ -2,7 +2,7 @@ channels:
 - conda-forge
 dependencies:
 - pyiron =0.5.2
-- pyiron_atomistics =0.4.6
+- pyiron_atomistics =0.4.7
 - pymatgen =2023.12.18
 - pyscal =2.10.18
 - maggma =0.60.2
