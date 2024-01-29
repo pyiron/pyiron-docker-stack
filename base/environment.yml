@@ -3,6 +3,6 @@ channels:
 dependencies:
 - ipywidgets =8.1.1
 - pyiron_base =0.7.1
-- seaborn =0.13.1
+- seaborn =0.13.2
 - sqlalchemy =2.0.25
 - git =2.43.0
