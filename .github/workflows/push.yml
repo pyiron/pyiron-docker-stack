@@ -32,6 +32,8 @@ jobs:
       - run: docker tag pyiron/experimental:latest pyiron/experimental:"$(date +%F)"
       - run: docker build -t pyiron/continuum:latest continuum/
       - run: docker tag pyiron/continuum:latest pyiron/continuum:"$(date +%F)"
+      - run: docker build -t pyiron/mpie_cmti:latest mpie_cmti/
+      - run: docker tag pyiron/mpie_cmti:latest pyiron/mpie_cmti:"$(date +%F)"
       - run: docker images
       - run: docker push pyiron/base:latest
       - run: docker push pyiron/base:"$(date +%F)"
@@ -45,6 +47,8 @@ jobs:
       - run: docker push pyiron/experimental:"$(date +%F)"
       - run: docker push pyiron/continuum:latest
       - run: docker push pyiron/continuum:"$(date +%F)"
+      - run: docker push pyiron/mpie_cmti:latest
+      - run: docker push pyiron/mpie_cmti:"$(date +%F)"
       - run: mkdir -p environment; chmod 777 environment
       - run: docker run -v $(pwd)/environment:/home/jovyan/ --rm pyiron/base /bin/bash -c 'source /opt/conda/bin/activate; conda env export > /home/jovyan/pyiron_base_$(date +%F).yml;' 
       - run: docker run -v $(pwd)/environment:/home/jovyan/ --rm pyiron/md /bin/bash -c 'source /opt/conda/bin/activate; conda env export > /home/jovyan/pyiron_md_$(date +%F).yml;' 
@@ -52,6 +56,7 @@ jobs:
       - run: docker run -v $(pwd)/environment:/home/jovyan/ --rm pyiron/pyiron /bin/bash -c 'source /opt/conda/bin/activate; conda env export > /home/jovyan/pyiron_pyiron_$(date +%F).yml;' 
       - run: docker run -v $(pwd)/environment:/home/jovyan/ --rm pyiron/potentialworkshop /bin/bash -c 'source /opt/conda/bin/activate; conda env export > /home/jovyan/pyiron_potentialworkshop_$(date +%F).yml;' 
       - run: docker run -v $(pwd)/environment:/home/jovyan/ --rm pyiron/experimental /bin/bash -c 'source /opt/conda/bin/activate; conda env export > /home/jovyan/pyiron_experimental_$(date +%F).yml;'
+      - run: docker run -v $(pwd)/environment:/home/jovyan/ --rm pyiron/mpie_cmti /bin/bash -c 'source /opt/conda/bin/activate; conda env export > /home/jovyan/pyiron_mpie_cmti_$(date +%F).yml;'
       - run: ls -al environment
       - name: Release
         uses: softprops/action-gh-release@v1
