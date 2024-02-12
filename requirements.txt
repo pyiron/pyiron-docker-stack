@@ -14,7 +14,7 @@ pyiron-gpl==0.0.4
 pyiron==0.5.2
 pyiron_base==0.7.4
 pyiron_experimental==0.0.3
-pymatgen==2024.1.27
+pymatgen==2024.2.8
 pystem==0.0.26
 python-ace==0.2.8
 pyvista==0.43.2
