@@ -8,14 +8,13 @@ dependencies:
 - pyiron_contrib =0.1.14
 - pyiron_workflow =0.2.1
 - pyiron_gui =0.0.11
-- pyxtal =0.6.1
 - matgl =0.9.2
 - mlip =2.0
 - sqsgenerator =0.3
 - pyiron_gpl =0.0.4
 - python-ace =0.2.8
 - pytorch =2.0.0
-- pyxtal =0.6.1
+- pyxtal =0.6.2
 - runner =1.2
 - structdbrest =0.0.1
 - tensorflow =2.15.0
