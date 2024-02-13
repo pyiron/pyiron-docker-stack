@@ -19,10 +19,12 @@ pystem==0.0.26
 python-ace==0.2.8
 pyvista==0.43.3
 pyxem==0.17.0
-pyxtal==0.6.1
+pyxtal==0.6.2
 scanf==1.5.2
 seaborn==0.13.2
 sqlalchemy==2.0.26
 structdbrest==0.0.1
 temmeta==0.0.6
 vtk==9.2.6
+pytorch==2.0.0
+tensorflow==2.15.0
