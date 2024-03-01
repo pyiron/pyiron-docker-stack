@@ -3,9 +3,9 @@ channels:
 dependencies:
 - pyiron =0.5.2
 - pyiron_atomistics =0.4.17
-- pymatgen =2024.2.8
+- pymatgen =2024.2.23
 - pyscal =2.10.18
-- maggma =0.62.1
+- maggma =0.63.3
 - pyiron-data =0.0.29
 - nglview =3.1.1
 - lammps =2023.11.21=*openmpi*
