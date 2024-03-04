@@ -6,7 +6,7 @@ hyperspy==2.0
 ipywidgets==8.1.2
 maggma==0.63.3
 nbgitpuller==1.2.0
-nglview==3.1.1
+nglview==3.1.2
 pyiron-atomistics==0.4.17
 pyiron-continuum==0.0.8
 pyiron-contrib==0.1.15
