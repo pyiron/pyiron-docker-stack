@@ -8,5 +8,5 @@ dependencies:
 - pyiron_gpl =0.0.4
 - nbgitpuller =1.2.0
 - python-ace =0.2.8
-- calphy =1.3.2
+- calphy =1.3.6
 - pyxtal =0.6.2
