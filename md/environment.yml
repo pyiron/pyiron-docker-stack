@@ -5,7 +5,7 @@ dependencies:
 - pyiron_atomistics =0.4.17
 - pymatgen =2024.3.1
 - pyscal =2.10.18
-- maggma =0.63.4
+- maggma =0.64.0
 - pyiron-data =0.0.29
 - nglview =3.1.2
 - lammps =2023.11.21=*openmpi*
