@@ -20,4 +20,4 @@ dependencies:
 - tensorflow =2.15.0
 - psycopg2 =2.9.9
 - netCDF4 =1.6.5
-- numba =0.59.1
+- numba =0.59.0
