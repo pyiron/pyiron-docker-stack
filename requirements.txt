@@ -12,7 +12,7 @@ pyiron-continuum==0.0.8
 pyiron-contrib==0.1.15
 pyiron-gpl==0.0.4
 pyiron==0.5.2
-pyiron_base==0.7.11
+pyiron_base==0.8.0
 pyiron_experimental==0.0.3
 pymatgen==2024.3.1
 pystem==0.0.26
