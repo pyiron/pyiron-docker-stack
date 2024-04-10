@@ -21,3 +21,4 @@ dependencies:
 - psycopg2 =2.9.9
 - netCDF4 =1.6.5
 - numba =0.59.0
+- llama-index =0.10.6
