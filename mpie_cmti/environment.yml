@@ -17,7 +17,7 @@ dependencies:
 - pyxtal =0.6.2
 - runner =1.2
 - structdbrest =0.0.1
-- tensorflow =2.15.0
+- tensorflow =2.16.1
 - psycopg2 =2.9.9
 - netCDF4 =1.6.5
 - numba =0.59.0
