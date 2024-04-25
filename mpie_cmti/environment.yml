@@ -12,7 +12,7 @@ dependencies:
 - matgl =0.9.2
 - mlip =2.0
 - sqsgenerator =0.3
-- pyiron_gpl =0.0.4
+- pyiron_gpl =0.0.5
 - python-ace =0.2.8
 - pytorch =2.0.0
 - pyxtal =0.6.2

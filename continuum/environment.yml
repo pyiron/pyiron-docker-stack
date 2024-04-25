@@ -5,7 +5,7 @@ dependencies:
 - fenics =2019.1.0=*_42
 - mshr =2019.1.0=*_9
 - pyiron_continuum =0.0.8
-- pyiron_gpl =0.0.4
+- pyiron_gpl =0.0.5
 - pyvista =0.43.5
 - sqsgenerator =0.3
 - vtk =9.2.6
