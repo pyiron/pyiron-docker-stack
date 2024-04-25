@@ -22,3 +22,4 @@ dependencies:
 - netCDF4 =1.6.5
 - numba =0.59.0
 - llama-index =0.10.31
+- jupyter-server-proxy =4.1.2
