@@ -8,7 +8,7 @@ jupyter-server-proxy==4.1.2
 maggma==0.65.0
 nbgitpuller==1.2.1
 nglview==3.1.2
-pyiron-atomistics==0.5.3
+pyiron-atomistics==0.5.4
 pyiron-continuum==0.0.8
 pyiron-contrib==0.1.16
 pyiron_potentialfit==0.2.0
