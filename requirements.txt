@@ -19,7 +19,7 @@ pyiron_experimental==0.0.3
 pymatgen==2024.5.1
 pystem==0.0.26
 python-ace==0.2.8
-pyvista==0.43.6
+pyvista==0.43.7
 pyxem==0.17.0
 pyxtal==0.6.2
 scanf==1.5.2
