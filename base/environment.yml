@@ -2,7 +2,7 @@ channels:
 - conda-forge
 dependencies:
 - ipywidgets =8.1.2
-- pyiron_base =0.8.3
+- pyiron_base =0.8.4
 - seaborn =0.13.2
 - sqlalchemy =2.0.29
 - git =2.43.0
