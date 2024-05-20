@@ -24,7 +24,7 @@ pyxem==0.17.0
 pyxtal==0.6.6
 scanf==1.5.2
 seaborn==0.13.2
-sqlalchemy==2.0.29
+sqlalchemy==2.0.30
 structdbrest==0.0.1
 temmeta==0.0.6
 vtk==9.2.6
