@@ -4,6 +4,6 @@ dependencies:
 - ipywidgets =8.1.2
 - pyiron_base =0.8.4
 - seaborn =0.13.2
-- sqlalchemy =2.0.29
+- sqlalchemy =2.0.30
 - git =2.43.0
 - openmpi =4.1.6
