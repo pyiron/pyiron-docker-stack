@@ -15,7 +15,7 @@ dependencies:
 - pyiron_gpl =0.0.5
 - python-ace =0.2.8
 - pytorch =2.0.0
-- pyxtal =0.6.6
+- pyxtal =0.6.7
 - runner =1.2
 - structdbrest =0.0.1
 - tensorflow =2.15.0
