@@ -11,6 +11,7 @@ damask==3.0.0a8
 fenics==2019.1.0
 gpaw==24.1.0
 hyperspy==2.0.1
+jupyter-server-proxy==4.1.2
 nbgitpuller==1.2.1
 nglview==3.1.2
 pystem==0.0.26
