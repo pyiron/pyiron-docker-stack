@@ -5,7 +5,7 @@ gpaw==24.1.0
 hyperspy==2.0.1
 ipywidgets==8.1.2
 jupyter-server-proxy==4.1.2
-maggma==0.66.0
+maggma==0.67.0
 nbgitpuller==1.2.1
 nglview==3.1.2
 pyiron-atomistics==0.5.4
