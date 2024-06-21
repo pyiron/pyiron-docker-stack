@@ -6,8 +6,8 @@ dependencies:
 - fitsnap3 =3.1.0.1
 - nbgitpuller =1.2.1
 - pyiron_base =0.9.1
-- pyiron-atomistics =0.6.1
-- pyiron_snippets =0.1.2
+- pyironr_atomistics =0.6.1
+- pyiron_snippets =0.1.1
 - pyiron_contrib =0.1.16
 - pyiron_potentialfit =0.2.0
 - pyiron_workflow =0.8.0
