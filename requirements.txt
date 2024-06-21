@@ -1,12 +1,13 @@
 pyiron==0.5.2
-pyiron_base==0.8.4
-pyiron-atomistics==0.5.4
+pyiron_base==0.9.1
+pyiron-atomistics==0.6.1
 pyiron-continuum==0.0.8
 pyiron-contrib==0.1.16
 pyiron_experimental==0.0.3
 pyiron-gpl==0.0.5
+pyiron_snippets==0.1.2
 pyiron_potentialfit==0.2.0
-calphy==1.3.7
+calphy==1.3.8
 damask==3.0.0a8
 fenics==2019.1.0
 gpaw==24.1.0
