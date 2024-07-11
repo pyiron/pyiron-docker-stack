@@ -17,6 +17,7 @@ dependencies:
 - sqsgenerator =0.3
 - pyiron_gpl =0.0.5
 - python-ace =0.2.8
+- tensorpotential =0.2.0
 - pytorch =2.0.0
 - pyxtal =0.6.7
 - runner =1.2
