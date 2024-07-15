@@ -9,7 +9,7 @@ pyiron-gpl==0.0.5
 pyiron_snippets==0.1.1
 pyiron_potentialfit==0.3.2
 calphy==1.3.8
-damask==3.0.0a8
+damask==3.0.0b2.post0
 fenics==2019.1.0
 gpaw==24.1.0
 hyperspy==2.1.1
