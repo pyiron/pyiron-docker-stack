@@ -19,7 +19,7 @@ nglview==3.1.2
 pystem==0.0.26
 python-ace==0.2.8
 pyvista==0.43.6
-pyxem==0.17.0
+pyxem==0.19.1
 pyxtal==0.6.7
 scanf==1.5.2
 seaborn==0.13.2
