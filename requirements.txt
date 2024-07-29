@@ -4,7 +4,7 @@ pyiron-atomistics==0.6.1
 pyiron-continuum==0.0.8
 pyiron-contrib==0.1.16
 pyiron_experimental==0.0.3
-pyiron_workflow==0.9.1
+pyiron_workflow==0.9.2
 pyiron-gpl==0.0.5
 pyiron_snippets==0.1.1
 pyiron_potentialfit==0.3.2
