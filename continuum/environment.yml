@@ -11,4 +11,4 @@ dependencies:
 - pyvista =0.43.6
 - sqsgenerator =0.3
 - vtk =9.2.6
-- seaborn
+- seaborn =0.13.2
