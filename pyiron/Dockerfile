@@ -16,7 +16,8 @@ RUN mamba install -n base -c defaults mkl=2023.2.0 && \
 
 USER root
 ENV NOTEBOOK_DIR=${HOME}/notebooks_pyiron
-RUN chmod +x ${HOME}/include_notebooks.sh && \
+RUN rm -rf ${HOME}/notebooks_atomistics && \
+    chmod +x ${HOME}/include_notebooks.sh && \
     /bin/bash include_notebooks.sh &&\
     fix-permissions $CONDA_DIR && \
     fix-permissions ${HOME}
