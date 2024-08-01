@@ -10,7 +10,7 @@ dependencies:
 - pyiron_continuum =0.0.8
 - pyiron_gpl =0.0.5
 - pyiron-data =0.0.30
-- pyvista =0.43.6
+- pyvista =0.44.1
 - sqsgenerator =0.3
 - vtk =9.2.6
 - seaborn =0.13.2
