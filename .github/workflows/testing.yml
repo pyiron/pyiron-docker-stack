@@ -8,26 +8,58 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: docker build -t pyiron/base:latest base/
-      - run: docker tag pyiron/base:latest pyiron/base:"$(date +%F)"
-      - run: docker build -t pyiron/md:latest md/
-      - run: docker tag pyiron/md:latest pyiron/md:"$(date +%F)"
-      - run: docker build -t pyiron/continuum:latest continuum/
-      - run: docker tag pyiron/continuum:latest pyiron/continuum:"$(date +%F)"
-      - run: docker build -t pyiron/pyiron:latest pyiron/
-      - run: docker tag pyiron/pyiron:latest pyiron/pyiron:"$(date +%F)"
-      - run: docker build -t pyiron/potentialworkshop:latest potentialworkshop/
-      - run: docker tag pyiron/potentialworkshop:latest pyiron/potentialworkshop:"$(date +%F)"
-      - run: docker build -t pyiron/experimental:latest experimental/
-      - run: docker tag pyiron/experimental:latest pyiron/experimental:"$(date +%F)"
-      - run: docker build -t pyiron/mpie_cmti:latest mpie_cmti/
-      - run: docker tag pyiron/mpie_cmti:latest pyiron/mpie_cmti:"$(date +%F)"
+      - uses: actions/checkout@v4
+      # pyiron/base
+      - run: |
+          docker build -t pyiron/base:latest base/
+          docker tag pyiron/base:latest pyiron/base:"$(date +%F)"
+      # pyiron/md
+      - run: |
+          cat base/apt.txt >> md/apt.txt
+          tail --lines=+4 base/environment.yml >> md/environment.yml
+          docker build -t pyiron/md:latest md/
+          docker tag pyiron/md:latest pyiron/md:"$(date +%F)"
+      # pyiron/continuum
+      - run: |
+          cat base/apt.txt >> continuum/apt.txt
+          docker build -t pyiron/continuum:latest continuum/
+          docker tag pyiron/continuum:latest pyiron/continuum:"$(date +%F)"
+      # pyiron/pyiron
+      - run: |
+          cat base/apt.txt >> md/apt.txt
+          tail --lines=+4 base/environment.yml >> pyiron/environment.yml
+          tail --lines=+4 md/environment.yml >> pyiron/environment.yml
+          docker build -t pyiron/pyiron:latest pyiron/
+          docker tag pyiron/pyiron:latest pyiron/pyiron:"$(date +%F)"
+      # pyiron/potentialworkshop
+      - run: | 
+          cat base/apt.txt >> md/apt.txt
+          tail --lines=+4 base/environment.yml >> potentialworkshop/environment.yml
+          tail --lines=+4 md/environment.yml >> potentialworkshop/environment.yml
+          tail --lines=+4 pyiron/environment.yml >> potentialworkshop/environment.yml
+          docker build -t pyiron/potentialworkshop:latest potentialworkshop/
+          docker tag pyiron/potentialworkshop:latest pyiron/potentialworkshop:"$(date +%F)"
+      # pyiron/experimental
+      - run: |
+          cat base/apt.txt >> md/apt.txt
+          tail --lines=+4 base/environment.yml >> experimental/environment.yml
+          docker build -t pyiron/experimental:latest experimental/
+          docker tag pyiron/experimental:latest pyiron/experimental:"$(date +%F)"
+      # pyiron/mpie_cmti
+      - run: |
+          cat base/apt.txt >> md/apt.txt
+          tail --lines=+4 base/environment.yml >> potentialworkshop/environment.yml
+          tail --lines=+4 md/environment.yml >> potentialworkshop/environment.yml
+          tail --lines=+4 pyiron/environment.yml >> potentialworkshop/environment.yml
+          docker build -t pyiron/mpie_cmti:latest mpie_cmti/
+          docker tag pyiron/mpie_cmti:latest pyiron/mpie_cmti:"$(date +%F)"
+      # Testing
       - run: docker images
       - run: docker run --rm pyiron/continuum /bin/bash -c 'source /opt/conda/bin/activate; i=0; for f in $(ls "${HOME}"/notebooks_*/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --ExecutePreprocessor.kernel_name=python3 --to notebook --execute $f || i=$((i+1)); done; if [ $i -gt 0 ]; then exit 1; fi;'
       - run: docker run --rm pyiron/base /bin/bash -c 'source /opt/conda/bin/activate; i=0; for f in $(ls "${HOME}"/notebooks_*/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --ExecutePreprocessor.kernel_name=python3 --to notebook --execute $f || i=$((i+1)); done; if [ $i -gt 0 ]; then exit 1; fi;'  
       - run: docker run --rm pyiron/pyiron /bin/bash -c 'source /opt/conda/bin/activate; i=0; for f in $(ls "${HOME}"/notebooks_*/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --ExecutePreprocessor.kernel_name=python3 --to notebook --execute $f || i=$((i+1)); done; if [ $i -gt 0 ]; then exit 1; fi;'
       - run: docker run --rm pyiron/experimental /bin/bash -c 'source /opt/conda/bin/activate; i=0; for f in $(ls "${HOME}"/notebooks_*/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --ExecutePreprocessor.kernel_name=python3 --to notebook --execute $f || i=$((i+1)); done; if [ $i -gt 0 ]; then exit 1; fi;'
+      # Export Environments
       - run: mkdir -p environment; chmod 777 environment
       - run: docker run -v $(pwd)/environment:/home/jovyan/ --rm pyiron/base /bin/bash -c 'source /opt/conda/bin/activate; conda env export > /home/jovyan/pyiron_base_$(date +%F).yml;' 
       - run: docker run -v $(pwd)/environment:/home/jovyan/ --rm pyiron/md /bin/bash -c 'source /opt/conda/bin/activate; conda env export > /home/jovyan/pyiron_md_$(date +%F).yml;' 
