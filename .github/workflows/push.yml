@@ -1,32 +1,59 @@
 name: Docker Push
 
 on:
-  push:
-    tags:
-      - "*-*-*"
+  schedule:
+    - cron: "0 0 * * 1"
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Get current date
         id: date
-        run: echo "::set-output name=date::$(date +%F)"
+        run: echo "date=$(date +%F)" >> $GITHUB_OUTPUT
+      - uses: rickstaa/action-create-tag@v1
+        id: "tag_create"
+        with:
+          tag: ${{ steps.date.outputs.date }}
+          tag_exists_error: false
+          message: ""
       - name: Login to DockerHub Registry
         run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
-      - run: docker build -t pyiron/base:latest base/
-      - run: docker tag pyiron/base:latest pyiron/base:"$(date +%F)"
-      - run: docker build -t pyiron/md:latest md/
-      - run: docker tag pyiron/md:latest pyiron/md:"$(date +%F)"
-      - run: docker build -t pyiron/pyiron:latest pyiron/
-      - run: docker tag pyiron/pyiron:latest pyiron/pyiron:"$(date +%F)"
-      - run: docker build -t pyiron/potentialworkshop:latest potentialworkshop/
-      - run: docker tag pyiron/potentialworkshop:latest pyiron/potentialworkshop:"$(date +%F)"
-      - run: docker build -t pyiron/experimental:latest experimental/
-      - run: docker tag pyiron/experimental:latest pyiron/experimental:"$(date +%F)"
-      - run: docker build -t pyiron/continuum:latest continuum/
-      - run: docker tag pyiron/continuum:latest pyiron/continuum:"$(date +%F)"
+      - name: Build pyiron/base
+        run: |
+          docker build -t pyiron/base:latest base/
+          docker tag pyiron/base:latest pyiron/base:"$(date +%F)"
+      - name: Build pyiron/md
+        run: |
+          tail --lines=+4 base/environment.yml >> md/environment.yml
+          docker build -t pyiron/md:latest md/
+          docker tag pyiron/md:latest pyiron/md:"$(date +%F)"
+      - name: Build pyiron/continuum
+        run: |
+          docker build -t pyiron/continuum:latest continuum/
+          docker tag pyiron/continuum:latest pyiron/continuum:"$(date +%F)"
+      - name: Build pyiron/pyiron
+        run: |
+          tail --lines=+4 md/environment.yml >> pyiron/environment.yml
+          docker build -t pyiron/pyiron:latest pyiron/
+          docker tag pyiron/pyiron:latest pyiron/pyiron:"$(date +%F)"
+      - name: Build pyiron/potentialworkshop
+        run: | 
+          tail --lines=+4 pyiron/environment.yml >> potentialworkshop/environment.yml
+          docker build -t pyiron/potentialworkshop:latest potentialworkshop/
+          docker tag pyiron/potentialworkshop:latest pyiron/potentialworkshop:"$(date +%F)"
+      - name: Build pyiron/experimental
+        run: |
+          tail --lines=+4 base/environment.yml >> experimental/environment.yml
+          docker build -t pyiron/experimental:latest experimental/
+          docker tag pyiron/experimental:latest pyiron/experimental:"$(date +%F)"
+      - name: Build pyiron/mpie_cmti
+        run: |
+          tail --lines=+4 pyiron/environment.yml >> mpie_cmti/environment.yml
+          docker build -t pyiron/mpie_cmti:latest mpie_cmti/
+          docker tag pyiron/mpie_cmti:latest pyiron/mpie_cmti:"$(date +%F)"
+      # Publish
       - run: docker images
       - run: docker push pyiron/base:latest
       - run: docker push pyiron/base:"$(date +%F)"
@@ -40,6 +67,9 @@ jobs:
       - run: docker push pyiron/experimental:"$(date +%F)"
       - run: docker push pyiron/continuum:latest
       - run: docker push pyiron/continuum:"$(date +%F)"
+      - run: docker push pyiron/mpie_cmti:latest
+      - run: docker push pyiron/mpie_cmti:"$(date +%F)"
+      # Export Environments
       - run: mkdir -p environment; chmod 777 environment
       - run: docker run -v $(pwd)/environment:/home/jovyan/ --rm pyiron/base /bin/bash -c 'source /opt/conda/bin/activate; conda env export > /home/jovyan/pyiron_base_$(date +%F).yml;' 
       - run: docker run -v $(pwd)/environment:/home/jovyan/ --rm pyiron/md /bin/bash -c 'source /opt/conda/bin/activate; conda env export > /home/jovyan/pyiron_md_$(date +%F).yml;' 
@@ -47,9 +77,10 @@ jobs:
       - run: docker run -v $(pwd)/environment:/home/jovyan/ --rm pyiron/pyiron /bin/bash -c 'source /opt/conda/bin/activate; conda env export > /home/jovyan/pyiron_pyiron_$(date +%F).yml;' 
       - run: docker run -v $(pwd)/environment:/home/jovyan/ --rm pyiron/potentialworkshop /bin/bash -c 'source /opt/conda/bin/activate; conda env export > /home/jovyan/pyiron_potentialworkshop_$(date +%F).yml;' 
       - run: docker run -v $(pwd)/environment:/home/jovyan/ --rm pyiron/experimental /bin/bash -c 'source /opt/conda/bin/activate; conda env export > /home/jovyan/pyiron_experimental_$(date +%F).yml;'
+      - run: docker run -v $(pwd)/environment:/home/jovyan/ --rm pyiron/mpie_cmti /bin/bash -c 'source /opt/conda/bin/activate; conda env export > /home/jovyan/pyiron_mpie_cmti_$(date +%F).yml;'
       - run: ls -al environment
       - name: Release
         uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
         with:
           files: environment/pyiron_*.yml
+          tag_name: ${{ steps.date.outputs.date }}

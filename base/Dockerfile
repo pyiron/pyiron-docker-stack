@@ -1,4 +1,4 @@
-ARG ROOT_CONTAINER=jupyter/base-notebook:ubuntu-22.04@sha256:b0e7daf4bda7ae837df23e22f655becdc9534f4de61678d2246ecef1b73a22ea
+ARG ROOT_CONTAINER=jupyter/base-notebook:ubuntu-22.04@sha256:0ec801994602a53d3917d0f07ccf4474a1ddf5ae419483b24681a3c42abc4ce5
 ARG BASE_CONTAINER=$ROOT_CONTAINER
 FROM $BASE_CONTAINER
 
@@ -50,6 +50,7 @@ RUN mamba env update -n base -f ${HOME}/environment.yml && \
 
 # Fix permissions on /etc/jupyter as root
 USER root
+ENV NOTEBOOK_DIR=${HOME}/notebooks_base
 RUN chmod +x ${HOME}/include_notebooks.sh && \
     /bin/bash include_notebooks.sh &&\
     fix-permissions /etc/jupyter/ &&\
