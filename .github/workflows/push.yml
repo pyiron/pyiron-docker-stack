@@ -37,14 +37,14 @@ jobs:
           docker tag pyiron/continuum:latest pyiron/continuum:"$(date +%F)"
       # pyiron/pyiron
       - run: |
-          cat base/apt.txt >> md/apt.txt
+          cat base/apt.txt >> pyiron/apt.txt
           tail --lines=+4 base/environment.yml >> pyiron/environment.yml
           tail --lines=+4 md/environment.yml >> pyiron/environment.yml
           docker build -t pyiron/pyiron:latest pyiron/
           docker tag pyiron/pyiron:latest pyiron/pyiron:"$(date +%F)"
       # pyiron/potentialworkshop
       - run: | 
-          cat base/apt.txt >> md/apt.txt
+          cat base/apt.txt >> potentialworkshop/apt.txt
           tail --lines=+4 base/environment.yml >> potentialworkshop/environment.yml
           tail --lines=+4 md/environment.yml >> potentialworkshop/environment.yml
           tail --lines=+4 pyiron/environment.yml >> potentialworkshop/environment.yml
@@ -52,13 +52,13 @@ jobs:
           docker tag pyiron/potentialworkshop:latest pyiron/potentialworkshop:"$(date +%F)"
       # pyiron/experimental
       - run: |
-          cat base/apt.txt >> md/apt.txt
+          cat base/apt.txt >> experimental/apt.txt
           tail --lines=+4 base/environment.yml >> experimental/environment.yml
           docker build -t pyiron/experimental:latest experimental/
           docker tag pyiron/experimental:latest pyiron/experimental:"$(date +%F)"
       # pyiron/mpie_cmti
       - run: |
-          cat base/apt.txt >> md/apt.txt
+          cat base/apt.txt >> mpie_cmti/apt.txt
           tail --lines=+4 base/environment.yml >> potentialworkshop/environment.yml
           tail --lines=+4 md/environment.yml >> potentialworkshop/environment.yml
           tail --lines=+4 pyiron/environment.yml >> potentialworkshop/environment.yml
