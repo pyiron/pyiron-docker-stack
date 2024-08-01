@@ -2,6 +2,4 @@ channels:
 - conda-forge
 dependencies:
 - pyiron_base =0.9.10
-- git =2.42.0
-- openmpi =4.1.6
-- hdf5 =1.14.3=mpi_openmpi_*
+- git =2.46.0
