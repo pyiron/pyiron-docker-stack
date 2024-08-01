@@ -26,7 +26,7 @@ jobs:
           docker tag pyiron/continuum:latest pyiron/continuum:"$(date +%F)"
       # pyiron/pyiron
       - run: |
-          cat base/apt.txt >> md/apt.txt
+          cat base/apt.txt >> pyiron/apt.txt
           tail --lines=+4 base/environment.yml >> pyiron/environment.yml
           tail --lines=+4 md/environment.yml >> pyiron/environment.yml
           docker build -t pyiron/pyiron:latest pyiron/
