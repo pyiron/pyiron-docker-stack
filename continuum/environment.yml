@@ -19,4 +19,3 @@ dependencies:
 - openkim-models =2021.01.28
 - git =2.42.0
 - openmpi =4.1.6
-- hdf5 =1.14.3=mpi_openmpi_*
