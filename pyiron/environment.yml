@@ -1,5 +1,5 @@
 channels:
 - conda-forge
 dependencies:
-- sphinxdft =3.1
+- sphinxdft =3.0.7
 - gpaw =24.1.0=*openmpi*
