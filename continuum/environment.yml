@@ -5,6 +5,7 @@ dependencies:
 - fenics =2019.1.0=*_42
 - mshr =2019.1.0=*_9
 - pyiron_base =0.8.2
+- pyiron-atomistics =0.5.3
 - pyiron_continuum =0.0.8
 - pyiron_gpl =0.0.5
 - pyvista =0.43.6
