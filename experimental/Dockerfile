@@ -1,8 +1,30 @@
-ARG ROOT_CONTAINER=pyiron/base:latest
+ARG ROOT_CONTAINER=jupyter/base-notebook:ubuntu-22.04@sha256:0ec801994602a53d3917d0f07ccf4474a1ddf5ae419483b24681a3c42abc4ce5
 ARG BASE_CONTAINER=$ROOT_CONTAINER
 FROM $BASE_CONTAINER
 
-MAINTAINER Jan Janssen <janssen@mpie.de>, Muhammad Hassani <hassani@mpie.de>
+MAINTAINER Jan Janssen <janssen@mpie.de>
+
+USER root
+ARG DOCKER_UID="1000"
+ARG DOCKER_GID="100"
+
+# Configure environment
+ENV CONDA_DIR=/opt/conda \
+    SHELL=/bin/bash \
+    LC_ALL=en_US.UTF-8 \
+    LANG=en_US.UTF-8 \
+    LANGUAGE=en_US.UTF-8 \
+    DOCKER_UID=$DOCKER_UID \
+    DOCKER_GID=$DOCKER_GID
+
+ENV HOME=/home/$NB_USER
+
+COPY apt.txt /tmp/
+
+RUN apt-get update -y && \
+    xargs -a /tmp/apt.txt apt-get install -y && \
+    apt-get clean && \
+    rm /tmp/apt.txt
 
 USER $DOCKER_UID
 WORKDIR $HOME
@@ -13,15 +35,15 @@ RUN mamba env update -n base -f ${HOME}/environment.yml && \
     mamba clean --all -f -y && \
     mamba list
 
+# Fix permissions on /etc/jupyter as root
 USER root
-ENV NOTEBOOK_DIR=${HOME}/notebooks_experimental
-RUN rm -rf ${HOME}/notebooks_base && \
-    chmod +x ${HOME}/include_notebooks.sh && \
-    /bin/bash ${HOME}/include_notebooks.sh && \
-    fix-permissions $CONDA_DIR && \
-    fix-permissions ${HOME}
-    
-# Switch back to pyiron to avoid accidental container runs as root
+ENV NOTEBOOK_DIR=${HOME}/notebooks_base
+RUN chmod +x ${HOME}/include_notebooks.sh && \
+    /bin/bash include_notebooks.sh &&\
+    fix-permissions /etc/jupyter/ &&\
+    fix-permissions ${HOME} && \
+    fix-permissions $CONDA_DIR
+
 USER $DOCKER_UID
 
 WORKDIR $HOME
