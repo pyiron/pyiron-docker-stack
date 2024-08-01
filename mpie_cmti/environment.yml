@@ -14,7 +14,7 @@ dependencies:
 - sqsgenerator =0.3
 - pyiron_gpl =0.0.5
 - python-ace =0.3.0
-- pytorch =2.0.0
+- pytorch =2.3.1
 - pyxtal =0.6.7
 - runner =1.3
 - structdbrest =0.0.1
