@@ -47,7 +47,7 @@ jobs:
           docker tag pyiron/experimental:latest pyiron/experimental:"$(date +%F)"
       # pyiron/mpie_cmti
       - run: |
-          cat base/apt.txt >> potentialworkshop/apt.txt
+          cat base/apt.txt >> mpie_cmti/apt.txt
           tail --lines=+4 base/environment.yml >> potentialworkshop/environment.yml
           tail --lines=+4 md/environment.yml >> potentialworkshop/environment.yml
           tail --lines=+4 pyiron/environment.yml >> potentialworkshop/environment.yml
