@@ -7,7 +7,7 @@ dependencies:
 - pyiron =0.5.2
 - pyiron_base =0.8.2
 - pyiron_atomistics =0.5.3
-- pyiron_continuum =0.0.8
+- pyiron_continuum =0.0.9
 - pyiron_gpl =0.0.5
 - pyiron-data =0.0.30
 - pyvista =0.44.1
