@@ -21,6 +21,6 @@ dependencies:
 - tensorflow =2.16.2
 - psycopg2 =2.9.9
 - numba =0.60.0
-- llama-index =0.10.59
+- llama-index =0.10.64
 - jupyter-server-proxy =4.3.0
 - flux-core =0.64.0
