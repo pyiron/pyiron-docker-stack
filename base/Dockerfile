@@ -44,7 +44,8 @@ WORKDIR $HOME
 ARG PYTHON_VERSION=default
 
 COPY . ${HOME}/
-RUN mamba env update -n base -f ${HOME}/environment.yml && \
+RUN mamba config --remove channels defaults \
+    mamba env update -n base -f ${HOME}/environment.yml && \
     mamba clean --all -f -y && \
     mamba list
 
