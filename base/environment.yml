@@ -3,3 +3,4 @@ channels:
 dependencies:
 - pyiron_base =0.9.10
 - git =2.46.0
+- mkl =2023.2.0
