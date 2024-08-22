@@ -9,8 +9,7 @@ WORKDIR $HOME
 ARG PYTHON_VERSION=default
 
 COPY . ${HOME}/
-RUN mamba install -n base -c defaults mkl=2023.2.0 && \
-    mamba env update -n base -f ${HOME}/environment.yml && \
+RUN mamba env update -n base -f ${HOME}/environment.yml && \
     mamba clean --all -f -y && \
     mamba list
 
