@@ -44,7 +44,7 @@ WORKDIR $HOME
 ARG PYTHON_VERSION=default
 
 COPY . ${HOME}/
-RUN conda config
+RUN conda info
 RUN conda config --remove channels defaults && \
     mamba env update -n base -f ${HOME}/environment.yml && \
     mamba clean --all -f -y && \
