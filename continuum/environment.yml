@@ -1,5 +1,6 @@
 channels:
 - conda-forge
+- nodefaults
 dependencies:
 - damask =3.0.0
 - fenics =2019.1.0=*_42
