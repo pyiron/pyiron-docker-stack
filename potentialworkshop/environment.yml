@@ -1,5 +1,6 @@
 channels:
 - conda-forge
+- nodefaults
 dependencies:
 - atomicrex =1.0.3
 - runner =1.2

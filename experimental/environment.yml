@@ -1,5 +1,6 @@
 channels:
 - conda-forge
+- nodefaults
 dependencies:
 - pyiron_experimental =0.0.3
 - temmeta =0.0.6

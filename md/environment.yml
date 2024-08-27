@@ -1,5 +1,6 @@
 channels:
 - conda-forge
+- nodefaults
 dependencies:
 - pyiron =0.5.2
 - pyiron_atomistics =0.6.11
