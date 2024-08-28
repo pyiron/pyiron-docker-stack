@@ -5,7 +5,7 @@ dependencies:
 - atomicrex =1.0.3
 - runner =1.2
 - structdbrest =0.0.1
-- pyiron_potentialfit =0.3.4
+- pyiron_potentialfit =0.3.7
 - pyiron_gpl =0.0.5
 - nbgitpuller =1.2.1
 - python-ace =0.3.0
