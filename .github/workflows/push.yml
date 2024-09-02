@@ -21,34 +21,41 @@ jobs:
       - name: Login to DockerHub Registry
         run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
       - name: Build pyiron/base
+        timeout-minutes: 5
         run: |
           docker build -t pyiron/base:latest base/
           docker tag pyiron/base:latest pyiron/base:"$(date +%F)"
       - name: Build pyiron/md
+        timeout-minutes: 5
         run: |
           tail --lines=+5 base/environment.yml >> md/environment.yml
           docker build -t pyiron/md:latest md/
           docker tag pyiron/md:latest pyiron/md:"$(date +%F)"
       - name: Build pyiron/continuum
+        timeout-minutes: 5
         run: |
           docker build -t pyiron/continuum:latest continuum/
           docker tag pyiron/continuum:latest pyiron/continuum:"$(date +%F)"
       - name: Build pyiron/pyiron
+        timeout-minutes: 5
         run: |
           tail --lines=+5 md/environment.yml >> pyiron/environment.yml
           docker build -t pyiron/pyiron:latest pyiron/
           docker tag pyiron/pyiron:latest pyiron/pyiron:"$(date +%F)"
       - name: Build pyiron/potentialworkshop
+        timeout-minutes: 5
         run: | 
           tail --lines=+5 pyiron/environment.yml >> potentialworkshop/environment.yml
           docker build -t pyiron/potentialworkshop:latest potentialworkshop/
           docker tag pyiron/potentialworkshop:latest pyiron/potentialworkshop:"$(date +%F)"
       - name: Build pyiron/experimental
+        timeout-minutes: 5
         run: |
           tail --lines=+5 base/environment.yml >> experimental/environment.yml
           docker build -t pyiron/experimental:latest experimental/
           docker tag pyiron/experimental:latest pyiron/experimental:"$(date +%F)"
       - name: Build pyiron/mpie_cmti
+        timeout-minutes: 5
         run: |
           tail --lines=+5 pyiron/environment.yml >> mpie_cmti/environment.yml
           docker build -t pyiron/mpie_cmti:latest mpie_cmti/
