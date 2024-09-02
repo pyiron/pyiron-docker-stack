@@ -23,5 +23,5 @@ dependencies:
 - psycopg2 =2.9.9
 - numba =0.60.0
 - llama-index =0.11.3
-- jupyter-server-proxy =4.3.0
+- jupyter-server-proxy =4.4.0
 - flux-core =0.64.0
