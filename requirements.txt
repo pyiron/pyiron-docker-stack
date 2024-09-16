@@ -28,4 +28,4 @@ temmeta==0.0.6
 vtk==9.2.6
 pytorch==2.1.2
 tensorflow==2.17.0
-llama-index==0.11.8
+llama-index==0.11.9
