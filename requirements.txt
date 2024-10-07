@@ -20,7 +20,7 @@ pystem==0.0.26
 python-ace==0.3.0
 pyvista==0.44.1
 pyxem==0.19.1
-pyxtal==1.0.2
+pyxtal==1.0.4
 scanf==1.5.2
 seaborn==0.13.2
 structdbrest==0.0.1
