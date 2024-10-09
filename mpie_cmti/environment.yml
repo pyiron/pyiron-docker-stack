@@ -26,3 +26,4 @@ dependencies:
 - llama-index =0.11.16
 - jupyter-server-proxy =4.4.0
 - flux-core =0.64.0
+- netcdf4 =1.7.1
