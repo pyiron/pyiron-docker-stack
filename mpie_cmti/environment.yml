@@ -27,3 +27,4 @@ dependencies:
 - jupyter-server-proxy =4.4.0
 - flux-core =0.64.0
 - netcdf4 =1.7.1
+- maxvolpy =0.3.8
