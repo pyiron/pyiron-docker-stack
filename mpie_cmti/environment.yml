@@ -29,4 +29,4 @@ dependencies:
 - flux-core =0.64.0
 - netcdf4 =1.7.1
 - maxvolpy =0.3.8
-- bokeh =3.5.2
+- bokeh =3.6.0
