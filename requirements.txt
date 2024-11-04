@@ -26,7 +26,7 @@ scanf==1.5.2
 seaborn==0.13.2
 structdbrest==0.0.1
 temmeta==0.0.6
-vtk==9.2.6
+vtk==9.3.1
 pytorch==2.1.2
 tensorflow==2.17.0
 llama-index==0.11.21
