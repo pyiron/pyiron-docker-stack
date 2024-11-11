@@ -9,4 +9,4 @@ dependencies:
 - pyxem =0.19.1
 - pystem =0.0.26
 - scanf =1.5.2
-- hyperspy =2.1.1
+- hyperspy =2.2.0
