@@ -27,6 +27,6 @@ dependencies:
 - llama-index =0.11.23
 - jupyter-server-proxy =4.4.0
 - flux-core =0.64.0
-- netcdf4 =1.7.1
+- netcdf4 =1.7.2
 - maxvolpy =0.3.8
 - bokeh =3.6.1

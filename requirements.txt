@@ -30,6 +30,6 @@ vtk==9.2.6
 pytorch==2.1.2
 tensorflow==2.17.0
 llama-index==0.11.23
-netcdf4==1.7.1
+netcdf4==1.7.2
 maxvolpy==0.3.8
 bokeh==3.6.1
