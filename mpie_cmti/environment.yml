@@ -9,7 +9,7 @@ dependencies:
 - nbgitpuller =1.2.1
 - pyiron_contrib =0.1.18
 - pyiron_potentialfit =0.3.7
-- pyiron_workflow =0.11.0
+- pyiron_workflow =0.11.1
 - pyiron_gui =0.0.12
 - pyironflow =0.0.3
 - matgl =1.1.2
