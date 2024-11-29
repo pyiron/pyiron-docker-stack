@@ -13,10 +13,10 @@ ENV CONDA_DIR=/opt/conda \
     LANG=en_US.UTF-8 \
     LANGUAGE=en_US.UTF-8 \
     DOCKER_UID=$DOCKER_UID \
-    DOCKER_GID=$DOCKER_GID
-    HOME=/home/$NB_USER
-    OMPI_MCA_plm=isolated
-    OMPI_MCA_rmaps_base_oversubscribe=yes
+    DOCKER_GID=$DOCKER_GID \
+    HOME=/home/$NB_USER \
+    OMPI_MCA_plm=isolated \
+    OMPI_MCA_rmaps_base_oversubscribe=yes \
     OMPI_MCA_btl_vader_single_copy_mechanism=none
 
 # apt installation as root
