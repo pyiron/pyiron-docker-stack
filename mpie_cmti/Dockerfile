@@ -32,8 +32,8 @@ RUN apt-get update -y &&\
     rm /tmp/apt.txt 
 
 # install conda packages as $DOCKER_USER
-USER $DOCKER_UID
-WORKDIR $HOME
+USER ${DOCKER_UID}
+WORKDIR ${HOME}
 ARG PYTHON_VERSION=default
 
 COPY . ${HOME}/
@@ -43,11 +43,9 @@ RUN mamba env update -n base -f ${HOME}/environment.yml && \
 
 # Fix permissions on /etc/jupyter as root
 USER root
-RUN chmod +x ${HOME}/include_notebooks.sh && \
-    /bin/bash include_notebooks.sh &&\
-    fix-permissions /etc/jupyter/ &&\
+RUN fix-permissions /etc/jupyter/ &&\
     fix-permissions ${HOME} && \
-    fix-permissions $CONDA_DIR
+    fix-permissions ${CONDA_DIR}
 
 # switch back to DOCKER_USER
 USER $DOCKER_UID
