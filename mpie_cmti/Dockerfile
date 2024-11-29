@@ -1,5 +1,5 @@
-ARG ROOT_CONTAINER=jupyter/base-notebook:ubuntu-22.04@sha256:0ec801994602a53d3917d0f07ccf4474a1ddf5ae419483b24681a3c42abc4ce5
-FROM $ROOT_CONTAINER
+ARG ROOT_IMAGE=jupyter/base-notebook:ubuntu-22.04@sha256:0ec801994602a53d3917d0f07ccf4474a1ddf5ae419483b24681a3c42abc4ce5 AS root_image
+FROM $ROOT_IMAGE
 
 MAINTAINER Jan Janssen <janssen@mpie.de>, Marian Bruns <m.bruns@mpie.de>
 
