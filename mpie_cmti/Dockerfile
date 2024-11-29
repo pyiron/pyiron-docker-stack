@@ -29,7 +29,7 @@ COPY apt.txt /tmp/
 RUN apt-get update -y &&\
     xargs -a /tmp/apt.txt apt-get install -y &&\
     apt-get clean &&\
-    rm /tmp/apt_global.txt /tmp/apt_local.txt /tmp/apt.txt 
+    rm /tmp/apt.txt 
 
 # install conda packages as $DOCKER_USER
 USER $DOCKER_UID
