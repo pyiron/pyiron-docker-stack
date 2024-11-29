@@ -3,7 +3,8 @@ name: Docker Push
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 0 * * 1"
+    - cron: "0 20 * * 1"
+    # github cron jobs are executed based on UTC https://jackharner.com/blog/github-actions-cron/
 
 jobs:
   build:
