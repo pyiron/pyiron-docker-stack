@@ -4,9 +4,4 @@ updates:
   directory: "/"
   schedule:
     interval: daily
-  groups:
-    pyiron:
-      applies-to: version-updates
-      patterns:
-        - "pyiron*"
   open-pull-requests-limit: 10
