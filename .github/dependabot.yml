@@ -3,6 +3,10 @@ updates:
 - package-ecosystem: pip
   directory: "/"
   schedule:
-    interval: weekly
-    day: monday
+    interval: daily
+  groups:
+    pyiron:
+      applies-to: version-updates
+      patterns:
+        - "pyiron*"
   open-pull-requests-limit: 10
