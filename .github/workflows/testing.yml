@@ -43,14 +43,8 @@ jobs:
           tail --lines=+5 base/environment.yml >> experimental/environment.yml
           docker build -t pyiron/experimental:latest experimental/
           docker tag pyiron/experimental:latest pyiron/experimental:"$(date +%F)"
-      - name: Build pyiron/mpie_cmti
-        timeout-minutes: 5
-        run: |
-          tail --lines=+5 pyiron/environment.yml >> mpie_cmti/environment.yml
-          docker build -t pyiron/mpie_cmti:latest mpie_cmti/
-          docker tag pyiron/mpie_cmti:latest pyiron/mpie_cmti:"$(date +%F)"
       # Testing
-      - run: docker images
+
       - name: Test pyiron/continuum
         timeout-minutes: 5
         run: docker run --rm pyiron/continuum /bin/bash -c 'source /opt/conda/bin/activate; i=0; for f in $(ls "${HOME}"/notebooks_*/*.ipynb); do jupyter nbconvert --ExecutePreprocessor.timeout=9999999 --ExecutePreprocessor.kernel_name=python3 --to notebook --execute $f || i=$((i+1)); done; if [ $i -gt 0 ]; then exit 1; fi;'
@@ -71,6 +65,15 @@ jobs:
       - run: docker run -v $(pwd)/environment:/home/jovyan/ --rm pyiron/pyiron /bin/bash -c 'source /opt/conda/bin/activate; conda env export > /home/jovyan/pyiron_pyiron_$(date +%F).yml;' 
       - run: docker run -v $(pwd)/environment:/home/jovyan/ --rm pyiron/potentialworkshop /bin/bash -c 'source /opt/conda/bin/activate; conda env export > /home/jovyan/pyiron_potentialworkshop_$(date +%F).yml;' 
       - run: docker run -v $(pwd)/environment:/home/jovyan/ --rm pyiron/experimental /bin/bash -c 'source /opt/conda/bin/activate; conda env export > /home/jovyan/pyiron_experimental_$(date +%F).yml;'
-      - run: docker run -v $(pwd)/environment:/home/jovyan/ --rm pyiron/mpie_cmti /bin/bash -c 'source /opt/conda/bin/activate; conda env export > /home/jovyan/mpie_cmti_$(date +%F).yml;'
       - run: ls -al environment
-      
+  build_cmti:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build pyiron/mpie_cmti
+        timeout-minutes: 15
+        run: |
+          docker build -t pyiron/mpie_cmti:latest mpie_cmti/
+          docker tag pyiron/mpie_cmti:latest pyiron/mpie_cmti:"$(date +%F)"
+      - run: docker images
+      - run: docker run -v $(pwd)/environment:/home/jovyan/ --rm pyiron/mpie_cmti /bin/bash -c 'source /opt/conda/bin/activate; conda env export > /home/jovyan/mpie_cmti_$(date +%F).yml;'
