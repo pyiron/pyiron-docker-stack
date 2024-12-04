@@ -28,7 +28,8 @@ dependencies:
 - pyiron_gpl =0.0.5
 - pyiron_gui =0.0.12
 - pyiron_potentialfit =0.3.7
-- pyiron_workflow =0.11.0
+- pyiron_workflow =0.11.2
+- pyironflow =0.0.4
 - python-ace =0.3.0
 - pytorch =2.1.2
 - pyxtal =1.0.4
