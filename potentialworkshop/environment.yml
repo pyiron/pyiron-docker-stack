@@ -10,4 +10,4 @@ dependencies:
 - nbgitpuller =1.2.1
 - python-ace =0.3.0
 - calphy =1.3.11
-- pyxtal =1.0.5
+- pyxtal =1.0.6
