@@ -2,7 +2,7 @@ channels:
 - conda-forge
 - nodefaults
 dependencies:
-- damask =3.0.0
+- damask =3.0.1
 - fenics =2019.1.0=*_42
 - mshr =2019.1.0=*_9
 - pyiron =0.5.2
