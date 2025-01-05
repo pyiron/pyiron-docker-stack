@@ -27,6 +27,7 @@ dependencies:
 - numba =0.60.0
 - llama-index =0.12.9
 - jupyter-server-proxy =4.4.0
+- jupyterhub =5.2.1
 - flux-core =0.64.0
 - netcdf4 =1.7.1
 - maxvolpy =0.3.8
