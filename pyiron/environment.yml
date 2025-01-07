@@ -3,4 +3,4 @@ channels:
 - nodefaults
 dependencies:
 - sphinxdft =3.1
-- gpaw =24.6.0=*openmpi*
+- gpaw =25.1.0=*openmpi*
